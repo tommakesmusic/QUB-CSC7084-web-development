@@ -2,7 +2,7 @@
 Project for MSc in Software Engineering
 
 Primary languages involved include:
-* php,
+* php
 * javascript
 * css
 * html and
