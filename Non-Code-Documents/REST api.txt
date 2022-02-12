@@ -1,6 +1,8 @@
 REST Api
 
-https://www.onlyxcodes.com/2019/12/php-rest-api-tutorial.html
+https://www.onlyxcodes.com/2019/12/php-rest-api-tutorial.html - basic crud with rewrite
+
+https://www.onlyxcodes.com/2020/05/php-crud-api-tutorial.html - a simple search api
 
 https://www.cluemediator.com/create-a-rest-api-in-php-with-mysql#:~:text=%20Steps%20to%20create%20a%20REST%20API%20in,because%20it%E2%80%99s%20not%20user%20friendly.%20After...%20More%20
 
