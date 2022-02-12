@@ -14,6 +14,8 @@ https://xpertphp.com/create-restful-api-using-php-and-mysql/
 
 https://www.techiediaries.com/vuejs-php-mysql-rest-crud-api-tutorial/ - also uses vue.js which i was thinking of using and also axios.js
 
+https://www.techiediaries.com/php-rest-api/
+
 https://www.itsolutionstuff.com/post/how-to-create-a-rest-api-using-nodejs-and-mysqlexample.html
 
 https://blog.dreamfactory.com/create-a-mysql-rest-api-in-minutes-using-dreamfactory/ generate an api? swagger?
