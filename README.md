@@ -6,6 +6,6 @@ Primary languages involved include:
 * javascript
 * css
 * html and
-* SQL (via amysql server)
+* SQL (via a mysql server)
 
-Developed locally using the MAMP stack on Macintosh
+Developed locally using the MAMP stack on Macintosh, stored here and uploaded to a university server. The project makes use of the Tailwind framework for CSS and the Vue.js framework for javascript interactivity.
