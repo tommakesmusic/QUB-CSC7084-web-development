@@ -1,0 +1,35 @@
+REST Api
+
+https://www.cluemediator.com/create-a-rest-api-in-php-with-mysql#:~:text=%20Steps%20to%20create%20a%20REST%20API%20in,because%20it%E2%80%99s%20not%20user%20friendly.%20After...%20More%20
+
+https://www.phpzag.com/how-to-create-simple-rest-api-in-php/
+
+https://code-boxx.com/simple-rest-api-php/   user login example
+
+https://xpertphp.com/create-restful-api-using-php-and-mysql/
+
+https://www.techiediaries.com/vuejs-php-mysql-rest-crud-api-tutorial/ - also uses vue.js which i was thinking of using and also axios.js
+
+https://www.itsolutionstuff.com/post/how-to-create-a-rest-api-using-nodejs-and-mysqlexample.html
+
+https://blog.dreamfactory.com/create-a-mysql-rest-api-in-minutes-using-dreamfactory/ generate an api? swagger?
+
+https://swagger.io/tools/swagger-codegen/ swagger codegen
+
+https://www.discogs.com/de/settings/developers - discogs image api https://www.discogs.com/developers#page:home,header:home-quickstart
+
+https://www.theaudiodb.com/api_guide.php  
+
+https://musicbrainz.org/ music-brainz https://musicbrainz.org/doc/Cover_Art_Archive/API cover art api
+
+https://github.com/topics/album-art
+
+
+
+
+
+
+
+
+
+
