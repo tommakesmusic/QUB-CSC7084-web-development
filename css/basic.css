@@ -1,0 +1,47 @@
+/* Reset our layout */ 
+* {
+    margin: 0;
+    padding: 0;
+  }
+  body{
+    background-color: #ccc;
+  }
+  /* Can use span here too */
+  .grid {
+    display: grid;
+    column-gap: 10px;
+    grid-template-columns: 1fr 400px 400px 400px 1fr;
+    grid-template-areas: 
+    ". header header header ."
+    ". content content content sidebar"
+    ". footer footer footer .";
+  }
+  
+  .header {
+    grid-area: header;
+    justify-self: self-start;
+    background-color: #fff;
+  }
+  
+  nav {
+    display: inline;
+    align-self: center;
+  }
+  
+  .content {
+    grid-area: content;
+    justify-self: left;
+    background-color: #ffc5c5;
+  }
+  
+  .sidebar {
+    grid-area: sidebar;
+    justify-self: right;
+    background-color: #00F;
+  }
+  
+  .footer {
+    grid-area: footer;
+    color: #fff;
+    background-color: #000;
+  }
