@@ -28,6 +28,7 @@ body{
 
 .genre-box{
   display: flex;
+  justify-content: space-around;
   flex-flow: row wrap;
 }
 
@@ -60,7 +61,7 @@ h1, h2, h3 {
   color: #3e3e3e;
 }
 .over-icon {
-  text-align: right;
+  float: left;
 }
 p {
   text-align: left;
