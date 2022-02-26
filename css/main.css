@@ -11,20 +11,54 @@
    Base styles: opinionated defaults
    ========================================================================== */
 
+/* Reset our layout */ 
 * {
   margin: 0;
   padding: 0;
 }
-
-
-html {
-  color: #222;
-  font-size: 1em;
-  line-height: 1.4;
-}
 body{
   background-color: #ccc;
 }
+/* Can use span here too */
+.grid {
+  display: grid;
+  column-gap: 10px;
+  grid-template-columns: 1fr 400px 400px 400px 1fr;
+  grid-template-areas: 
+  ". header header header ."
+  ". content content content sidebar"
+  ". footer footer footer .";
+}
+
+.header {
+  grid-area: header;
+  justify-self: self-start;
+  background-color: #fff;
+}
+
+nav {
+  display: inline;
+  align-self: center;
+}
+
+.content {
+  grid-area: content;
+  justify-self: left;
+  background-color: #ffc5c5;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  justify-self: right;
+  background-color: #00F;
+}
+
+.footer {
+  grid-area: footer;
+  color: #fff;
+  background-color: #000;
+}
+
 .album-intro{
   
   background-color: aliceblue;
@@ -38,11 +72,14 @@ body{
   background-color: #999;
 
 }
-.genre-box{
-  width: 25%;
- 
-
+.genre-box {
+  background-color: #00F;
 }
+
+.genre-box {
+  background-color: #0FF;
+}
+
 
 .wrapper {
   margin: 0 auto 0  60px;
@@ -52,20 +89,12 @@ body{
 .img-icon-settings{
   width: 100px;
   background-image: url(../img/icon-settings.png);
-  background-size: 80%;
-  background-repeat: no-repeat;
-  background-position: right;
 }
 
 .img-icon-settings:hover {
   background-size: 90%;
 }
 
-nav {
-  width: 100%;
-  height: 100px;
-  background-color: #fff;
-}
 
 h1, h2, h3 {
   font-family: arial, 'Times New Roman', Times, serif;
