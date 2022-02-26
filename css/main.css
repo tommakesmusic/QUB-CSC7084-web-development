@@ -21,14 +21,19 @@ body{
 }
 
 .wrapper {
-  margin: 0 auto;
+  margin: 0 auto 0  60px;
   width: 80%
 }
-
+.img-icon-settings{
+  width: 100px;
+  background-image: url(img/icon-settings.png);
+}
 nav {
   width: 100%;
   height: 100px;
   background-color: #fff;
+  background-size: 80%;
+  background-repeat: no-repeat;
 }
 
 h1, h2 {
