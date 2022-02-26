@@ -20,8 +20,7 @@ html {
 h1, h2 {
   font-family: arial, 'Times New Roman', Times, serif;
   font-style: italic;
-  text-align: right;
-  text-transform: lowercase;
+  text-transform: uppercase;
   color: brown;
 }
 
