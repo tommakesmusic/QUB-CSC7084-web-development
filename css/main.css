@@ -38,19 +38,27 @@ p {
   color: #1e1e1e;
 }
 ul {
+  margin-left: 60px;
   color:#000;
 }
 ul li{
   list-style: none;
-  display: inline-block;
+  vertical-align: middle;
+  float: left;
+  display: inline;
+  line-height: 100px;
 }
 ul li a {
+  display: block;
   text-decoration: none;
   font-size: 14px;
   font-family: Arial, Helvetica, sans-serif;
   color: #222;
+  padding: 0 20px;
 }
-
+ul li a:hover {
+  color: #00F;
+}
 /*
  * Remove text-shadow in selection highlight:
  * https://twitter.com/miketaylr/status/12228805301
