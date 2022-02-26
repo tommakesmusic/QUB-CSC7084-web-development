@@ -25,11 +25,15 @@ html {
 body{
   background-color: #ccc;
 }
-
+.album-genre-list{
+  display:flexbox;
+  align-content: center;
+}
 .genre-box{
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   flex-flow: row wrap;
+  align-items: center;
 }
 
 .wrapper {
