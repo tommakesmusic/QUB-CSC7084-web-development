@@ -1,4 +1,6 @@
-
+<?php
+  include_once 'html/header.html'
+>
   <section class ="album-intro">
     <h1>This is an introduction</h1>
     <p>Here is some important information</p>
@@ -12,3 +14,6 @@
     <div><h3>Metal</h3></div>
   </div>
 </section>
+
+<?php
+  include_once 'html/footer.html'
