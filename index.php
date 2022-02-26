@@ -8,7 +8,7 @@
 <section class="album-genres">
   <h2>Album Genres</h2>
   <div class="album-genre-list">
-  <div class="img-icon-settings"><h3>Rock</h3></div>
+  <div class="img-icon-settings"><h3 class="over-icon">Rock</h3></div>
     <div><h3>Jazz</h3></div>
     <div><h3>Pop</h3></div>
     <div><h3>Metal</h3></div>

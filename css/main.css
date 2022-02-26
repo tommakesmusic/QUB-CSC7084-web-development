@@ -29,7 +29,7 @@ body{
   background-image: url(../img/icon-settings.png);
   background-size: 80%;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: right;
 }
 
 .img-icon-settings:hover {
@@ -42,13 +42,15 @@ nav {
   background-color: #fff;
 }
 
-h1, h2 {
+h1, h2, h3 {
   font-family: arial, 'Times New Roman', Times, serif;
   font-style: italic;
   text-transform: uppercase;
   color: #3e3e3e;
 }
-
+.over-icon {
+  text-align: right;
+}
 p {
   text-align: left;
   color: #1e1e1e;
