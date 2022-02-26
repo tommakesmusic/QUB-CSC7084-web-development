@@ -1,5 +1,5 @@
 <?php
-  include_once 'html/header.html'
+  include_once 'html/header.php'
 ?>
   <section class ="album-intro">
     <h1>This is an introduction</h1>
@@ -16,5 +16,5 @@
 </section>
 
 <?php
-  include_once 'html/footer.html'
+  include_once 'html/footer.php'
 ?>
