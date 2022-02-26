@@ -17,6 +17,19 @@ html {
   line-height: 1.4;
 }
 
+h1, h2 {
+  font-family: arial, 'Times New Roman', Times, serif;
+  font-style: italic;
+  text-align: right;
+  text-transform: lowercase;
+  color: brown;
+}
+
+p {
+  text-align: center;
+  color: red;
+}
+
 /*
  * Remove text-shadow in selection highlight:
  * https://twitter.com/miketaylr/status/12228805301
