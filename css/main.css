@@ -7,8 +7,94 @@
  * Kroc Camen, and the H5BP dev community and team.
  */
 
+ /* From Kevin Powell YouTube */
+ :root {
+  --clr-primary-400: 263 55% 52%;
+  --clr-secondary-400: 217 19% 35%;
+  --clr-secondary-500: 219 29% 14%;
+  --clr-neutral-100: 0 0% 100%;
+  --clr-neutral-200: 210 46% 95%;
+  --clr-neutral-300: 0 0% 81%;
+
+  --ff-primary: "Barlow Semi Condensed", sans-serif;
+
+  --fw-400: 500;
+  --fw-700: 600;
+
+  --fs-300: 0.6875rem;
+  --fs-400: 0.8125rem;
+  --fs-500: 1.25rem;
+}
+
+/* Box sizing rules KP */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed KP*/
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Set core root defaults KP*/
+html:focus-within {
+  scroll-behavior: smooth;
+}
+body {
+  display: grid;
+  place-content: center;
+  min-height: 100vh;
+
+  font-family: var(--ff-primary);
+  font-weight: var(--fw-400);
+
+  background-color: hsl(var(--clr-neutral-200));
+}
+
+h1,
+h2,
+h3 {
+  font-weight: var(--fw-700);
+}
+
+/* utilities KP*/
+.flex {
+  display: flex;
+  gap: var(--gap, 1rem);
+}
+
+.flow > *:where(:not(:first-child)) {
+  margin-top: var(--flow-spacer, 1em);
+}
+
+.bg-primary-400 {
+  background: hsl(var(--clr-primary-400));
+}
+.bg-secondary-400 {
+  background: hsl(var(--clr-secondary-400));
+}
+.bg-secondary-500 {
+  background: hsl(var(--clr-secondary-500));
+}
+
+.bg-neutral-100 {
+  background: hsl(var(--clr-neutral-100));
+}
+
+.text-neutral-100 {
+  color: hsl(var(--clr-neutral-100));
+}
+.text-secondary-400 {
+  color: hsl(var(--clr-secondary-400));
+}
+.border-primary-400 {
+  border: 2px solid #a775f1;
+}
 /* ==========================================================================
-   Base styles: opinionated defaults
+   TW styles: Trial and error, mostly
    ========================================================================== */
 
 /* Reset our layout */ 
@@ -16,41 +102,15 @@
   margin: 0;
   padding: 0;
 }
-body{
-  background-color: #ccc;
-}
-/* Can use span here too */
-.grid {
-  display: grid;
-  column-gap: 10px;
-  grid-template-columns: 1fr 400px 400px 400px 1fr;
-  grid-template-areas: 
-  ". header header header ."
-  ". content content content sidebar"
-  ". footer footer footer .";
-}
-
-.header {
-  grid-area: header;
-  justify-self: self-start;
-  background-color: #fff;
-}
-
-nav {
-  display: inline;
-  align-self: center;
-}
 
 .content {
-  grid-area: content;
-  justify-self: left;
-  background-color: #ffc5c5;
-}
+  display:grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(4, 1fr);
 
-.sidebar {
-  grid-area: sidebar;
-  justify-self: right;
-  background-color: #00F;
+  padding-block: 2rem;
+  width: min(95%, 70rem);
+  margin-inline: auto;
 }
 
 .footer {
@@ -59,78 +119,17 @@ nav {
   background-color: #000;
 }
 
-.album-intro{
-  
-  background-color: aliceblue;
-}
-.album-genres{
-
-  align-items: center;
-}
-.album-genre-list{
- 
-  background-color: #999;
-
-}
-.genre-box {
-  background-color: #00F;
+.content-grid-col-span-2{
+  grid-column: span 2;
 }
 
-.genre-box {
-  background-color: #0FF;
+.content-genre-box {
+  font-size: var(--fs-400);
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
 }
 
-
-.wrapper {
-  margin: 0 auto 0  60px;
-  width: 80%;
-  align-items: center;
-}
-.img-icon-settings{
-  width: 100px;
-  background-image: url(../img/icon-settings.png);
-}
-
-.img-icon-settings:hover {
-  background-size: 90%;
-}
-
-
-h1, h2, h3 {
-  font-family: arial, 'Times New Roman', Times, serif;
-  font-style: italic;
-  text-transform: uppercase;
-  color: #3e3e3e;
-}
-.over-icon {
-  float: left;
-}
-p {
-  text-align: left;
-  color: #1e1e1e;
-}
-ul {
-  margin-left: 60px;
-  color:#000;
-}
-ul li{
-  list-style: none;
-  vertical-align: middle;
-  float: left;
-  display: inline;
-  line-height: 100px;
-}
-ul li a {
-  display: block;
-  text-decoration: none;
-  font-size: 14px;
-  font-family: Arial, Helvetica, sans-serif;
-  color: #222;
-  padding: 0 20px;
-}
-ul li a:hover {
-  color: #00F;
-}
 /*
  * Remove text-shadow in selection highlight:
  * https://twitter.com/miketaylr/status/12228805301
@@ -204,6 +203,27 @@ textarea {
 /* ==========================================================================
    Helper classes
    ========================================================================== */
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
 
 /*
  * Hide visually and from screen readers
@@ -288,9 +308,34 @@ textarea {
    These examples override the primary ('mobile first') styles.
    Modify as content requires.
    ========================================================================== */
+/*
+@media only screen and (min-width: 736px) {
+  /* Style adjustments for viewports that meet the condition 
+  .grid {
+    display: grid;
+    column-gap: 10px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: 
+    ". header ."
+    ". content sidebar"
+    ". footer .";
+  }
+}
+*/
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them Kevin Powell*/
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
 
-@media only screen and (min-width: 35em) {
-  /* Style adjustments for viewports that meet the condition */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 @media print,
