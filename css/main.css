@@ -103,9 +103,34 @@ h3 {
   padding: 0;
 }
 
+.page {
+  display:grid;
+  gap: 0.5rem;
+  grid-template-areas:
+  "header"
+  "content"
+  "footer";
+  padding-block: 1rem;
+  width: min(95%, 70rem);
+  margin-inline: auto;
+}
+
+.header {
+  grid-area: header;
+  color: #fff;
+  background-color: #000;
+}
+
 .content {
   display:grid;
   gap: 1.5rem;
+  grid-template-areas:
+  "heading"
+  "rock"
+  "jazz"
+  "pop"
+  "metal"
+  "login";
 
   padding-block: 2rem;
   width: min(95%, 70rem);
@@ -125,7 +150,24 @@ h3 {
   box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
 }
 
-
+.content:nth-child(1){
+  grid-area: heading;
+}
+.content:nth-child(2){
+  grid-area: rock;
+}
+.content:nth-child(3){
+  grid-area: jazz;
+}
+.content:nth-child(4){
+  grid-area: pop;
+}
+.content:nth-child(5){
+  grid-area: metal;
+}
+.content:nth-child(6){
+  grid-area: login;
+}
 /*
  * Remove text-shadow in selection highlight:
  * https://twitter.com/miketaylr/status/12228805301
@@ -307,34 +349,13 @@ select {
 
 
 @media (min-width: 50em){
-  .content{
-    grid-template-columns: repeat(4, 1fr);
+  .content {
+   grid-template-areas:
+   "heading heading login"
+   "rock jazz pop metal";
   }
-  .content-genre-box:last-child{
-    grid-column-start: 4;
-    grid-row-start: 1;
-    grid-row-end: span 2;
-  }
-  
-  .content-grid-col-span-2{
-    grid-column: span 2;
-  }
+}
 
-}
-/*
-@media only screen and (min-width: 736px) {
-  /* Style adjustments for viewports that meet the condition 
-  .grid {
-    display: grid;
-    column-gap: 10px;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-areas: 
-    ". header ."
-    ". content sidebar"
-    ". footer .";
-  }
-}
-*/
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them Kevin Powell*/
 @media (prefers-reduced-motion: reduce) {
   html:focus-within {
