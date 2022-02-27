@@ -106,7 +106,6 @@ h3 {
 .content {
   display:grid;
   gap: 1.5rem;
-  grid-template-columns: repeat(4, 1fr);
 
   padding-block: 2rem;
   width: min(95%, 70rem);
@@ -119,10 +118,6 @@ h3 {
   background-color: #000;
 }
 
-.content-grid-col-span-2{
-  grid-column: span 2;
-}
-
 .content-genre-box {
   font-size: var(--fs-400);
   padding: 2rem;
@@ -130,11 +125,6 @@ h3 {
   box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
 }
 
-.content:last-child{
-  background-color: red !important;
-  grid-column-start: 4;
-  grid-row-start: 1;
-}
 
 /*
  * Remove text-shadow in selection highlight:
@@ -314,6 +304,23 @@ select {
    These examples override the primary ('mobile first') styles.
    Modify as content requires.
    ========================================================================== */
+
+
+@media (min-width: 50em){
+  .content{
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .content-genre-box:last-child{
+    grid-column-start: 4;
+    grid-row-start: 1;
+    grid-row-end: span 2;
+  }
+  
+  .content-grid-col-span-2{
+    grid-column: span 2;
+  }
+
+}
 /*
 @media only screen and (min-width: 736px) {
   /* Style adjustments for viewports that meet the condition 

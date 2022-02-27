@@ -10,8 +10,10 @@
   <article class="content-genre-box flow bg-secondary-500 text-neutral-100"><div class="flex"><h3>Jazz</h3></div></article>
   <article class="content-genre-box flow bg-neutral-100 text-secondary-500"><div class="flex"><h3>Pop</h3></div></article>
   <article class="content-genre-box flow bg-secondary-500 text-neutral-100"><div class="flex"><h3>Metal</h3></div></article>
-   <article class="content-genre-box flow bg-primary-400 text-neutral-100">
-    <div class="flex"><h2>Login for more Genres</h2></div>
+   <article class="content-genre-box content-grid-col-span-2 flow bg-primary-400 text-neutral-100">
+    <div class="flex"><h2>Login for more Genres</h2>
+  <p>Lots of text and stuff can goo here, probably and this is why it flows onto two lines and stays in one column</p>
+  </div>
   </article>
 
 <?php
