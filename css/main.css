@@ -337,27 +337,25 @@ select {
 @media screen and (min-width: 33em){
   .content {
     grid-template-areas:
-    "one one"
-    "rock jazz"
-    "pop metal"
-    "login login";
+    "one six"
+    "two three"
+    "four five";
   }
 }
 
 @media screen and (min-width: 43em){
   .content {
     grid-template-areas:
-    "heading heading login"
-    "jazz pop login"
-    "rock metal .";
+    "one six three"
+    "two five four";
   }
 }
 
 @media screen and (min-width: 50em){
   .content {
    grid-template-areas:
-   "heading heading rock login"
-   "jazz pop metal login";
+   'one one two three'
+   'four five six three';
   }
 }
 
