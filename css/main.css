@@ -150,6 +150,16 @@ h3 {
   box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
 }
 
+.page:nth-child(1){
+  grid-area: header;
+}
+.page:nth-child(2){
+  grid-area: content;
+}
+.page:nth-child(3){
+  grid-area: footer;
+}
+
 .content:nth-child(1){
   grid-area: heading;
 }
