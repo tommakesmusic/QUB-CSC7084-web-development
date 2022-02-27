@@ -103,34 +103,22 @@ h3 {
   padding: 0;
 }
 
-.page {
-  display:grid;
-  gap: 0.5rem;
-  grid-template-areas:
-  "header"
-  "content"
-  "footer";
-  padding-block: 1rem;
-  width: min(95%, 70rem);
-  margin-inline: auto;
-}
 
 .header {
-  grid-area: header;
   color: #fff;
   background-color: #000;
 }
 
 .content {
-  display:grid;
+  display: grid;
   gap: 1.5rem;
   grid-template-areas:
-  "heading"
-  "rock"
-  "jazz"
-  "pop"
-  "metal"
-  "login";
+  "one"
+  "two"
+  "three"
+  "four"
+  "five"
+  "six";
 
   padding-block: 2rem;
   width: min(95%, 70rem);
@@ -138,7 +126,6 @@ h3 {
 }
 
 .footer {
-  grid-area: footer;
   color: #fff;
   background-color: #000;
 }
@@ -150,33 +137,23 @@ h3 {
   box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
 }
 
-.page:nth-child(1){
-  grid-area: header;
-}
-.page:nth-child(2){
-  grid-area: content;
-}
-.page:nth-child(3){
-  grid-area: footer;
-}
-
 .content:nth-child(1){
-  grid-area: heading;
+  grid-area: one;
 }
 .content:nth-child(2){
-  grid-area: rock;
+  grid-area: two;
 }
 .content:nth-child(3){
-  grid-area: jazz;
+  grid-area: three;
 }
 .content:nth-child(4){
-  grid-area: pop;
+  grid-area: four;
 }
 .content:nth-child(5){
-  grid-area: metal;
+  grid-area: five;
 }
 .content:nth-child(6){
-  grid-area: login;
+  grid-area: six;
 }
 /*
  * Remove text-shadow in selection highlight:
@@ -357,12 +334,30 @@ select {
    Modify as content requires.
    ========================================================================== */
 
+@media screen and (min-width: 33em){
+  .content {
+    grid-template-areas:
+    "one one"
+    "rock jazz"
+    "pop metal"
+    "login login";
+  }
+}
 
-@media (min-width: 50em){
+@media screen and (min-width: 43em){
+  .content {
+    grid-template-areas:
+    "heading heading login"
+    "jazz pop login"
+    "rock metal .";
+  }
+}
+
+@media screen and (min-width: 50em){
   .content {
    grid-template-areas:
-   "heading heading login"
-   "rock jazz pop metal";
+   "heading heading rock login"
+   "jazz pop metal login";
   }
 }
 
