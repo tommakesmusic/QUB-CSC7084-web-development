@@ -2,7 +2,7 @@
   include_once 'html/header.html'
 ?>
 
-<div class="content-genre-box grid-col-span-2 flow bg-primary-400 quote text-neutral-100">
+<div class="content-genre-box content-grid-col-span-2 flow bg-primary-400 quote text-neutral-100">
   <div class="flex"><h2>Album Genres</h2></div></div>
 
     <div class="content-genre-box flow bg-secondary-400 text-neutral-100"><div class="flex"><h3>Rock</h3></div></div>
