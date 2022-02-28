@@ -103,29 +103,39 @@ h3 {
   padding: 0;
 }
 
+.page{
+  display: grid;
+  grid-template-columns: [col-start] 1fr [col-2] 1fr [col-3] 1fr [col-end];
+  grid-auto-rows: 60px auto 100px;
+  align-self: start;
+  justify-self: start;
+  align-content: space-between;
+  grid-template-areas:
+  "header header header"
+  "content content content"
+  "footer footer footer";
+}
 
 .header {
+  grid-area: header;
   color: #fff;
   background-color: #000;
 }
 
 .content {
+  grid-area: content;
   display: grid;
+  width: auto;
+  height: auto;
   gap: 1.5rem;
-  grid-template-areas:
-  "one"
-  "two"
-  "three"
-  "four"
-  "five"
-  "six";
 
-  padding-block: 2rem;
+  padding-block: 1rem;
   width: min(95%, 70rem);
   margin-inline: auto;
 }
 
 .footer {
+  grid-area: footer;
   color: #fff;
   background-color: #000;
 }
@@ -137,24 +147,7 @@ h3 {
   box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
 }
 
-.content:nth-child(1){
-  grid-area: one;
-}
-.content:nth-child(2){
-  grid-area: two;
-}
-.content:nth-child(3){
-  grid-area: three;
-}
-.content:nth-child(4){
-  grid-area: four;
-}
-.content:nth-child(5){
-  grid-area: five;
-}
-.content:nth-child(6){
-  grid-area: six;
-}
+.
 /*
  * Remove text-shadow in selection highlight:
  * https://twitter.com/miketaylr/status/12228805301
