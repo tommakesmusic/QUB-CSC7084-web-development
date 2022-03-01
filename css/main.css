@@ -105,7 +105,7 @@ h3 {
 
 .page{
   display: grid;
-  grid-template-columns: [col-start] 1fr [col-2] 1fr [col-3] 1fr [col-end];
+  grid-template-columns: [col-start] 1fr [col-2] 2fr [col-3] 1fr [col-end];
   grid-auto-rows: 60px auto 100px;
   align-self: start;
   justify-self: start;

@@ -12,7 +12,7 @@
   <article class="content-genre-box flow bg-secondary-500 text-neutral-100"><div class="flex"><h3>Metal</h3></div></article>
   <article class="content-genre-box flow bg-primary-400 text-neutral-100">
     <div class="flex"><h2>Login for more Genres</h2>
-  <p>Lots of text and stuff can goo here, probably and this is why it flows onto two lines and stays in one column</p>
+  <p>Lots of text and stuff can go here, probably and this is why it flows onto two lines and stays in one column</p>
   </div>
   </article>
 
