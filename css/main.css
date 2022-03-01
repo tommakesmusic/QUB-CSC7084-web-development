@@ -9,9 +9,9 @@
 
  /* From Kevin Powell YouTube */
  :root {
-  --clr-primary-400: 263 55% 52%;
-  --clr-secondary-400: 217 19% 35%;
-  --clr-secondary-500: 219 29% 14%;
+  --clr-primary-400: 241 55% 52%;
+  --clr-secondary-400: 215 45% 45%;
+  --clr-secondary-500: 199 42% 25%;
   --clr-neutral-100: 0 0% 100%;
   --clr-neutral-200: 210 46% 95%;
   --clr-neutral-300: 0 0% 81%;
@@ -46,7 +46,7 @@ html:focus-within {
 body {
   display: grid;
   place-content: center;
-  min-height: 100vh;
+  
 
   font-family: var(--ff-primary);
   font-weight: var(--fw-400);
@@ -70,6 +70,8 @@ h3 {
   margin-top: var(--flow-spacer, 1em);
 }
 
+
+
 .bg-primary-400 {
   background: hsl(var(--clr-primary-400));
 }
@@ -91,7 +93,7 @@ h3 {
   color: hsl(var(--clr-secondary-400));
 }
 .border-primary-400 {
-  border: 2px solid #a775f1;
+  border: 0.2rem solid #190974;
 }
 /* ==========================================================================
    TW styles: Trial and error, mostly
@@ -104,12 +106,12 @@ h3 {
 }
 
 .page{
+  width:auto;
   display: grid;
-  grid-template-columns: [col-start] 1fr [col-2] 2fr [col-3] 1fr [col-end];
+  grid-template-columns: [col-start] 1fr [col-2] 4fr [col-3] 1fr [col-end];
   grid-auto-rows: 60px auto 100px;
-  align-self: start;
-  justify-self: start;
-  align-content: space-between;
+  align-content: start;
+
   grid-template-areas:
   "header header header"
   "content content content"
@@ -125,13 +127,15 @@ h3 {
 .content {
   grid-area: content;
   display: grid;
-  width: auto;
+  width: 95vw;
   height: auto;
-  gap: 1.5rem;
+  grid-gap: 1.5rem;
 
-  padding-block: 1rem;
-  width: min(95%, 70rem);
+  margin: 00.5rem;
+  padding-block: 0.5rem;
   margin-inline: auto;
+  grid-template-columns: [col-start] 1fr [col-end];
+  grid-template-rows: auto;
 }
 
 .footer {
@@ -335,23 +339,29 @@ select {
     "four five";
   }
 }
-
+*/
 @media screen and (min-width: 43em){
   .content {
-    grid-template-areas:
-    "one six three"
-    "two five four";
+    grid-template-columns: [col-start] 1fr [col-2] 1fr [col-3] 1fr [col-end];
   }
 }
 
 @media screen and (min-width: 50em){
   .content {
-   grid-template-areas:
-   'one one two three'
-   'four five six three';
+    grid-template-columns: [col-start] 1fr [col-2] 1fr [col-3] 1fr [col-4] 1fr [col-end];
   }
+  .first {
+    grid-column-start: [col-start];
+    grid-column-end: span 2;
+  }
+  
+  .last {
+    grid-column-start: span 2;
+    grid-column-end: [col-end];
+  }
+
 }
-*/
+
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them Kevin Powell*/
 @media (prefers-reduced-motion: reduce) {
   html:focus-within {
