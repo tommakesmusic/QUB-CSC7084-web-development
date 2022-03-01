@@ -326,7 +326,7 @@ select {
    These examples override the primary ('mobile first') styles.
    Modify as content requires.
    ========================================================================== */
-
+/*
 @media screen and (min-width: 33em){
   .content {
     grid-template-areas:
@@ -351,7 +351,7 @@ select {
    'four five six three';
   }
 }
-
+*/
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them Kevin Powell*/
 @media (prefers-reduced-motion: reduce) {
   html:focus-within {
