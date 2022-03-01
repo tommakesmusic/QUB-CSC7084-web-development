@@ -6,8 +6,11 @@
     <div class="flex"><h2>Album Genres</h2></div>
 </article>
 
-  <article class="content-genre-box flow bg-secondary-400 text-neutral-100"><div class="flex"><h3>Rock</h3></div></article>
-  <article class="content-genre-box flow bg-secondary-500 text-neutral-100"><div class="flex"><h3>Jazz</h3></div></article>
+  <article class="content-genre-box flow bg-secondary-400 text-neutral-100"><div class="flex"><h3>Rock</h3>
+  <p>Gotta love some rock music! AC/DC, Led Zeppelin, Coldplay!</p>
+</div></article>
+  <article class="content-genre-box flow bg-secondary-500 text-neutral-100"><div class="flex"><h3>Jazz</h3>
+  <p>Feeling 'Kind of Blue'? You need some Miles Davis!</div></article>
   <article class="content-genre-box flow bg-neutral-100 text-secondary-500"><div class="flex"><h3>Pop</h3></div></article>
   <article class="content-genre-box flow bg-secondary-500 text-neutral-100"><div class="flex"><h3>Metal</h3></div></article>
   <article class="content-genre-box flow bg-primary-400 text-neutral-100">
