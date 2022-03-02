@@ -15,7 +15,7 @@
   --clr-neutral-100: 0 0% 100%;
   --clr-neutral-200: 210 46% 95%;
   --clr-neutral-300: 0 0% 81%;
-
+  --clr-dark-100: 199 42% 12%;
   --ff-primary: "Barlow Semi Condensed", sans-serif;
 
   --fw-400: 500;
@@ -120,8 +120,12 @@ h3 {
 
 .header {
   grid-area: header;
-  color: #fff;
-  background-color: #000;
+  font-size: var(--fs-400);
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
+  color: var(--clr-dark-100);
+  background-color: whitesmoke;
 }
 
 .content {
@@ -140,8 +144,12 @@ h3 {
 
 .footer {
   grid-area: footer;
-  color: #fff;
-  background-color: #000;
+  font-size: var(--fs-400);
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
+  color: var(--clr-dark-100);
+  background-color: whitesmoke;
 }
 
 .content-genre-box {
