@@ -93,7 +93,7 @@ h3 {
   color: hsl(var(--clr-secondary-400));
 }
 .border-primary-400 {
-  border: 0.2rem solid #190974;
+  border: 0.2rem solid var(--clr-dark-100);
 }
 /* ==========================================================================
    TW styles: Trial and error, mostly
