@@ -122,7 +122,7 @@ h3 {
   grid-area: header;
   font-size: var(--fs-400);
   padding: 2rem;
-  border-radius: 0.5rem;
+  /*border-radius: 0.5rem;*/
   box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
   color: var(--clr-dark-100);
   background-color: whitesmoke;
@@ -146,7 +146,7 @@ h3 {
   grid-area: footer;
   font-size: var(--fs-400);
   padding: 2rem;
-  border-radius: 0.5rem;
+  /*border-radius: 0.5rem;*/
   box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
   color: var(--clr-dark-100);
   background-color: whitesmoke;
@@ -155,7 +155,7 @@ h3 {
 .content-genre-box {
   font-size: var(--fs-400);
   padding: 2rem;
-  border-radius: 0.5rem;
+  /*border-radius: 0.5rem;*/
   box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
 }
 
