@@ -135,7 +135,7 @@ h3 {
   height: auto;
   grid-gap: 1.5rem;
 
-  margin: 00.5rem;
+  margin: 0.5rem;
   padding-block: 0.5rem;
   margin-inline: auto;
   grid-template-columns: [col-start] 1fr [col-end];

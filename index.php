@@ -1,11 +1,7 @@
 <?php
-include_once 'html/header.html'
+include_once 'html/header.html';
 ?>
-<div>
-<?php
-include_once 'php/select.php'
-?>
-<div>
+
 <article class="content-genre-box content-grid-col-span-2 flow bg-primary-400 text-neutral-100">
   <div class="flex">
     <h2>Album Genres</h2>
@@ -44,5 +40,6 @@ include_once 'php/select.php'
 </article>
 
 <?php
-include_once 'html/footer.html'
+include_once 'php/select.php';
+include_once 'html/footer.html';
 ?>
