@@ -2,8 +2,8 @@
  
  $hostname="localhost";
  $username="root";
- $password="test";
- $database="register";
+ $password="root";
+ $database="Web_Test";
  
  $connection = mysqli_connect($hostname,$username,$password,$database); 
  
