@@ -338,23 +338,20 @@ select {
    These examples override the primary ('mobile first') styles.
    Modify as content requires.
    ========================================================================== */
-/*
-@media screen and (min-width: 33em){
+
+@media screen and (min-width: 38em){
   .content {
-    grid-template-areas:
-    "one six"
-    "two three"
-    "four five";
+    grid-template-columns: [col-start] 1fr [col-2] 1fr [col-end]
   }
 }
-*/
-@media screen and (min-width: 43em){
+
+@media screen and (min-width: 45em){
   .content {
     grid-template-columns: [col-start] 1fr [col-2] 1fr [col-3] 1fr [col-end];
   }
 }
 
-@media screen and (min-width: 50em){
+@media screen and (min-width: 52em){
   .content {
     grid-template-columns: [col-start] 1fr [col-2] 1fr [col-3] 1fr [col-4] 1fr [col-end];
   }

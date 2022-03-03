@@ -14,6 +14,7 @@
 	//echo json_encode($resultData);
 	//echo '<article class="content-genre-box flow bg-secondary-400 text-neutral-100">';
 	//echo '<div class="flex">';
-	echo json_encode($resultData);
+	echo implode(" ", $resultData);
+	//echo json_encode($resultData);
 	//echo '</div></article>';
 ?>

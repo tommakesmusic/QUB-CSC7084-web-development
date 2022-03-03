@@ -40,6 +40,5 @@ include_once 'html/header.html';
 </article>
 
 <?php
-include_once 'php/select.php';
 include_once 'html/footer.html';
 ?>
