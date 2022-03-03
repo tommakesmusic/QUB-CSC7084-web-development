@@ -1,4 +1,5 @@
 <?php
+	// SELECT a single record
 	include('connection.php');
 	//$id = $_REQUEST['id'];
 	$id = 1;

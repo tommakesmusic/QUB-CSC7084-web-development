@@ -8,6 +8,6 @@
 	} else {
 		$resultData = array('message' => "Unable to delete record");
 	}
-	header('content-type: application/json');
+	// header('content-type: application/json');
 	echo json_encode($resultData);
 ?>
