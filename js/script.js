@@ -7,9 +7,10 @@ function myFirstFunction() {
     document.getElementById("header").innerHTML = "My First JavaScript Change";
   }
 
-  function myFunction(p1, p2) {
-    return p1 * p2;   // The function returns the product of p1 and p2
-  }
+// Generate a random number
+const random = (max = 4) => {
+    return Math.floor(Math.random() * max);
+};
 
 // AJAX call
 

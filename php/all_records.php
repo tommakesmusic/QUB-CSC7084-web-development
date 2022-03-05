@@ -11,7 +11,7 @@
 
     $row_number = 1;
     foreach ($resultData as $row) {
-        echo '<div class="content-single-record-box" id="row_$row_number">';
+        echo '<div class="content-single-record-box" id="row_$row_number" border-primary-400>';
         // $temp = (string)$row;
         echo implode(" ", $row);
         echo "</div>";
