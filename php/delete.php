@@ -10,4 +10,5 @@
 	}
 	// header('content-type: application/json');
 	echo json_encode($resultData);
+	mysqli_close($connection);
 ?>

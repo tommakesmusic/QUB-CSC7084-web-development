@@ -18,4 +18,5 @@
 	echo implode(" ", $resultData);
 	//echo json_encode($resultData);
 	//echo '</div></article>';
+	mysqli_close($connection);
 ?>
