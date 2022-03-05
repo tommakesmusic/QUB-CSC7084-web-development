@@ -8,8 +8,15 @@
     {
         $resultData[] = array('username' => $row['username'], 'first_name' => $row['first_name'], 'last_name' => $row['last_name'],'user_role'=>$row['user_role']);
     }
-    // header('content-type: application/json');
-    echo json_encode($resultData);
-    // echo $resultData;
+
+    $row_number = 1;
+    foreach ($resultData as $row) {
+        echo '<div class="content-single-record-box" id="row_$row_number">';
+        // $temp = (string)$row;
+        echo implode(" ", $row);
+        echo "</div>";
+        $row_number += 1;
+    }
     mysqli_close($connection);
+    
 ?>

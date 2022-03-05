@@ -1,9 +1,13 @@
 // Adding a random number function
 
-document.getElementById("demo").innerHTML = "My First JavaScript";
+// document.getElementById("demo").innerHTML = "My First JavaScript";
+var header_message = "HEADER MESSAGE";
+document.getElementById("header").innerHTML = header_message;
+function myFirstFunction() {
+    document.getElementById("header").innerHTML = "My First JavaScript Change";
+  }
 
-
-function myFunction(p1, p2) {
+  function myFunction(p1, p2) {
     return p1 * p2;   // The function returns the product of p1 and p2
   }
 
