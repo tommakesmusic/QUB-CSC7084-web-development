@@ -18,6 +18,10 @@ signup.addEventListener('click', ()=>{location.href="../html/signup.html"});
 login.addEventListener('click', ()=>{location.href="../html/login.html"});
 update_user.addEventListener('click', ()=>{location.href="../html/update_user.html"});
 
+update_user.addEventListener('click', ()=>{});
+delete_user.addEventListener('click', ()=>{});
+
+
 // Generate a random number
 const random = (max = 4) => {
     return Math.floor(Math.random() * max);
