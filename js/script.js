@@ -1,3 +1,6 @@
+// 
+
+
 // Adding a random number function
 
 // Random header messages
@@ -6,11 +9,6 @@ const header_messages = ["Header Hello!", "Header, Hi There!", "Help, I'm in you
 
 var header_message = header_messages[random_header];
 document.getElementById("header").innerHTML = header_message;
-
-
-//function myFirstFunction() {
-//    document.getElementById("header").innerHTML = "My First JavaScript Change";
-//  }
 
 // User actions section
 const signup = document.querySelector('.signup');
