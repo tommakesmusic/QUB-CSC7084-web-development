@@ -1,7 +1,13 @@
 // Adding a random number function
 
+
+// Generate a random number
+const random_header = Math.floor(Math.random() * 4);
+
+const header_messages = ["Header Hello!", "Header, Hi There!", "Help, I'm in your header!", "Header here"];
+
 // document.getElementById("demo").innerHTML = "My First JavaScript";
-var header_message = "HEADER MESSAGE";
+var header_message = header_messages[random_header];
 document.getElementById("header").innerHTML = header_message;
 function myFirstFunction() {
     document.getElementById("header").innerHTML = "My First JavaScript Change";
@@ -21,11 +27,6 @@ update_user.addEventListener('click', ()=>{location.href="../html/update_user.ht
 update_user.addEventListener('click', ()=>{});
 delete_user.addEventListener('click', ()=>{});
 
-
-// Generate a random number
-const random = (max = 4) => {
-    return Math.floor(Math.random() * max);
-};
 
 // AJAX call
 
