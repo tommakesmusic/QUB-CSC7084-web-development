@@ -1,5 +1,7 @@
 <?php
-include_once 'html/header.html';
+// phpcs give one error if we have no doc comment
+// but many if we get it wrong
+require_once 'html/header.html';
 ?>
 
 <article class="content-genre-box content-grid-col-span-2 flow bg-primary-400 text-neutral-100">
@@ -40,5 +42,5 @@ include_once 'html/header.html';
 </article>
 
 <?php
-include_once 'html/footer.html';
+require_once 'html/footer.html';
 ?>

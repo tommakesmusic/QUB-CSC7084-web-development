@@ -160,6 +160,7 @@ h3 {
 .content-single-record-box {
   padding: 0.5rem;
   background-color:hsl(var(--clr-primary-400) / 0.25);
+  box-sizing: border-box;
   box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
 }
 

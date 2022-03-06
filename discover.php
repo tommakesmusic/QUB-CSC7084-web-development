@@ -1,5 +1,5 @@
 <?php
-  include_once 'html/header.html'
+  require_once 'html/header.html'
 ?>
 
 <?php
@@ -7,5 +7,5 @@
 ?>
 
 <?php
-  include_once 'html/footer.html'
+  require_once 'html/footer.html'
 ?>
