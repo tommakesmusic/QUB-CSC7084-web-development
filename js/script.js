@@ -1,12 +1,10 @@
 // Adding a random number function
 
-
-// Generate a random number
+// Random header messages
 const random_header = Math.floor(Math.random() * 4);
 
 const header_messages = ["Header Hello!", "Header, Hi There!", "Help, I'm in your header!", "Header here"];
 
-// document.getElementById("demo").innerHTML = "My First JavaScript";
 var header_message = header_messages[random_header];
 document.getElementById("header").innerHTML = header_message;
 function myFirstFunction() {
