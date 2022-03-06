@@ -2,14 +2,15 @@
 
 // Random header messages
 const random_header = Math.floor(Math.random() * 4);
-
 const header_messages = ["Header Hello!", "Header, Hi There!", "Help, I'm in your header!", "Header here"];
 
 var header_message = header_messages[random_header];
 document.getElementById("header").innerHTML = header_message;
-function myFirstFunction() {
-    document.getElementById("header").innerHTML = "My First JavaScript Change";
-  }
+
+
+//function myFirstFunction() {
+//    document.getElementById("header").innerHTML = "My First JavaScript Change";
+//  }
 
 // User actions section
 const signup = document.querySelector('.signup');
