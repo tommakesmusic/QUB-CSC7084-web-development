@@ -14,15 +14,15 @@ document.getElementById("header").innerHTML = header_message;
 const signup = document.querySelector('.signup');
 const login = document.querySelector('.login');
 const logout = document.querySelector('.logout');
-const update_user = document.querySelector('.update_user');
-const delete_user = document.querySelector('.delete_user');
+const updateUser = document.querySelector('.updateUser');
+const deleteUser = document.querySelector('.deleteUser');
 
 signup.addEventListener('click', ()=>{location.href="../php/signup.php"});
 login.addEventListener('click', ()=>{location.href="../html/login.html"});
-update_user.addEventListener('click', ()=>{location.href="../html/update_user.html"});
+updateUser.addEventListener('click', ()=>{location.href="../html/update_user.html"});
 
-update_user.addEventListener('click', ()=>{});
-delete_user.addEventListener('click', ()=>{});
+updateUser.addEventListener('click', ()=>{});
+deleteUser.addEventListener('click', ()=>{});
 
 
 // AJAX call
