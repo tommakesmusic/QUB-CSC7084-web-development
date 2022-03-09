@@ -3,7 +3,7 @@
 require_once 'connection.php';
  
 $slt = "SELECT * from user";
-$result = $conn->query($slt);
+$result = $connection->query($slt);
 // while ($row = mysqli_fetch_array($rec)) {
 //        $resultData[] = array('username' => $row['username'], 'first_name' => $row['first_name'], 'last_name' => $row['last_name'],'user_role'=>$row['user_role']);
 // }
@@ -27,6 +27,6 @@ if ($result->num_rows > 0) {
 //        $row_number += 1;
 //}
 
-$conn->close();
+$connection->close();
     
 ?>
