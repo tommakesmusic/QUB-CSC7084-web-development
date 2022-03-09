@@ -6,8 +6,8 @@
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Credentials: true");
 
-require_once "./connection.php";
-require_once "./helpers.php";
+require_once "../php/connection.php";
+require_once "../php/helpers.php";
 
 if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['userApiReq'] == "signup") {
     signup($connection);
@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == "DELETE") {
 
 function signup($connection)
 {
-
+    echo "SIGNUP HAS REACHED THE BACK END!";
 };
 
 function login($connection)

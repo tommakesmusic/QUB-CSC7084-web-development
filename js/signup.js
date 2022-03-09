@@ -1,7 +1,7 @@
-const signup = document.querySelector('input[type="submit"]')
+const signupButton = document.querySelector('input[type="submit"]')
 var respnseStatus
-signup.addEventListener('click', () =>{
-    const formData = new FormData(document.querySelector('userForm'))
+signupButton.addEventListener('click', () =>{
+    const formData = new FormData(document.querySelector('form'))
     fetch('http://localhost:8888/userApi/user_model.php', {
         method: 'POST',
         body: formData,
@@ -12,5 +12,8 @@ signup.addEventListener('click', () =>{
     })
     .then(data => {
         alert(data)
+        if(respnseStatus == 200)
+            location.href="index.php"
     })
+    .catch(err => {alert(err) })
 })

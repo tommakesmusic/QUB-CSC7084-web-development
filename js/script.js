@@ -1,4 +1,4 @@
-// 
+// My main javascript functions file
 
 
 // Adding a random number function
