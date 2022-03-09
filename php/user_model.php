@@ -9,11 +9,11 @@ header("Access-Control-Allow-Credentials: true");
 require_once "./connection.php";
 require_once "./helpers.php";
 
-if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['user_request'] == "signup") {
+if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['userApiReq'] == "signup") {
     signup($connection);
 }
 
-if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['user_request'] == "login") {
+if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['userApiReq'] == "login") {
     login($connection);
 }
 
