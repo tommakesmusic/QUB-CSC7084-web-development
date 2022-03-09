@@ -7,6 +7,4 @@ function sendReply($code, $message)
     echo $message;
     exit();
 }
-
-
 ?>

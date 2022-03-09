@@ -34,6 +34,11 @@ if ($_SERVER['REQUEST_METHOD'] == "DELETE") {
 function signup($connection)
 {
     echo "SIGNUP HAS REACHED THE BACK END!";
+    $firstName = $_POST['firstName'];
+    $lastName = $_POST['firstName'];
+    $userName = $_POST['firstName'];
+    $email = $_POST['firstName'];
+    $firstName = $_POST['firstName'];
 };
 
 function login($connection)

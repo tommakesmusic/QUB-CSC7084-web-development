@@ -5,7 +5,7 @@ require_once '../html/headerSubFolder.html';
 ?>
 
 <div class ="content-genre-box">
-<form id="signupForm" autocomplete="on">
+<form onsubmit="return false;" autocomplete="on">
     <div><label for ="">First name</label><input type="text" name="firstName" autocomplete="on"></div>
     <div><label for ="">Last name</label><input type="text" name="lastName" autocomplete="on"></div>
     <div><label for ="">Username</label><input type="text" name="userName" autocomplete="on"></div>
