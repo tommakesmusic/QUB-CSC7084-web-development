@@ -4,6 +4,12 @@
 require_once 'html/header.html';
 ?>
 
+<div class="flex">
+  <?php
+  require_once 'php/apiTestButton.php';
+  ?>
+</div>
+
 <article class="content-genre-box content-grid-col-span-2 flow bg-primary-400 text-neutral-100">
   <div class="flex">
     <h2>Album Genres</h2>

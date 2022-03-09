@@ -1,14 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<Head>
-    <link rel="stylesheet" href="../css/normalize.css">
-    <link rel="stylesheet" href="../css/main.css">
-    <title>Restful buttons</title>
-</Head>
+<?php
+// phpcs give one error if we have no doc comment
+// but many if we get it wrong
+require_once 'html/header.html';
+?>
 
-<body>
-<div class="header" id="header">HEADER</div>
-<h1>Signup form</h1>
 <div class ="content-genre-box">
 <form>
     <div><label for ="">First name</label><input type="text" name="firstName"></div>
@@ -22,5 +17,6 @@
 </form>
 </div>
 
-</body>
-</html>
+<?php
+require_once 'html/footer.html';
+?>
