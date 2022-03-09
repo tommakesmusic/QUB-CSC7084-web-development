@@ -17,7 +17,7 @@ const logout = document.querySelector('.logout');
 const update_user = document.querySelector('.update_user');
 const delete_user = document.querySelector('.delete_user');
 
-signup.addEventListener('click', ()=>{location.href="../html/signup.html"});
+signup.addEventListener('click', ()=>{location.href="../php/signup.php"});
 login.addEventListener('click', ()=>{location.href="../html/login.html"});
 update_user.addEventListener('click', ()=>{location.href="../html/update_user.html"});
 

@@ -6,7 +6,7 @@ require_once 'html/header.html';
 
 <div class="flex">
   <?php
-  require_once 'php/apiTestButton.php';
+  require_once 'php/apiTestButtons.php';
   ?>
 </div>
 
