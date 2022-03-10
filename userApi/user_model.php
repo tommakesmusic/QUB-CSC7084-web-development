@@ -11,16 +11,16 @@ require_once "../php/helpers.php";
 
 session_start();
 
+if ($_SERVER['REQUEST_METHOD'] == "POST" && !isset($_POST['userApiReq'])) {
+    logout($connection);
+}
+
 if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['userApiReq'] == "signup") {
     signup($connection);
 }
 
 if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['userApiReq'] == "login") {
     login($connection);
-}
-
-if ($_SERVER['REQUEST_METHOD'] == "POST" && !isset($_POST['userApiReq'])) {
-    logout($connection);
 }
 
 if ($_SERVER['REQUEST_METHOD'] == "PATCH") {
