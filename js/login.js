@@ -8,6 +8,7 @@ signupButton.addEventListener('click', () =>{
     fetch('http://localhost:8888/userApi/user_model.php', {
         method: 'POST',
         body: formData,
+        credentials: 'include'
     })
     .then(respnse => {
         myStatus = respnse.status

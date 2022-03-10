@@ -19,7 +19,22 @@ const deleteUser = document.querySelector('.deleteUser');
 
 signup.addEventListener('click', ()=>{location.href="../userApi/signup.php"});
 login.addEventListener('click', ()=>{location.href="../userApi/login.php"});
-updateUser.addEventListener('click', ()=>{location.href="../html/update_user.html"});
+
+logout.addEventListener('click', ()=>{
+    fetch('http://localhost:8888/userApi/user_model.php', {
+        method: 'POST',
+        credentials:'include'
+        })
+        .then (result = result.text())
+        .then (data => {
+            alert(data)
+            location.href="../index.php"
+        })
+        .catch(err => alert(err))
+
+
+
+});
 
 updateUser.addEventListener('click', ()=>{});
 deleteUser.addEventListener('click', ()=>{});

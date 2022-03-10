@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['userApiReq'] == "login") {
     login($connection);
 }
 
-if ($_SERVER['REQUEST_METHOD'] == "GET") {
+if ($_SERVER['REQUEST_METHOD'] == "POST" && !isset ($_POST['userApiReq'])) {
     logout($connection);
 }
 
@@ -82,7 +82,7 @@ function signup($connection)
 
 function login($connection)
 {
-    echo "SIGNUP HAS REACHED THE BACK END!";
+    echo "LOGIN HAS REACHED THE BACK END!";
     $userName = $_POST['userName'];
     $passWord = $_POST['passWord'];
     $passWordRpt = $_POST['passWordRpt'];
@@ -125,7 +125,12 @@ function login($connection)
 
 function logout($connection)
 {
-
+    if(!isset($_SESSION['user'])){
+        sendReply(400, "You are not logged in");
+    }
+    unset($_SESSION['user']);
+    session_destroy();
+    sendReply(200, "Logged out!");
 };
 
 function updateUser($connection)
