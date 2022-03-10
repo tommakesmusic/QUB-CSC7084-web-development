@@ -94,6 +94,10 @@ function login($connection)
     {
         sendReply(400, "Passwords must match.");  
     }
+    if (isset($_SESSION['user']))
+    {
+        sendReply(400, "Already logged in as ". $_SESSION['user']);
+    }
     $sql = "select password from user where username=?;";
     $stmt = $connection->stmt_init();
 
