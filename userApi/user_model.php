@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['userApiReq'] == "login") {
     login($connection);
 }
 
-if ($_SERVER['REQUEST_METHOD'] == "POST" && !isset ($_POST['userApiReq'])) {
+if ($_SERVER['REQUEST_METHOD'] == "POST" && !isset($_POST['userApiReq'])) {
     logout($connection);
 }
 
