@@ -44,21 +44,15 @@ function signup($connection)
 
     if (empty($firstName) || empty($lastName) || empty($userName) || empty($emailAddress) || empty($passWord) || empty($passWordRpt))
     {
-        http_response_code(400);
-        echo "All fields must be filled in.";
-        exit();
+        sendReply(400, "All fields must be filled in.");
     }
     if (! filter_var($emailAddress, FILTER_VALIDATE_EMAIL))
     {
-        http_response_code(400);
-        echo "Invalid email address.";
-        exit();
+        sendReply(400, "Invalid email address.");
     }
     if ($passWord != $passWordRpt)
     {
-        http_response_code(400);
-        echo "Passwords must match.";
-        exit();  
+        sendReply(400, "Passwords must match.");  
     }
     
     $passWord = password_hash($passWord, PASSWORD_DEFAULT);
@@ -68,30 +62,64 @@ function signup($connection)
 
     if (!$stmt->prepare($sql))
     {
-        http_response_code(400);
-        echo "Oops!Something went wrong with the connection.";
-        exit();  
+        sendReply(400, "Oops!Something went wrong with the connection.");  
     }
     $stmt->bind_param('sssss', $userName, $firstName, $lastName, $emailAddress, $passWord);
     $stmt->execute();
     # $stmt->close();
     if($stmt->affected_rows > 0)
     {
-        http_response_code(200);
-        echo "Success";
-        exit();
+        sendReply(200, "Success");
     }
     else
     {
-        http_response_code(400);
-        echo "Oh no. Database did not update";
-        exit(); 
+        sendReply(400, "Oh no. Database did not update"); 
     }
 
 };
 
 function login($connection)
 {
+    echo "SIGNUP HAS REACHED THE BACK END!";
+    $userName = $_POST['userName'];
+    $passWord = $_POST['passWord'];
+    if (empty($firstName) || empty($lastName) || empty($userName) || empty($emailAddress) || empty($passWord) || empty($passWordRpt))
+    {
+        sendReply(400, "All fields must be filled in.");
+    }
+    $passWord = password_hash($passWord, PASSWORD_DEFAULT);
+    $sql = "SELECT password FROM user WHERE username=?;";
+    $stmt = $connection->stmt_init();
+
+    if (!$stmt->prepare($sql))
+    {
+        sendReply(400, "Oops!Something went wrong with the connection.");  
+    }
+    $stmt->bind_param('s', $userName);
+    $stmt->execute();
+    # $stmt->close();
+    if($stmt->affected_rows > 0)
+    {
+        sendReply(200, "Success");
+    }
+    else
+    {
+        sendReply(400, "Oh no. Not found"); 
+    }
+    $result=$stmt->get_result();
+    if(mysqli_num_rows($result) > 0)
+    {
+        $data = $result->fetch_assoc();
+        $validPassword = password_verify($passWord, $data['password']);
+        if(!$validPassword)
+        {
+            sendReply(400, "Incorrect password");
+        }
+    }
+    else
+    {
+        sendReply(400, "Username not found.");
+    }
 
 };
 

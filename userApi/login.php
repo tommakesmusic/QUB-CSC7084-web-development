@@ -9,10 +9,10 @@ require_once '../html/headerSubFolder.html';
     <div><label for ="">First name</label><input type="text" name="firstName" autocomplete="on"></div>
     <div><label for ="">Password</label><input type="password" name="passWord" autocomplete="on"></div>
     <div><label for ="">Password</label><input type="password" name="passWordRpt" autocomplete="on"></div>
-    <div><input type="hidden" name="userApiReq" value="signup"></div>
-    <div><input type="submit" value="Signup"></div>
+    <div><input type="hidden" name="userApiReq" value="login"></div>
+    <div><input type="submit" value="Login"></div>
 </form>
-<script src="../js/signup.js" defer></script>
+<script src="../js/login.js" defer></script>
 </div>
 
 <?php
