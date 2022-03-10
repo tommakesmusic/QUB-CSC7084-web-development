@@ -11,8 +11,9 @@ $result = $connection->query($slt);
 if ($result->num_rows > 0) {
         // output data of each row
         while($row = $result->fetch_assoc()) {
+          $date = date("d/m/y, H:i:s", strtotime($row["date_joined"]));
           echo '<div class="content-single-record-box" id="row_$row_number" border-primary-400>';
-          echo "uid: " . $row["uid"] . " Username: " . $row["username"] . " - Name: " . $row["first_name"]. " " . $row["last_name"]. " User role: " . $row["user_role"] . "<br>";
+          echo "user_id: " . $row["user_id"] . "  - Username: " . $row["username"] . "  - Name: " . $row["first_name"]. " " . $row["last_name"]. "  - User role: " . $row["user_role"] . ".  Member since " . $date . ". <br>";
           echo "</div>";
         }
       } else {

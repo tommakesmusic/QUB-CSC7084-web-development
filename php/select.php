@@ -4,7 +4,7 @@
 require_once 'connection.php';
 
 //$id = $_REQUEST['id'];
-$id = 1;
+//$id = 1;
 $select=  "select * from user";
 $record=mysqli_query($connection, $select);
 $row=mysqli_fetch_row($record);

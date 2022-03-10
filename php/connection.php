@@ -3,7 +3,7 @@
  $hostname="localhost";
  $username="root";
  $password="root";
- $database="Web_Test";
+ $database="Favourite_500";
  
  // Two versions - both are here:
  // $connection = mysqli_connect($hostname, $username, $password, $database); 
