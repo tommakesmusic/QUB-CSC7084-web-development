@@ -85,12 +85,16 @@ function login($connection)
     echo "SIGNUP HAS REACHED THE BACK END!";
     $userName = $_POST['userName'];
     $passWord = $_POST['passWord'];
-    if (empty($firstName) || empty($passWord))
+    $passWordRpt = $_POST['passWordRpt'];
+    if (empty($userName) || empty($passWord))
     {
         sendReply(400, "All fields must be filled in.");
     }
-    $passWord = password_hash($passWord, PASSWORD_DEFAULT);
-    $sql = "SELECT password FROM user WHERE username=?;";
+    if ($passWord != $passWordRpt)
+    {
+        sendReply(400, "Passwords must match.");  
+    }
+    $sql = "select password from user where username=?;";
     $stmt = $connection->stmt_init();
 
     if (!$stmt->prepare($sql))
@@ -100,14 +104,6 @@ function login($connection)
     $stmt->bind_param('s', $userName);
     $stmt->execute();
     # $stmt->close();
-    if($stmt->affected_rows > 0)
-    {
-        sendReply(200, "Success");
-    }
-    else
-    {
-        sendReply(400, "Oh no. Not found"); 
-    }
     $result=$stmt->get_result();
     if(mysqli_num_rows($result) > 0)
     {
