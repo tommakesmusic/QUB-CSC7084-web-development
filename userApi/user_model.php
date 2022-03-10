@@ -83,7 +83,7 @@ function login($connection)
     echo "SIGNUP HAS REACHED THE BACK END!";
     $userName = $_POST['userName'];
     $passWord = $_POST['passWord'];
-    if (empty($firstName) || empty($lastName) || empty($userName) || empty($emailAddress) || empty($passWord) || empty($passWordRpt))
+    if (empty($firstName) || empty($passWord))
     {
         sendReply(400, "All fields must be filled in.");
     }
