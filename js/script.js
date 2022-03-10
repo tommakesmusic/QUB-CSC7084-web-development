@@ -41,7 +41,7 @@ logout.addEventListener('click', ()=>{
 
 
 
-// AJAX call
+/* // AJAX call
 
   $(document).ready(function() {
 
@@ -57,4 +57,4 @@ logout.addEventListener('click', ()=>{
             $("#size").html(newHtml);
         });
     });
-});
+}); */
