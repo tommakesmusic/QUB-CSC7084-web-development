@@ -9,6 +9,8 @@ header("Access-Control-Allow-Credentials: true");
 require_once "../php/connection.php";
 require_once "../php/helpers.php";
 
+session_start();
+
 if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['userApiReq'] == "signup") {
     signup($connection);
 }
@@ -115,6 +117,8 @@ function login($connection)
         {
             sendReply(400, "Incorrect password");
         }
+        $_SESSION['user'] = $userName;
+        sendReply(200, "Welcome back ". $_SESSION['user']);
     }
     else
     {
