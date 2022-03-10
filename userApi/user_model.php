@@ -129,6 +129,7 @@ function login($connection)
 
 function logout($connection)
 {
+    echo "LOGIN HAS REACHED THE BACK END!";
     if(!isset($_SESSION['user'])){
         sendReply(400, "You are not logged in");
     }
