@@ -12,7 +12,7 @@ document.getElementById("header").innerHTML = header_message;
 const signup = document.querySelector('.signup');
 const login = document.querySelector('.login');
 const userLogout = document.querySelector('.logout');
-const updateUser = document.querySelector('.updateUser');
+const updateUser = document.querySelector('.update');
 const deleteUser = document.querySelector('.deleteUser');
 
 signup.addEventListener('click', ()=>{location.href="../userApi/signup.php"});
@@ -34,10 +34,8 @@ userLogout.addEventListener('click', function () {
     });
 
 
-updateUser.addEventListener('click', ()=>{});
+updateUser.addEventListener('click', ()=>{location.href="../userApi/update_user.php"});
 deleteUser.addEventListener('click', ()=>{});
-
-
 
 /* // AJAX call
 

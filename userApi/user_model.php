@@ -5,6 +5,7 @@
 
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Credentials: true");
+header("Access-ControlAllow-Method: POST, PATCH, DELETE");
 
 require_once "../php/connection.php";
 require_once "../php/helpers.php";
@@ -115,10 +116,11 @@ function login($connection)
         $validPassword = password_verify($passWord, $data['password']);
         if(!$validPassword)
         {
-            sendReply(400, "Incorrect password");
+            sendReply(401, "Incorrect password");
         }
         $_SESSION['user'] = $userName;
         sendReply(200, "Welcome back ". $_SESSION['user']);
+        session_commit();
     }
     else
     {
@@ -140,7 +142,53 @@ function logout($connection)
 
 function updateUser($connection)
 {
+    echo "UPDATE HAS REACHED THE BACK END!";
+    if(!isset($_SESSION['user'])){
+        sendReply(400, "You are not logged in");
+    }
 
+    parse_str(file_get_contents("php://input"), $_PATCH);
+
+    $firstName = $_PATCH['firstName'];
+    $lastName = $_PATCH['lastName'];
+    $userName = $_PATCH['userName'];
+    $emailAddress = $_PATCH['emailAddress'];
+    $passWord = $_PATCH['passWord'];
+    $passWordRpt = $_PATCH['passWordRpt'];
+
+    if (empty($firstName) || empty($lastName) || empty($userName) || empty($emailAddress) || empty($passWord) || empty($passWordRpt))
+    {
+        sendReply(400, "All fields must be filled in.");
+    }
+    if (! filter_var($emailAddress, FILTER_VALIDATE_EMAIL))
+    {
+        sendReply(400, "Invalid email address.");
+    }
+    if ($passWord != $passWordRpt)
+    {
+        sendReply(400, "Passwords must match.");  
+    }
+    
+    $passWord = password_hash($passWord, PASSWORD_DEFAULT);
+
+    $sql = "INSERT into user (username, first_name, last_name, email, password) values (?,?,?,?,?);";
+    $stmt = $connection->stmt_init();
+
+    if (!$stmt->prepare($sql))
+    {
+        sendReply(400, "Oops!Something went wrong with the connection.");  
+    }
+    $stmt->bind_param('sssss', $userName, $firstName, $lastName, $emailAddress, $passWord);
+    $stmt->execute();
+    # $stmt->close();
+    if($stmt->affected_rows > 0)
+    {
+        sendReply(200, "Success");
+    }
+    else
+    {
+        sendReply(400, "Oh no. Database did not update"); 
+    }
 };
 
 function removeUser($connection)
