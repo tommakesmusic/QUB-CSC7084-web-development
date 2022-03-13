@@ -3,13 +3,17 @@
 // but many if we get it wrong
 require_once 'html/header.html';
 ?>
-<div class="top">THIS IS THE TOP AREA</div>
-<div class="content">
-<div class="content-single-record-box">
+<div class="top">
+  THIS IS THE TOP AREA
+
+  <div class="content-single-record-box">
   <?php
   require_once 'php/apiTestButtons.php';
   ?>
 </div>
+
+</div>
+<div class="content">
 
 <article class="content-genre-box content-grid-col-span-2 flow bg-primary-400 text-neutral-100">
   <div class="flex">
