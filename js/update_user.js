@@ -1,6 +1,6 @@
 const updateButton = document.querySelector('input[type="submit"]')
 var myStatus
-alert("In the update.js file")
+// alert("In the update.js file")
 
 updateButton.addEventListener('click', () =>{
    

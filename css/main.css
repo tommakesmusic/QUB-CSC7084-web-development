@@ -126,8 +126,26 @@ h3 {
   background-color: whitesmoke;
 }
 
-.content {
+.page-contents{
   grid-area: content;
+  width:100%;
+  display: grid;
+  grid-template-columns: [col-start] 1fr [col-end];
+  align-content: start;
+
+  grid-template-areas:
+  "top"
+  "middle"
+  "bottom";
+}
+
+.top{
+  grid-area:top;
+  background: #000;
+}
+
+.content {
+  grid-area: middle;
   display: grid;
   width: 95vw;
   height: auto;
@@ -138,6 +156,11 @@ h3 {
   margin-inline: auto;
   grid-template-columns: [col-start] 1fr [col-end];
   grid-template-rows: auto;
+}
+
+.bottom{
+  grid-area: bottom;
+  background: #000;
 }
 
 .footer {

@@ -3,7 +3,8 @@
 // but many if we get it wrong
 require_once 'html/header.html';
 ?>
-
+<div class="top">THIS IS THE TOP AREA</div>
+<div class="content">
 <div class="content-single-record-box">
   <?php
   require_once 'php/apiTestButtons.php';
@@ -46,6 +47,9 @@ require_once 'html/header.html';
     <p>Lots of text and stuff can go here, probably and this is why it flows onto two lines and stays in one column</p>
   </div>
 </article>
+</div>
+
+<div class="bottom">THIS IS THE BOTTOM AREA</div>
 
 <?php
 require_once 'html/footer.html';

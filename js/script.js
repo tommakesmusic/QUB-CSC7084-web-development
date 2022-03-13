@@ -37,7 +37,7 @@ userLogout.addEventListener('click', function () {
 updateUser.addEventListener('click', ()=>{location.href="../userApi/update_user.php"});
 deleteUser.addEventListener('click', ()=>{
 
-    alert("In the script.js file, delete section");
+    // alert("In the script.js file, delete section");
     fetch('http://localhost:8888/userApi/user_model.php', {
         credentials: 'include',
         method: 'DELETE'

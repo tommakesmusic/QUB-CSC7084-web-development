@@ -1,6 +1,6 @@
 const signupButton = document.querySelector('input[type="submit"]')
 var myStatus
-alert("In the signup.js file")
+// alert("In the signup.js file")
 signupButton.addEventListener('click', () =>{
     const formData = new FormData(document.querySelector('form'))
     fetch('http://localhost:8888/userApi/user_model.php', {
