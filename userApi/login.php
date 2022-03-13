@@ -6,7 +6,7 @@ require_once '../php/helpers.php';
 session_start();
 
 if (!isset($_SESSION['user'])){
-     echo <<<EOD
+    echo <<<EOD
     <div class ="content-genre-box">
     <form onsubmit="return false;" autocomplete="on">
     <div><label for ="">Username</label><input type="text" name="userName" autocomplete="on"></div>
@@ -21,7 +21,8 @@ EOD;
 }
 else
 {
-    sendMessage(400, "Already logged in.");
+    alertMessage(200, "Already logged in as ". $_SESSION['user']);
+    goHome();
 }
 
 require_once '../html/footerSubFolder.html';

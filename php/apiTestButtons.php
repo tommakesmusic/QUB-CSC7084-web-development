@@ -4,4 +4,5 @@
     <button id="updateUser" class="userButton">Update</button>
     <button id="logout" class="userButton">Logout</button>
     <button id="deleteUser" class="userButton">Delete</button>
+    <button id="adminUser" class="userButton">Admin</button>
 </div>

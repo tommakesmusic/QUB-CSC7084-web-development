@@ -76,7 +76,9 @@ function signup($connection)
     # $stmt->close();
     if($stmt->affected_rows > 0)
     {
-        sendReply(200, "Success");
+        alertMessage(201, "Success");
+        $unused = true;
+        goLogin();
     }
     else
     {
@@ -101,9 +103,11 @@ function login($connection)
     }
     if (isset($_SESSION['user']))
     {
-        sendReply(400, "Already logged in as ". $_SESSION['user']);
+        sendMessage(400, "Already logged in as ". $_SESSION['user']);
+        goHome();
+
     }
-    $sql = "select password from user where username=?;";
+    $sql = "select password, user_role from user where username=?;";
     $stmt = $connection->stmt_init();
 
     if (!$stmt->prepare($sql))
@@ -118,18 +122,20 @@ function login($connection)
     {
         $data = $result->fetch_assoc();
         $validPassword = password_verify($passWord, $data['password']);
+        $userRole = $data['user_role'];
         if(!$validPassword)
         {
             sendReply(401, "Incorrect password");
         }
         $_SESSION['user'] = $userName;
-
-        sendReply(200, "Welcome back ". $_SESSION['user']);
+        $_SESSION['userRole'] = $userRole;
         session_commit();
+        alertMessage(201, "Welcome back ". $_SESSION['user']);
+        goHome();
     }
     else
     {
-        sendReply(400, "Username not found.");
+        sendReply(401, "Username not found.");
     }
 
 };
@@ -188,7 +194,7 @@ function updateUser($connection)
     # $stmt->close();
     if($stmt->affected_rows > 0)
     {
-        sendReply(200, "Success. User updated");
+        sendReply(201, "Success. User updated");
     }
     else
     {
@@ -232,12 +238,14 @@ function removeUser($connection)
         sendReply(403, "You are not logged in");
     }
 
+    alertMessage(400, "Are you sure you want to DELETE user ".$_SESSION['user']."?");
+
     $sql = "DELETE from user where username='".$_SESSION['user']."';";
 
     if ($connection->query($sql)){
         unset($_SESSION['user']);
         session_destroy();
-        sendReply(200, "Account deleted. Goodbye.");
+        header('location: ../index.php');
     }
     else
     {
