@@ -9,17 +9,17 @@ var header_message = header_messages[random_header];
 document.getElementById("header").innerHTML = header_message;
 
 // User actions section
-const signup = document.querySelector('.signup');
-const login = document.querySelector('.login');
-const userLogout = document.querySelector('.logout');
-const updateUser = document.querySelector('.updateUser');
-const deleteUser = document.querySelector('.deleteUser');
+const signup = document.getElementById('signup');
+const login = document.getElementById('login');
+const userLogout = document.getElementById('logout');
+const updateUser = document.getElementById('updateUser');
+const deleteUser = document.getElementById('deleteUser');
 
 signup.addEventListener('click', ()=>{location.href="../userApi/signup.php"});
 login.addEventListener('click', ()=>{location.href="../userApi/login.php"});
 
 userLogout.addEventListener('click', function () {
-        alert("In the script.js file, logout section");
+        // alert("In the script.js file, logout section");
         fetch('http://localhost:8888/userApi/user_model.php', {
             credentials: 'include',
             method: 'POST'

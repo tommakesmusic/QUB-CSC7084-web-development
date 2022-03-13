@@ -1,7 +1,7 @@
 <div>
-    <button class="signup">Signup</button>
-    <button class="login">Login</button>
-    <button class="updateUser">Update</button>
-    <button class="logout">Logout</button>
-    <button class="deleteUser">Delete</button>
+    <button id="signup" class="userButton">Signup</button>
+    <button id="login" class="userButton">Login</button>
+    <button id="updateUser" class="userButton">Update</button>
+    <button id="logout" class="userButton">Logout</button>
+    <button id="deleteUser" class="userButton">Delete</button>
 </div>
