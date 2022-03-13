@@ -150,6 +150,13 @@ h3 {
   background-color: whitesmoke;
 }
 
+.box-wide{
+  width: 100%;
+  background-color: var(--clr-dark-100);
+  color: var(--clr-light-100);
+  align-items: center;
+}
+
 .content-genre-box {
   font-size: var(--fs-400);
   padding: 1rem;
@@ -164,7 +171,25 @@ h3 {
   box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
 }
 
-.
+/* Buttons */
+Button {
+	background-color: hsl(var(--clr-primary-500));
+	cursor:pointer;
+	color:#ffffff;
+	font-size:13px;
+  display: inline-block;
+	padding: 1rem;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #154682;
+  box-shadow: 0 0 0 0 transparent;
+}
+Button:hover {
+	background-color:#0061a7;
+}
+Button:active {
+	position:relative;
+	top:1px;
+}
 /*
  * Remove text-shadow in selection highlight:
  * https://twitter.com/miketaylr/status/12228805301

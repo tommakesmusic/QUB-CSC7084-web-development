@@ -12,7 +12,7 @@ document.getElementById("header").innerHTML = header_message;
 const signup = document.querySelector('.signup');
 const login = document.querySelector('.login');
 const userLogout = document.querySelector('.logout');
-const updateUser = document.querySelector('.update');
+const updateUser = document.querySelector('.updateUser');
 const deleteUser = document.querySelector('.deleteUser');
 
 signup.addEventListener('click', ()=>{location.href="../userApi/signup.php"});
@@ -35,7 +35,21 @@ userLogout.addEventListener('click', function () {
 
 
 updateUser.addEventListener('click', ()=>{location.href="../userApi/update_user.php"});
-deleteUser.addEventListener('click', ()=>{});
+deleteUser.addEventListener('click', ()=>{
+
+    alert("In the script.js file, delete section");
+    fetch('http://localhost:8888/userApi/user_model.php', {
+        credentials: 'include',
+        method: 'DELETE'
+    })
+        .then(res => res.text())
+        .then(data => {
+            alert(data);
+            location.href = "../index.php";
+        })
+        .catch(err => alert(err));
+
+});
 
 /* // AJAX call
 

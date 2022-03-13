@@ -4,7 +4,7 @@
 require_once 'html/header.html';
 ?>
 
-<div class="flex">
+<div class="content-single-record-box">
   <?php
   require_once 'php/apiTestButtons.php';
   ?>

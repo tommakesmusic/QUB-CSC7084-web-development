@@ -5,7 +5,7 @@
 
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Credentials: true");
-header("Access-ControlAllow-Method: POST, PATCH, DELETE");
+header("Access-ControlAllow-Method: POST, GET, PATCH, DELETE");
 
 require_once "../php/connection.php";
 require_once "../php/helpers.php";
@@ -28,6 +28,10 @@ if ($_SERVER['REQUEST_METHOD'] == "PATCH") {
     updateUser($connection);
 }
 
+if ($_SERVER['REQUEST_METHOD'] == "GET") {
+    getUser($connection);
+}
+
 if ($_SERVER['REQUEST_METHOD'] == "DELETE") {
     removeUser($connection);
 } 
@@ -36,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == "DELETE") {
 
 function signup($connection)
 {
-    echo "SIGNUP HAS REACHED THE BACK END!";
+    // echo "SIGNUP HAS REACHED THE BACK END!";
     $firstName = $_POST['firstName'];
     $lastName = $_POST['lastName'];
     $userName = $_POST['userName'];
@@ -83,7 +87,7 @@ function signup($connection)
 
 function login($connection)
 {
-    echo "LOGIN HAS REACHED THE BACK END!";
+    // echo "LOGIN HAS REACHED THE BACK END!";
     $userName = $_POST['userName'];
     $passWord = $_POST['passWord'];
     $passWordRpt = $_POST['passWordRpt'];
@@ -119,6 +123,7 @@ function login($connection)
             sendReply(401, "Incorrect password");
         }
         $_SESSION['user'] = $userName;
+
         sendReply(200, "Welcome back ". $_SESSION['user']);
         session_commit();
     }
@@ -131,7 +136,7 @@ function login($connection)
 
 function logout($connection)
 {
-    echo "LOGIN HAS REACHED THE BACK END!";
+    // echo "LOGIN HAS REACHED THE BACK END!";
     if(!isset($_SESSION['user'])){
         sendReply(400, "You are not logged in");
     }
@@ -142,7 +147,7 @@ function logout($connection)
 
 function updateUser($connection)
 {
-    echo "UPDATE HAS REACHED THE BACK END!";
+    // echo "UPDATE HAS REACHED THE BACK END!";
     if(!isset($_SESSION['user'])){
         sendReply(400, "You are not logged in");
     }
@@ -151,12 +156,12 @@ function updateUser($connection)
 
     $firstName = $_PATCH['firstName'];
     $lastName = $_PATCH['lastName'];
-    $userName = $_PATCH['userName'];
+    $userName = $_SESSION['user'];
     $emailAddress = $_PATCH['emailAddress'];
     $passWord = $_PATCH['passWord'];
     $passWordRpt = $_PATCH['passWordRpt'];
 
-    if (empty($firstName) || empty($lastName) || empty($userName) || empty($emailAddress) || empty($passWord) || empty($passWordRpt))
+    if (empty($firstName) || empty($lastName) || empty($emailAddress) || empty($passWord) || empty($passWordRpt))
     {
         sendReply(400, "All fields must be filled in.");
     }
@@ -171,19 +176,19 @@ function updateUser($connection)
     
     $passWord = password_hash($passWord, PASSWORD_DEFAULT);
 
-    $sql = "INSERT into user (username, first_name, last_name, email, password) values (?,?,?,?,?);";
+    $sql = "UPDATE  user set first_name=?, last_name=?, email=?, password=? where username=?;";
     $stmt = $connection->stmt_init();
 
     if (!$stmt->prepare($sql))
     {
-        sendReply(400, "Oops!Something went wrong with the connection.");  
+        sendReply(400, "Oopsie!Something went wrong with the connection.");  
     }
-    $stmt->bind_param('sssss', $userName, $firstName, $lastName, $emailAddress, $passWord);
+    $stmt->bind_param('sssss', $firstName, $lastName, $emailAddress, $passWord, $userName);
     $stmt->execute();
     # $stmt->close();
     if($stmt->affected_rows > 0)
     {
-        sendReply(200, "Success");
+        sendReply(200, "Success. User updated");
     }
     else
     {
@@ -191,8 +196,53 @@ function updateUser($connection)
     }
 };
 
+// all my own work - with help from duck duck go and https://phpdelusions.net/mysqli_examples/prepared_select
+function getUser($connection){
+
+    $userName = $_GET[('user')];
+    $sql = "SELECT first_name, last_name, email, date_joined FROM user WHERE username=?;";
+    $stmt = $connection->prepare($sql);
+    if (!$stmt)
+    {
+        sendReply(400, "Balls! Something went wrong with the connection.");  
+    }
+    $stmt->bind_param("s", $userName);
+    $stmt->execute();
+    $result = $stmt->get_result(); // get the mysqli result
+    $row = $result->fetch_assoc();
+
+    if(mysqli_num_rows($result) > 0)
+    {   
+        $date = date("d/m/y, H:i:s", strtotime($row["date_joined"]));
+        $firstName =  $row["first_name"];
+        $lastName = $row["last_name"];
+        $emailAddress = $row["email"];
+        // split this on the spaces
+        echo $firstName." ".$lastName." ".$emailAddress." ".$date;
+    }
+    else {
+        echo "User not found";
+    }
+}
+
 function removeUser($connection)
 {
+    // echo "DELETE HAS REACHED THE BACK END!";
+    if(!isset($_SESSION['user'])){
+        sendReply(403, "You are not logged in");
+    }
+
+    $sql = "DELETE from user where username='".$_SESSION['user']."';";
+
+    if ($connection->query($sql)){
+        unset($_SESSION['user']);
+        session_destroy();
+        sendReply(200, "Account deleted. Goodbye.");
+    }
+    else
+    {
+        sendReply(400, "Something went wrong.");
+    }
 
 };
 

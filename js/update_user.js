@@ -4,10 +4,11 @@ alert("In the update.js file")
 
 updateButton.addEventListener('click', () =>{
    
-    const formData = new FormData(document.querySelector('form'))
+    const formData = new URLSearchParams(new FormData(document.querySelector('form')))
     fetch('http://localhost:8888/userApi/user_model.php', {
         method: 'PATCH',
         body: formData,
+        credentials: 'include'
     })
     .then(respnse => {
         myStatus = respnse.status
