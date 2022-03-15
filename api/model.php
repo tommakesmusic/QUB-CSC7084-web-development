@@ -12,33 +12,25 @@ require_once "../php/helpers.php";
 
 session_start();
 
-if ($_SERVER['REQUEST_METHOD'] == "POST" && !isset($_POST['userApiReq'])) {
-    logout($connection);
-}
-
-if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['userApiReq'] == "signup") {
-    signup($connection);
-}
-
-if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['userApiReq'] == "login") {
-    login($connection);
+if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['Api'] == "create") {
+    create($connection);
 }
 
 if ($_SERVER['REQUEST_METHOD'] == "PATCH") {
-    updateUser($connection);
+    updateRecord($connection);
 }
 
 if ($_SERVER['REQUEST_METHOD'] == "GET") {
-    getUser($connection);
+    getRecord($connection);
 }
 
 if ($_SERVER['REQUEST_METHOD'] == "DELETE") {
-    removeUser($connection);
+    delete($connection);
 } 
 
 // Functions
 
-function signup($connection)
+function create($connection)
 {
     // echo "SIGNUP HAS REACHED THE BACK END!";
     $firstName = $_POST['firstName'];
@@ -76,7 +68,7 @@ function signup($connection)
     # $stmt->close();
     if($stmt->affected_rows > 0)
     {
-        sendReply(200, "Success");
+        alertMessage(201, "Success");
         $unused = true;
         goLogin();
     }
@@ -87,72 +79,7 @@ function signup($connection)
 
 };
 
-function login($connection)
-{
-    // echo "LOGIN HAS REACHED THE BACK END!";
-    $userName = $_POST['userName'];
-    $passWord = $_POST['passWord'];
-    $passWordRpt = $_POST['passWordRpt'];
-    if (empty($userName) || empty($passWord))
-    {
-        sendReply(400, "All fields must be filled in.");
-    }
-    if ($passWord != $passWordRpt)
-    {
-        sendReply(400, "Passwords must match.");  
-    }
-    if (isset($_SESSION['user']))
-    {
-        sendReply(400, "Already logged in as ". $_SESSION['user']);
-        goHome();
-
-    }
-    $sql = "select password, user_role from user where username=?;";
-    $stmt = $connection->stmt_init();
-
-    if (!$stmt->prepare($sql))
-    {
-        sendReply(400, "Oops!Something went wrong with the connection.");  
-    }
-    $stmt->bind_param('s', $userName);
-    $stmt->execute();
-    # $stmt->close();
-    $result=$stmt->get_result();
-    if(mysqli_num_rows($result) > 0)
-    {
-        $data = $result->fetch_assoc();
-        $validPassword = password_verify($passWord, $data['password']);
-        $userRole = $data['user_role'];
-        if(!$validPassword)
-        {
-            sendReply(401, "Incorrect password");
-        }
-        $_SESSION['user'] = $userName;
-        $_SESSION['userRole'] = $userRole;
-        session_commit();
-        sendReply(200, "Welcome back ". $_SESSION['user']);
-        $unused = true;
-        goHome();
-    }
-    else
-    {
-        sendReply(400, "Username not found.");
-    }
-
-};
-
-function logout($connection)
-{
-    // echo "LOGIN HAS REACHED THE BACK END!";
-    if(!isset($_SESSION['user'])){
-        sendReply(400, "You are not logged in");
-    }
-    unset($_SESSION['user']);
-    session_destroy();
-    sendReply(200, "Logged out!");
-};
-
-function updateUser($connection)
+function updateRecord($connection)
 {
     // echo "UPDATE HAS REACHED THE BACK END!";
     if(!isset($_SESSION['user'])){
@@ -195,9 +122,7 @@ function updateUser($connection)
     # $stmt->close();
     if($stmt->affected_rows > 0)
     {
-        sendReply(200, "Success. User updated");
-        $unused=true;
-        goHome();
+        sendReply(201, "Success. User updated");
     }
     else
     {
@@ -206,10 +131,24 @@ function updateUser($connection)
 };
 
 // all my own work - with help from duck duck go and https://phpdelusions.net/mysqli_examples/prepared_select
-function getUser($connection){
+function getRecord($connection){
+    /*album_id 
+	chart_position 
+    album_name 
+    album_year 
+    album_art_link 
+    wikipedia_link 
+    spotify_link 
+    album_trivia */
+    
+// only focus on searc for album, artist, genre, sub genre
 
-    $userName = $_GET[('user')];
-    $sql = "SELECT first_name, last_name, email, date_joined FROM user WHERE username=?;";
+    if (!empty ($_GET['chart_position'])) {
+        $chart_position = $_GET[('chart_position')];
+    echo $chart_position;
+    }
+
+    /* $sql = "SELECT first_name, last_name, email, date_joined FROM user WHERE username=?;";
     $stmt = $connection->prepare($sql);
     if (!$stmt)
     {
@@ -228,15 +167,15 @@ function getUser($connection){
         $emailAddress = $row["email"];
         // split this on the spaces
         echo $firstName." ".$lastName." ".$emailAddress." ".$date;
-    }
+    } 
     else {
-        echo "User not found";
-    }
+        echo "Record not found";
+    } */
 }
 
-function removeUser($connection)
+function delete($connection)
 {
-    echo "DELETE HAS REACHED THE BACK END!";
+    // echo "DELETE HAS REACHED THE BACK END!";
     if(!isset($_SESSION['user'])){
         sendReply(403, "You are not logged in");
     }

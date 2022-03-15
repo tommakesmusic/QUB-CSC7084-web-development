@@ -2,11 +2,21 @@
 
 // Adding a random number function
 // Random header messages
-const random_header = Math.floor(Math.random() * 4);
-const header_messages = ["Header Hello!", "Header, Hi There!", "Help, I'm in your header!", "Header here"];
+const random_welcome = Math.floor(Math.random() * 4);
+const welcome_messages = ["Hello and welcome!", "Hi There!", "Welcome!", "Good to see you!"];
 
-var header_message = header_messages[random_header];
-document.getElementById("header").innerHTML = header_message;
+var welcome_message = welcome_messages[random_welcome];
+document.getElementById("welcome").innerHTML = welcome_message;
+
+// Show and hide navigatino based on icon click
+function showHide() {
+    var x = document.getElementById("nav");
+    if (x.className === "nav") {
+      x.className += " responsive";
+    } else {
+      x.className = "nav";
+    }
+  }
 
 // show and hide elements based on session variable
 async function sessionRequest(){

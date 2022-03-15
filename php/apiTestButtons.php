@@ -1,4 +1,4 @@
-<div>
+<div class="content-button-box">
     <button id="signup" class="userButton">Signup</button>
     <button id="login" class="userButton">Login</button>
     <button id="updateUser" class="userButton">Update</button>

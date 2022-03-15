@@ -7,26 +7,39 @@ session_start();
 
 $userRole = $_SESSION['userRole'];
 alertMessage(400, $userRole);
-if (!isset($_SESSION['user']) || $userRole !="admin")
+if (!isset($_SESSION['user']))
 {
 
-    alertMessage(400, $_SESSION['user']." is not an administrator");
+    alertMessage(401, "You must be logged in.");
     goHome();
-
+    exit();
 }
-else
+else if ($userRole !="admin")
 {
-
-
-
-
+    alertMessage(401, $_SESSION['user']." is not an administrator");
+    goHome();
 }
+?>
 
+<div class="top">
+    <div class="">THIS IS THE TOP AREA</div>
+    <div class="content-top-right">
+        <?php
+            require_once '../php/apiTestButtons.php';
+        ?>
+    </div>
+</div>
+<div class = "content">
+    <?php
+include_once '../php/all_records.php';
+?>
+</div>
 
+<div class="bottom">
+    This is the bottom of the page
 
+</div>
 
-
-
-
-require_once '../html/footerSubFolder.html';
+<?php   
+    require_once '../html/footerSubFolder.html';
 ?>

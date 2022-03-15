@@ -4,11 +4,14 @@
 require_once 'html/header.html';
 ?>
 <div class="top">
-  THIS IS THE TOP AREA
+  <div class="top-left">
+  <p id="welcome">Welcome to the <strong>Favourite 500</strong></p><hr />
+  <p>A collection of the favourite 500 albums as voted by the public!</p>
+  </div>
 
-  <div class="content-single-record-box">
-  <?php
-  require_once 'php/apiTestButtons.php';
+  <div class="top-right">
+    <?php
+    require_once 'php/apiTestButtons.php';
   ?>
 </div>
 
