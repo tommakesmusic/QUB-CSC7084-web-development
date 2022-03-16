@@ -8,7 +8,7 @@ const welcome_messages = ["Hello and welcome!", "Hi There!", "Welcome!", "Good t
 var welcome_message = welcome_messages[random_welcome];
 document.getElementById("welcome").innerHTML = welcome_message;
 
-// Show and hide navigatino based on icon click
+// Show and hide navigation based on icon click
 function showHide() {
     var x = document.getElementById("nav");
     if (x.className === "nav") {

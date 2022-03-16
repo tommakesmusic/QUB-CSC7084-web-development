@@ -3,7 +3,7 @@
   <div class="nav-header">
 
       
-      <label class="logo"><a href="index.php">The Favourite 500</a></label>
+      <label class="logo"><a href="http://localhost:8888/index.php">The Favourite 500</a></label>
       
 
   </div>

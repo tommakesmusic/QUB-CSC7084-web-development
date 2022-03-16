@@ -135,6 +135,7 @@ h3 {
   background-size: cover;
   grid-area: content;
   width:100%;
+  padding: 0.25rem;
   display: grid;
   grid-template-columns: [col-start] 1fr [col-end];
   align-content: centre;
@@ -146,7 +147,7 @@ h3 {
 }
 
 .top{
-  grid-area:top;
+  grid-area: top;
   min-height: 120px;
   align-content: center;
   display:grid;
@@ -165,14 +166,17 @@ h3 {
   align-items: start;
 }
 .top-right{
-  float:right;
+  float: right;
   justify-content: end;
   align-self: end;
   align-items: end;
 }
-
+.middle{
+  grid-area: middle;
+  width: 95vw;
+  height: auto;
+}
 .content {
-
   grid-area: middle;
   display: grid;
   width: 95vw;
@@ -224,6 +228,28 @@ h3 {
   box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
 }
 /* Input forms*/
+.input-box{
+  display: grid;
+  grid-template-columns: [col-start] 1fr [col-end];
+  grid-template-areas:
+  "label"
+  "input";
+}
+
+.input.float-right{
+  float: right;
+  align-content: flex-end;
+}
+
+.input-box.label{
+  float: left;
+  grid-area: label;
+}
+.input-box.input{
+  float: right;
+  grid-area: input;
+}
+
 input[type="text"],
 input[type="password"] {
   font-family: 'Montserrat', sans-serif;
@@ -513,7 +539,7 @@ select {
     grid-template-columns: [col-start] 1fr [col-2] 1fr [col-end]
   }
   .top{
-    grid-template-columns: [col-start] 0.5fr [col-middle] 0.5fr [col-end];
+    grid-template-columns: [col-start] 1.fr [col-middle] 1fr [col-end];
     grid-template-areas:
     "top-left" "top-right";
   }
@@ -525,8 +551,13 @@ select {
     grid-template-columns: [col-start] 1fr [col-2] 1fr [col-3] 1fr [col-end];
   }
   .userButton {
-    padding: 14px 20px;
+    padding: 12px 20px;
     font-size: 14px;
+  }
+  .input-box{
+  grid-template-columns: [col-start] 1fr [] 1fr [col-end];
+  grid-template-areas:
+  "label" "input";
   }
 }
 
@@ -544,8 +575,8 @@ select {
     grid-column-end: [col-end];
   }
   .userButton {
-    padding: 16px 32px;
-    font-size: 16px;
+    padding: 14px 28px;
+    font-size: 14px;
   }
 }
 
