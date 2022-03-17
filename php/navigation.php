@@ -20,9 +20,9 @@
  
   <!-- Navbar items -->
   <div class="nav-links">
-    <a href="#">Home</a>
-    <a href="#">About</a>
-    <a href="#">Project</a>
+    <a href="http://localhost:8888/">Home</a>
+    <a href="http://localhost:8888/about.php">About</a>
+    <a href="http://localhost:8888/browse.php">Browse</a>
     <a href="#">Services</a>
     <a href="#">Contact</a>
     <button class="loginBtn">Login</button>

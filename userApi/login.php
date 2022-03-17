@@ -7,11 +7,17 @@ session_start();
 
 if (!isset($_SESSION['user'])){
     echo <<<EOD
-    <div class ="content-genre-box">
+    <div class="top"> This is the top section. Info goes here</div>
+    <div class="middle">
+
+    <div class="form-box">
     <form onsubmit="return false;" autocomplete="on">
-    <div><label for ="">Username</label><input type="text" name="userName" autocomplete="on" required></div>
-    <div><label for ="">Password</label><input type="password" name="passWord" autocomplete="on" required></div>
-    <div><label for ="">Password</label><input type="password" name="passWordRpt" autocomplete="on" required></div>
+    <div class="input-box.label"><label for ="">Username</label></div>
+    <div class="input-box.input"><input type="text" name="userName" autocomplete="on" required></div>
+    <div class="input-box.label"><label for ="">Password</label></div>
+    <div class="input-box.input"><input type="password" name="passWord" autocomplete="on" required></div>
+    <div class="input-box.label"><label for ="">Password</label></div>
+    <div class="input-box.input"><input type="password" name="passWordRpt" autocomplete="on" required></div>
     <div><input type="hidden" name="userApiReq" value="login"></div>
     <div><input type="submit" value="Login"></div>
     </form>

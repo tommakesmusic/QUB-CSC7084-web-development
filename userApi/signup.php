@@ -10,19 +10,26 @@ if (!isset($_SESSION['user'])){
      echo <<<EOD
     <div class="top"> This is the top section. Info goes here</div>
     <div class="middle">
-    <div class="input.float-right>
+
+    <div class="form-box">
     <form onsubmit="return false;" autocomplete="on">
-    <div><label for ="firstName">First name</label><input type="text" name="firstName" id="firstName" autocomplete="on" required>
-    <div><label for ="lastName">Last name</label><input type="text" name="lastName" id="lastName" autocomplete="on" required>
-    <div><label for ="userName">Username</label><input type="text" name="userName" autocomplete="on" required>
-    <div><label for ="email">Email</label><input type="email" name="emailAddress" id="email autocomplete="on" required>
-    <div><label for ="password">Password</label><input type="password" name="passWord" id="passWord" autocomplete="off" required>
-    <div><label for ="passWordRpt">Password</label><input type="password" name="passWordRpt" id="passWordRpt" autocomplete="on" required>
-    <div class="input-box.input"><input type="hidden" name="userApiReq" value="signup"></div>
-    <div><input type="submit" value="Signup"></div>
+    
+    <div class="input-box.label"><label for ="">First name</label></div>
+    <div class="input-box.input"><input type="text" name="firstName" id="firstName" autocomplete="on" pattern="[a-zA-Z0-9]+" minlength="3" maxlength="20" required></div>
+    <div class="input-box.label"><label for ="">Last name</label></div>
+    <div class="input-box.input"><input type="text" name="lastName" id="lastName" autocomplete="on" pattern="[a-zA-Z0-9']+" minlength="3" maxlength="20" required></div>
+    <div class="input-box.label"><label for ="userName">Username</label></div>
+    <div class="input-box.input"><input type="text" name="userName" autocomplete="on" pattern="[a-zA-Z0-9]+" minlength="4" maxlength="12" required></div>
+    <div class="input-box.label"><label for ="email">Email</label></div>
+    <div class="input-box.input"><input type="email" name="emailAddress" id="email autocomplete="on" required></div>
+    <div class="input-box.label"><label for ="password">Password</label></div>
+    <div class="input-box.input"><input type="password" name="passWord" id="passWord" autocomplete="off" pattern="[a-zA-Z0-9-_*!@£$]+" minlength="8" maxlength="10" required></div>
+    <div class="input-box.label"><label for ="passWordRpt">Password</label></div>
+    <div class="input-box.input"><input type="password" name="passWordRpt" id="passWordRpt" autocomplete="on" pattern="[a-zA-Z0-9-_*!@£$]+" minlength="8" maxlength="10" required></div>
+    <div><input type="hidden" name="userApiReq" value="signup"></div>
+    <div><input id="submit" type="submit" value="Signup"></div>
     </form>
         <script src="../js/signup.js" defer></script>
-    </div>
     </div>
     <div class="bottom">
     <p>This is the bottom part of the page</p>

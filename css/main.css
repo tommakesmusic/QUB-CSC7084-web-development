@@ -161,23 +161,24 @@ h3 {
 }
 
 .top-left{
+  grid-area: "top-left";
   justify-content: start;
   align-self: start;
   align-items: start;
 }
 .top-right{
-  float: right;
+  grid-area:"top-right";
   justify-content: end;
   align-self: end;
   align-items: end;
 }
 .middle{
-  grid-area: middle;
+  grid-area: "middle";
   width: 95vw;
   height: auto;
 }
 .content {
-  grid-area: middle;
+  grid-area: "middle";
   display: grid;
   width: 95vw;
   height: auto;
@@ -223,37 +224,49 @@ h3 {
 .content-single-record-box {
   padding: 0.5rem;
   margin: 0.5rem;
-  background-color:hsl(var(--clr-primary-400) / 0.25);
+  /* background-color:hsl(var(--clr-primary-400) / 0.25); */
   box-sizing: border-box;
   box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
 }
-/* Input forms*/
-.input-box{
+/* Input forms */
+/* with help from https://webdesign.tutsplus.com */
+/* And http://www.w3schools.com */
+.form-box{
+  width: min-content;
+  padding: 1rem;
+  background-color: #fff;
+  border: #000;
+  background-origin: padding-box;
+}
+
+form {
   display: grid;
+  background: whitesmoke;
   grid-template-columns: [col-start] 1fr [col-end];
+  grid-template-rows: auto;
   grid-template-areas:
   "label"
   "input";
 }
 
-.input.float-right{
-  float: right;
-  align-content: flex-end;
-}
-
-.input-box.label{
-  float: left;
+.input-box-label {
   grid-area: label;
+  align-items: right;
+  /* align-self: flex-start;
+  align-content: flex-start; */
 }
-.input-box.input{
-  float: right;
+.input-box-input{
   grid-area: input;
+  background-color:#fff;
+  /* align-items: left;
+  align-content: flex-end;
+  align-self: flex-end;
+  float: right; */
 }
 
 input[type="text"],
 input[type="password"] {
-  font-family: 'Montserrat', sans-serif;
-  color: #fff;
+  color: #000;
 }
 
 input {
@@ -538,11 +551,6 @@ select {
   .content {
     grid-template-columns: [col-start] 1fr [col-2] 1fr [col-end]
   }
-  .top{
-    grid-template-columns: [col-start] 1.fr [col-middle] 1fr [col-end];
-    grid-template-areas:
-    "top-left" "top-right";
-  }
 
 }
 
@@ -550,12 +558,17 @@ select {
   .content {
     grid-template-columns: [col-start] 1fr [col-2] 1fr [col-3] 1fr [col-end];
   }
+  .top {
+    grid-template-columns: [col-start] 1fr [col-2] 1fr [col-end];
+    grid-template-areas:
+    "top-left" "top-right";
+}
   .userButton {
     padding: 12px 20px;
     font-size: 14px;
   }
-  .input-box{
-  grid-template-columns: [col-start] 1fr [] 1fr [col-end];
+  form {
+  grid-template-columns: [col-start] 120px [col-2] 1fr [col-end];
   grid-template-areas:
   "label" "input";
   }
