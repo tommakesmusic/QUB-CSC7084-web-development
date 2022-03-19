@@ -162,18 +162,20 @@ h3 {
 
 .top-left{
   grid-area: "top-left";
-  justify-content: start;
+  /* justify-content: start;
   align-self: start;
-  align-items: start;
+  align-items: start; */
 }
 .top-right{
+  display: block;
   grid-area:"top-right";
-  justify-content: end;
+  /* justify-content: end;
   align-self: end;
-  align-items: end;
+  align-items: end; */
 }
 .middle{
   grid-area: "middle";
+  align-items: center;
   width: 95vw;
   height: auto;
 }
@@ -228,6 +230,30 @@ h3 {
   box-sizing: border-box;
   box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
 }
+
+/* Modal form .box-wide */
+.modal {
+  position:unset;
+  position: absolute;
+  top: 10%;
+  right: 100%;
+  width: auto;
+  height: auto;
+  text-align: center;
+  padding: 1em;
+  max-width: 50ch;
+  border: 2px;
+  box-shadow: 0 0 1em rgb(0 0 0 / .3);
+  & > * {
+    margin: 0 0 0.5rem 0;
+  }
+}
+
+.modal::backdrop {
+  background: rgba(28, 100, 194, 0.4);
+}
+
+
 /* Input forms */
 /* with help from https://webdesign.tutsplus.com */
 /* And http://www.w3schools.com */
@@ -348,6 +374,17 @@ nav #nav-check, nav .nav-btn{
   padding: 0.5rem;
   background-color: whitesmoke;
 
+}
+.stdButton{
+  background-color: #17a1cb;
+  border: none;
+  color: white;
+  padding: 7px 16px;
+  text-align: center;
+  font-size: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
 }
 .userButton {
 	background-color: #17a1cb;
@@ -567,6 +604,10 @@ select {
     padding: 12px 20px;
     font-size: 14px;
   }
+  .stdButton {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
   form {
   grid-template-columns: [col-start] 120px [col-2] 1fr [col-end];
   grid-template-areas:
@@ -588,6 +629,10 @@ select {
     grid-column-end: [col-end];
   }
   .userButton {
+    padding: 14px 28px;
+    font-size: 14px;
+  }
+  .stdButton {
     padding: 14px 28px;
     font-size: 14px;
   }

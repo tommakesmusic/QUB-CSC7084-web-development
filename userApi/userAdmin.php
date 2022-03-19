@@ -25,7 +25,7 @@ else if ($userRole !="admin")
     <div class="">THIS IS THE TOP AREA</div>
     <div class="content-top-right">
         <?php
-            require_once '../php/apiTestButtons.php';
+            require_once '../php/userButtons.php';
         ?>
     </div>
 </div>

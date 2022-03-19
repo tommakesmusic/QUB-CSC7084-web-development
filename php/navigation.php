@@ -25,7 +25,10 @@
     <a href="http://localhost:8888/browse.php">Browse</a>
     <a href="#">Services</a>
     <a href="#">Contact</a>
-    <button class="loginBtn">Login</button>
+    <?php
+      require_once "userButtons.php"
+    ?>
+    <!-- <button class="loginBtn">Login</button> -->
   </div>
  
 </nav>

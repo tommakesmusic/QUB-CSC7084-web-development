@@ -11,13 +11,15 @@ require_once 'html/header.html';
 
   <div class="top-right">
     <?php
-    require_once 'php/apiTestButtons.php';
+    require_once 'php/userButtons.php';
   ?>
 </div>
 
 </div>
 <div class="content">
-  
+  <?php
+    require_once "php/all_records.php";
+  ?>
 </div>
 
 <div class="bottom">THIS IS THE BOTTOM AREA</div>

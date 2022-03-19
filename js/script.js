@@ -40,6 +40,22 @@ async function sessionRequest(){
         return role;
 }
 
+// Show / hide dialog
+// from Kein Powell
+// https://www.youtube.com/watch?v=TAB_v6yBXIE
+const modal = document.querySelector("#modal");
+const openModal = document.querySelector(".open-button");
+const closeModal = document.querySelector(".close-button");
+
+openModal.addEventListener("click", () => {
+  modal.showModal();
+  console.log("clicked open button");
+});
+
+closeModal.addEventListener("click", () => {
+  modal.close();
+});
+
 async function getSession(){
     var userRole = await sessionRequest();
     //console.log("UserRole is " + userRole)
