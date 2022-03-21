@@ -176,6 +176,7 @@ h3 {
 .middle{
   grid-area: "middle";
   justify-items: center;
+  background-color: whitesmoke;
   width: 95vw;
   height: auto;
 }
@@ -253,7 +254,9 @@ h3 {
   background: rgba(28, 100, 194, 0.4);
 }
 
-
+.bgimg {
+  background-image: url("img/atlantic-bg.png");
+}
 /* Input forms */
 /* with help from https://webdesign.tutsplus.com */
 /* And http://www.w3schools.com */
@@ -274,6 +277,20 @@ form {
   "label"
   "input";
 }
+
+.th{
+  text-align: center;
+}
+.td{
+  text-align: left;
+}
+.tr {
+  padding: 1rem;
+  margin: 0.5rem;
+  border-bottom: #0061a7;
+  border-style: groove;
+}
+
 select{
   appearance: none;
 }

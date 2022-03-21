@@ -1,4 +1,3 @@
-Number,Year,Album,Artist,Genre,Subgenre
 1,1967,Sgt. Pepper's Lonely Hearts Club Band,The Beatles,Rock,"Rock & Roll, Psychedelic Rock"
 2,1966,Pet Sounds,The Beach Boys,Rock,"Pop Rock, Psychedelic Rock"
 3,1966,Revolver,The Beatles,Rock,"Psychedelic Rock, Pop Rock"
@@ -8,7 +7,7 @@ Number,Year,Album,Artist,Genre,Subgenre
 7,1972,Exile on Main St.,The Rolling Stones,Rock,"Blues Rock, Rock & Roll, Classic Rock"
 8,1979,London Calling,The Clash,Rock,"Punk, New Wave"
 9,1966,Blonde on Blonde,Bob Dylan,"Rock, Blues","Folk Rock, Rhythm & Blues"
-10,1968,"The Beatles (""The White Album"")",The Beatles,Rock,"Rock & Roll, Pop Rock, Psychedelic Rock, Experimental"
+10,1968,"The Beatles (The White Album)",The Beatles,Rock,"Rock & Roll, Pop Rock, Psychedelic Rock, Experimental"
 11,1976,The Sun Sessions,Elvis Presley,Rock,Rock & Roll
 12,1959,Kind of Blue,Miles Davis,Jazz,Modal
 13,1967,The Velvet Underground & Nico,The Velvet Underground,Rock,"Garage Rock, Art Rock, Experimental"
@@ -43,7 +42,7 @@ Number,Year,Album,Artist,Genre,Subgenre
 42,1967,The Doors,The Doors,Rock,Psychedelic Rock
 43,1973,The Dark Side of the Moon,Pink Floyd,Rock,Prog Rock
 44,1975,Horses,Patti Smith,Rock,Art Rock
-45,1969,"The Band (""The Brown Album"")",The Band,"Classical, Stage & Screen","Soundtrack, Modern Classical, Contemporary, Score"
+45,1969,"The Band ("The Brown Album")",The Band,"Classical, Stage & Screen","Soundtrack, Modern Classical, Contemporary, Score"
 46,1984,Legend: The Best of Bob Marley and The Wailers,Bob Marley & The Wailers,Reggae,"Reggae, Roots Reggae"
 47,1965,A Love Supreme,John Coltrane,Jazz,"Free Jazz, Hard Bop, Modal"
 48,1988,It Takes a Nation of Millions to Hold Us Back,Public Enemy,Hip Hop,Conscious
@@ -91,7 +90,7 @@ Number,Year,Album,Artist,Genre,Subgenre
 90,1972,Talking Book,Stevie Wonder,Funk / Soul,"Soul, Funk"
 91,1973,Goodbye Yellow Brick Road,Elton John,Rock,"Pop Rock, Classic Rock"
 92,1978,20 Golden Greats,Buddy Holly,Rock,Rock & Roll
-93,1987,"Sign ""Peace"" the Times",Prince,"Rock, Reggae","Ska, Reggae-Pop"
+93,1987,Sign of the Times,Prince,"Rock, Reggae","Ska, Reggae-Pop"
 94,1984,40 Greatest Hits,Hank Williams,"Folk, World, & Country",Country
 95,1970,Bitches Brew,Miles Davis,Jazz,Fusion
 96,1969,Tommy,The Who,Rock,Psychedelic Rock
@@ -215,7 +214,7 @@ Number,Year,Album,Artist,Genre,Subgenre
 214,1991,Proud Mary: The Best of Ike and Tina Turner,Ike & Tina Turner,Funk / Soul,"Rhythm & Blues, Bayou Funk, Soul"
 215,1973,New York Dolls,New York Dolls,Rock,Glam
 216,1986,Bo Diddley / Go Bo Diddley,Bo Diddley,"Rock, Blues","Rhythm & Blues, Rock & Roll"
-217,1961,Two Steps From the Blues,"Bobby ""Blue"" Bland","Funk / Soul, Blues","Rhythm & Blues, Soul"
+217,1961,Two Steps From the Blues,"Bobby 'Blue' Bland","Funk / Soul, Blues","Rhythm & Blues, Soul"
 218,1986,The Queen Is Dead,The Smiths,"Rock, Pop",Indie Rock
 219,1986,Licensed to Ill,Beastie Boys,Hip Hop,None
 220,1970,Look-Ka Py Py,The Meters,Funk / Soul,"Bayou Funk, Soul, Funk"
@@ -253,7 +252,7 @@ Number,Year,Album,Artist,Genre,Subgenre
 252,2001,The Blueprint,Jay Z,Hip Hop,None
 253,1980,The River,Bruce Springsteen,Rock,"Folk Rock, Pop Rock, Classic Rock"
 254,1966,Complete & Unbelievable: The Otis Redding Dictionary of Soul,Otis Redding,Funk / Soul,Soul
-255,1991,"Metallica (""The Black Album"")",Metallica,Rock,Heavy Metal
+255,1991,"Metallica ('The Black Album')",Metallica,Rock,Heavy Metal
 256,1977,Trans Europa Express,Kraftwerk,Electronic,Electro
 257,1985,Whitney Houston,Whitney Houston,"Funk / Soul, Pop","Synth-pop, Rhythm & Blues"
 258,1968,The Kinks Are The Village Green Preservation Society,The Kinks,Rock,"Psychedelic Rock, Pop Rock"
@@ -357,7 +356,7 @@ Number,Year,Album,Artist,Genre,Subgenre
 356,1970,12 Songs,Randy Newman,"Rock, Pop","Pop Rock, Vocal"
 357,1967,Between the Buttons,The Rolling Stones,Rock,"Blues Rock, Psychedelic Rock, Pop Rock"
 358,1960,Sketches of Spain,Miles Davis,Jazz,Modal
-359,1972,Honky Ch�teau,Elton John,Rock,"Pop Rock, Classic Rock"
+359,1972,Honky Chateau,Elton John,Rock,"Pop Rock, Classic Rock"
 360,1979,Singles Going Steady,Buzzcocks,Rock,Punk
 361,2000,Stankonia,OutKast,"Hip Hop, Funk / Soul","Gangsta, P.Funk, Crunk, Conscious"
 362,1993,Siamese Dream,The Smashing Pumpkins,Rock,Alternative Rock
@@ -383,7 +382,7 @@ Number,Year,Album,Artist,Genre,Subgenre
 382,1976,The Modern Lovers,The Modern Lovers,Rock,"Art Rock, Indie Rock"
 383,1978,More Songs About Buildings and Food,Talking Heads,Rock,"New Wave, Indie Rock"
 384,1966,A Quick One,The Who,Rock,"Mod, Beat, Psychedelic Rock"
-385,2001,"""Love and Theft""",Bob Dylan,Rock,"Folk Rock, Blues Rock"
+385,2001,'Love and Theft',Bob Dylan,Rock,"Folk Rock, Blues Rock"
 386,1974,Pretzel Logic,Steely Dan,"Jazz, Rock","Jazz-Rock, Pop Rock, Classic Rock"
 387,1993,Enter the Wu_Tang: 36 Chambers,Wu Tang Clan,Hip Hop,Gangsta
 388,1985,The Indestructible Beat of Soweto,Various Artists,"Funk / Soul, Folk, World, & Country",African
@@ -418,7 +417,7 @@ Number,Year,Album,Artist,Genre,Subgenre
 417,1980,Boy,U2,Rock,"New Wave, Pop Rock"
 418,1973,Band on the Run,Paul McCartney & Wings,Rock,Pop Rock
 419,1994,Dummy,Portishead,Electronic,"Trip Hop, Downtempo"
-420,1957,"The ""Chirping"" Crickets",The Crickets,"Rock, Pop","Rockabilly, Rock & Roll"
+420,1957,"The 'Chirping' Crickets",The Crickets,"Rock, Pop","Rockabilly, Rock & Roll"
 421,1990,"The Best of the Girl Groups, Volume 1",Various Artists,"Rock, Pop","Pop Rock, Vocal"
 422,1963,Presenting the Fabulous Ronettes Featuring Veronica,The Ronettes,"Rock, Pop","Rock & Roll, Vocal"
 423,2001,Anthology,Diana Ross & The Supremes,"Electronic, Funk / Soul","Pop Rock, Soul, Disco"

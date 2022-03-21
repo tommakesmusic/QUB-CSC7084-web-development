@@ -242,7 +242,7 @@ function updateUser($connection)
 };
 
 function getUser($connection){
-
+    // We are dealing with only one user at a time
     $userName = $_GET[('user')];
     $sql = "SELECT first_name, last_name, email, date_joined, user_role FROM user WHERE username=?;";
     $stmt = $connection->prepare($sql);
@@ -254,7 +254,8 @@ function getUser($connection){
     $stmt->execute();
     $result = $stmt->get_result(); // get the mysqli result
     $row = $result->fetch_assoc();
-
+    // We are looking for one user only
+    // We should use json encode & decode
     if(mysqli_num_rows($result) > 0)
     {   
         $date = date("d/m/y, H:i:s", strtotime($row["date_joined"]));
@@ -352,7 +353,5 @@ function userExists($connection, $user){
         return false;
     }
 }
-
-
 
 ?>
