@@ -1,30 +1,33 @@
 <?php
-// Get all records from the db
+// Get all records from the db...
 require_once 'connection.php';
 session_start();
 $userRole = $_SESSION['userRole'];
 // alertMessage(400, $userRole);
-$slt = "SELECT * from user";
+$slt = "SELECT * from Album";
 $result = $connection->query($slt);
-// while ($row = mysqli_fetch_array($rec)) {
-//        $resultData[] = array('username' => $row['username'], 'first_name' => $row['first_name'], 'last_name' => $row['last_name'],'user_role'=>$row['user_role']);
-// }
+
 $row_number = 0;
 if ($result->num_rows > 0) {
-        // output data of each row
-      while($row = $result->fetch_assoc()) {
-        $row_number++;
-        $date = date("d/m/y, H:i:s", strtotime($row["date_joined"]));
-        $name = $row["username"];
-        echo '<div>';
-        echo 'user_id: '.$row["user_id"] . ' Username: '. $name.' Name: '.$row["first_name"].' '. $row["last_name"].' User role: '.$row["user_role"].' Member since '.$date;
-        if ($userRole=='admin'){
-        
-        echo "<a href='update_user-Admin.php?user=$name'>Update User</a> <form action='../userApi/userModel.php?deleteUser=$name' method='DELETE'><button type='submit'>Delete</button>";
-        }
-        
-        echo '</div>';
-      }
+
+  echo '<table>';
+    echo '<tr>';
+    echo  '<th>Chart position:</th>';
+    echo  '<th>Album Name:</th>';
+    echo  '<th>Album year:</th>';
+    echo  '<th>Artist:</th>';
+    echo  '<th>Genre;</th>';
+    echo  '<th>Subgenre:</th>';
+    echo  '<th>Delete user:</th>';
+    echo '</tr>';
+      // output data of each row
+    while($row = $result->fetch_assoc()) {
+      $row_number++;
+      $date = date("d/m/y, H:i:s", strtotime($row["date_joined"]));
+      $name = $row["username"];
+      echo '<div>';
+      echo '</div>';
+    }
   } else {
     echo "0 results";
   }
