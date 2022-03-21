@@ -1,8 +1,28 @@
 <?php
-include_once 'html/header.html'
+// phpcs give one error if we have no doc comment
+// but many if we get it wrong
+require_once 'html/header.html';
 ?>
 
-<article class="content-genre-box content-grid-col-span-2 flow bg-primary-400 quote text-neutral-100">
+
+<div class="top">
+  <div class="top-left">
+  <p id="welcome">Welcome to the <strong>Favourite 500</strong></p><hr />
+  <p>A collection of the favourite 500 albums as voted by the public!</p>
+  </div>
+
+  <div class="top-right">
+    
+    LEFT PART
+  </div>
+
+</div>
+<div class="middle">
+
+</div>
+<div class="content">
+
+<article class="content-genre-box content-grid-col-span-2 flow bg-primary-400 text-neutral-100">
   <div class="flex">
     <h2>Album Genres</h2>
   </div>
@@ -38,7 +58,11 @@ include_once 'html/header.html'
     <p>Lots of text and stuff can go here, probably and this is why it flows onto two lines and stays in one column</p>
   </div>
 </article>
+</div>
+
+
+<div class="bottom">THIS IS THE BOTTOM AREA</div>
 
 <?php
-include_once 'html/footer.html'
+require_once 'html/footer.html';
 ?>

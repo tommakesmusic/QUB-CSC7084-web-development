@@ -16,6 +16,7 @@
   --clr-neutral-200: 210 46% 95%;
   --clr-neutral-300: 0 0% 81%;
   --clr-dark-100: 199 42% 12%;
+  --clr-light-100: 199 42% 88%;
   --ff-primary: "Barlow Semi Condensed", sans-serif;
 
   --fw-400: 500;
@@ -47,7 +48,6 @@ body {
   display: grid;
   place-content: center;
   
-
   font-family: var(--ff-primary);
   font-weight: var(--fw-400);
 
@@ -69,8 +69,6 @@ h3 {
 .flow > *:where(:not(:first-child)) {
   margin-top: var(--flow-spacer, 1em);
 }
-
-
 
 .bg-primary-400 {
   background: hsl(var(--clr-primary-400));
@@ -119,27 +117,86 @@ h3 {
 }
 
 .header {
+  height:fit-content;
   grid-area: header;
+  align-items: center;
+  display:inline;
   font-size: var(--fs-400);
-  padding: 2rem;
+  margin: 0.25rem;
+  padding: 0.25rem;
   /*border-radius: 0.5rem;*/
   box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
   color: var(--clr-dark-100);
   background-color: whitesmoke;
 }
 
-.content {
+.page-contents{
+  background-image: "../img/atlantic-bg.png" no-repeat   center center #505050;  ;
+  background-size: cover;
   grid-area: content;
+  width:100%;
+  padding: 0.25rem;
+  display: grid;
+  grid-template-columns: [col-start] 1fr [col-end];
+  align-content: centre;
+
+  grid-template-areas:
+  "top"
+  "middle"
+  "bottom";
+}
+
+.top{
+  grid-area: top;
+  min-height: 120px;
+  justify-content: center;
+  display:grid;
+  margin: 1rem 0.25rem  0.25rem 0.25rem;
+  padding: 0rem 0.25rem 0.25rem 0.25rem;
+  background: whitesmoke;
+  grid-template-columns: [col-start] 1fr [col-end];
+  grid-template-areas:
+  "top-left"
+  "top-right";
+}
+
+.top-left{
+  grid-area: "top-left";
+  /* justify-content: start;
+  align-self: start;
+  align-items: start; */
+}
+.top-right{
+  display: block;
+  grid-area:"top-right";
+  /* justify-content: end;
+  align-self: end;
+  align-items: end; */
+}
+.middle{
+  grid-area: "middle";
+  justify-items: center;
+  width: 95vw;
+  height: auto;
+}
+.content {
+  grid-area: "middle";
   display: grid;
   width: 95vw;
   height: auto;
   grid-gap: 1.5rem;
 
-  margin: 00.5rem;
+  margin: 0.5rem;
   padding-block: 0.5rem;
   margin-inline: auto;
   grid-template-columns: [col-start] 1fr [col-end];
   grid-template-rows: auto;
+}
+
+.bottom{
+  grid-area: bottom;
+  background: #000;
+  color: whitesmoke;
 }
 
 .footer {
@@ -152,14 +209,216 @@ h3 {
   background-color: whitesmoke;
 }
 
+.box-wide{
+  width: 100%;
+  background-color: var(--clr-dark-100);
+  color: var(--clr-light-100);
+  align-items: center;
+}
+
 .content-genre-box {
   font-size: var(--fs-400);
-  padding: 2rem;
+  padding: 1rem;
   /*border-radius: 0.5rem;*/
   box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
 }
 
-.
+.content-single-record-box {
+  padding: 0.5rem;
+  margin: 0.5rem;
+  /* background-color:hsl(var(--clr-primary-400) / 0.25); */
+  box-sizing: border-box;
+  box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
+}
+
+/* Modal form .box-wide */
+.modal {
+  /* position:unset;*/
+  /* position: absolute;*/
+  /* top: 10%;
+  right: 0%;
+  width: auto;
+  height: auto;
+  text-align: center;
+  padding: 1em; */
+  max-width: 50ch;
+  /* border: 2px;
+  box-shadow: 0 0 1em rgb(0 0 0 / .3); */
+  & > * {
+    margin: 0 0 0.5rem 0;
+  }
+}
+
+.modal::backdrop {
+  background: rgba(28, 100, 194, 0.4);
+}
+
+
+/* Input forms */
+/* with help from https://webdesign.tutsplus.com */
+/* And http://www.w3schools.com */
+.form-box{
+  width: auto;
+  padding: 1rem;
+  background-color: #fff;
+  border: #000;
+  background-origin: padding-box;
+}
+
+form {
+  display: grid;
+  background: whitesmoke;
+  grid-template-columns: [col-start] 1fr [col-end];
+  grid-template-rows: auto;
+  grid-template-areas:
+  "label"
+  "input";
+}
+select{
+  appearance: none;
+}
+select.mySelect{
+  background: #0061a7;
+  color: #fff;
+  padding: 0 10px;
+}
+select.mySelect option{
+color: #000;
+  padding: 0 10px;
+}
+
+.input-box-label {
+  grid-area: label;
+  align-items: right;
+  /* align-self: flex-start;
+  align-content: flex-start; */
+}
+.input-box-input{
+  grid-area: input;
+  background-color:#fff;
+  text-align: centre;
+  
+  /*align-content: flex-end;
+  align-self: flex-end;
+  float: right; */
+}
+
+input[type="text"],
+input[type="password"] {
+  color: #000;
+}
+
+input {
+  display: inline-block;
+  padding-top: 8px;
+  margin: 4px;
+  font-size: var(--fs-400)
+}
+/* Navigation */
+
+nav{
+  height: 70px;
+  width: 100%;
+  padding: 14px 30px;
+  background-color: #0082e6;
+  color: whitesmoke;
+  position: relative;
+}
+nav .nav-header{
+  display: inline;
+}
+nav .nav-header .nav-logo{
+  display: inline-block;
+  margin-top: -7px;
+}
+label.logo{
+  color: whitesmoke;
+  font-size: 30px;
+  padding-left: 50px;
+  padding-bottom: 30px;
+  line-height: 40px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+label.logo a{
+  color: whitesmoke;
+  font-size: 32px;
+  text-decoration: none;
+}
+
+label.logo a:hover {
+  color:#b3d4fc;
+  font-size: 32px;
+  text-shadow: #505050;
+}
+
+nav .nav-links{
+  display: inline;
+  float: right;
+  font-size: 18px;
+}
+   
+nav .nav-links .loginBtn{
+  display: inline-block;
+  padding: 5px 15px;
+  margin-left: 20px;
+  font-size: 17px;
+  color: rgb(9, 14, 90);
+}
+nav .nav-links a{
+  padding: 10px 12px;
+  text-decoration: none;
+  font-weight: 550;
+  color: white;
+}
+/* Hover effects */
+nav .nav-links a:hover{
+  background-color: rgba(0, 0, 0, 0.3);
+}
+   
+/* responsive navbar toggle button */
+nav #nav-check, nav .nav-btn{
+  display: none;
+}
+
+/* Buttons */
+.content-button-box{
+  align-items: right;
+  padding: 0.5rem;
+  background-color: whitesmoke;
+
+}
+.stdButton{
+  background-color: #17a1cb;
+  border: none;
+  color: white;
+  padding: 7px 16px;
+  text-align: center;
+  font-size: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+}
+.userButton {
+	background-color: #17a1cb;
+  border: none;
+  color: white;
+  padding: 7px 16px;
+  text-align: center;
+  font-size: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: none;
+}
+.userButton:hover {
+	background-color:#0061a7;
+}
+.userButton:active {
+	position:relative;
+	top:1px;
+}
+
 /*
  * Remove text-shadow in selection highlight:
  * https://twitter.com/miketaylr/status/12228805301
@@ -338,23 +597,39 @@ select {
    These examples override the primary ('mobile first') styles.
    Modify as content requires.
    ========================================================================== */
-/*
-@media screen and (min-width: 33em){
+
+@media screen and (min-width: 32em){
   .content {
-    grid-template-areas:
-    "one six"
-    "two three"
-    "four five";
+    grid-template-columns: [col-start] 1fr [col-2] 1fr [col-end]
   }
+
 }
-*/
-@media screen and (min-width: 43em){
+
+@media screen and (min-width: 45em){
   .content {
     grid-template-columns: [col-start] 1fr [col-2] 1fr [col-3] 1fr [col-end];
   }
+  .top {
+    grid-template-columns: [col-start] 1fr [col-2] 1fr [col-end];
+    grid-template-areas:
+    "top-left" "top-right";
+}
+  .userButton {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+  .stdButton {
+    padding: 11px 20px;
+    font-size: 10px;
+  }
+  form {
+  grid-template-columns: [col-start] 120px [col-2] 1fr [col-end];
+  grid-template-areas:
+  "label" "input";
+  }
 }
 
-@media screen and (min-width: 50em){
+@media screen and (min-width: 60em){
   .content {
     grid-template-columns: [col-start] 1fr [col-2] 1fr [col-3] 1fr [col-4] 1fr [col-end];
   }
@@ -367,8 +642,75 @@ select {
     grid-column-start: span 2;
     grid-column-end: [col-end];
   }
-
+  .userButton {
+    padding: 14px 28px;
+    font-size: 14px;
+  }
+  .stdButton {
+    padding: 12px 22px;
+    font-size: 12px;
+  }
 }
+
+/* this ridiculous extra query is because I cannot get a tutorial */
+/* that shows how to do this the same way I learned the other media queries */
+@media (max-width:1118px) {
+  nav .nav-btn{
+    display: inline-block;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+  }
+  nav .nav-btn label {
+    display: inline-block;
+    width: 80px;
+    height: 70px;
+    padding: 25px;
+  }
+  nav .nav-btn label span {
+    display: block;
+    height: 10px;
+    width: 25px;
+    border-top: 3px solid #eee;
+  }
+  nav .nav-btn label:hover, .navbar #nav-check:checked ~ .nav-btn label {
+    background-color: rgb(9, 14, 90);
+  }
+  nav .nav-links{
+    position: absolute;
+    display: block;
+    text-align: center;
+    width: 50%;
+    background-color: rgb(9, 14, 90);
+    transition: all 0.3s ease-in;
+    overflow-y: hidden;
+    top: 70px;
+    right: 0px;
+    text-decoration: none;
+  }
+  nav .nav-links a {
+    display: block;
+  }
+ 
+  /* when nav toggle button not checked */
+  nav #nav-check:not(:checked) ~ .nav-links {
+    height: 0px;
+  }
+ 
+  /* when nav toggle button is checked */
+  nav #nav-check:checked ~ .nav-links {
+    height: calc(100vh - 70px);
+    overflow-y: auto;
+  }
+  nav .nav-links .loginBtn {
+    padding: 10px 40px ;
+    margin: 20px;
+    font-size:  18px;
+    font-weight: bold;
+    color: rgb(9, 14, 90);
+  }
+}
+
 
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them Kevin Powell*/
 @media (prefers-reduced-motion: reduce) {
