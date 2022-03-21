@@ -175,7 +175,7 @@ function getPosition($connection){
         sendReply(400, "No chart position given");
     }
 
-    $sql = "SELECT year, album_name, artist_name, genre, subgenre FROM album WHERE position=?;";
+    $sql = "SELECT position, year, album_name, artist_name, genre, subgenre FROM album WHERE position=?;";
     $stmt = $connection->prepare($sql);
     if (!$stmt)
     {
@@ -212,7 +212,7 @@ function getYear($connection){
         sendReply(400, "No year given");
     }
 
-    $sql = "SELECT position, album_name, artist_name, genre, subgenre FROM album WHERE year=?;";
+    $sql = "SELECT position, year, album_name, artist_name, genre, subgenre FROM album WHERE year=?;";
     $stmt = $connection->prepare($sql);
     if (!$stmt)
     {
@@ -238,21 +238,21 @@ function getYear($connection){
 function getAlbum($connection){
 
     if (!empty ($_GET['album'])) {
-        $album = $_GET[('album')];
-        echo $album;
+        $album = strtolower($_GET[('album')]);
+        $albm_lwcase = "%".$album."%";
     }
     else
     {
         sendReply(400, "No album name given");
     }
 
-    $sql = "SELECT position, year, artist_name, genre, subgenre FROM album WHERE album_name=?;";
+    $sql = "SELECT position, year, album_name, artist_name, genre, subgenre FROM album WHERE LOWER(album_name) LIKE ?;";
     $stmt = $connection->prepare($sql);
     if (!$stmt)
     {
         sendReply(400, "Oops! Something went wrong with the connection.");  
     }
-    $stmt->bind_param("s", $album);
+    $stmt->bind_param("s", $albm_lwcase);
     $stmt->execute();
     $result = $stmt->get_result(); // get the mysqli result
     $row = $result->fetch_assoc();
@@ -270,24 +270,24 @@ function getAlbum($connection){
 }
 
 function getArtist($connection){
-    echo "In the Artist block";
+    // echo "In the Artist block";
     if (!empty ($_GET['artist'])) {
-        $artist = $_GET[('artist')];
-        echo $artist;
+        $artist = strtolower($_GET[('artist')]);
+        $art_lwcase = "%".$artist."%";
     }
     else
     {
         sendReply(400, "No artist name given");
     }
 
-    $sql = "SELECT position, year, album_name FROM album WHERE artist_name=?;";
+    $sql = "SELECT position, year, album_name, artist_name, genre, subgenre FROM album WHERE LOWER(artist_name) Like ?;";
     $stmt = $connection->prepare($sql);
     if (!$stmt)
     {
         sendReply(400, "Oops! Something went wrong with the connection.");  
     }
     // echo $sql;
-    $stmt->bind_param("s", $artist);
+    $stmt->bind_param("s", $art_lwcase);
     $stmt->execute();
     //echo "statement executed";
     $result = $stmt->get_result(); // get the mysqli result
@@ -314,14 +314,14 @@ function getGenre($connection){
 
     if (!empty ($_GET['genre'])) {
         $genre = $_GET[('genre')];
-        $gen_query = "%".$genre."%";
+        $gen_query = "%".strtolower($genre)."%";
     }
     else
     {
         sendReply(400, "No genre given");
     }
 
-    $sql = "SELECT position, year, album_name, artist_name, subgenre FROM album WHERE genre Like ?;";
+    $sql = "SELECT position, year, album_name, artist_name, genre, subgenre FROM album WHERE LOWER (genre) Like ?;";
     $stmt = $connection->prepare($sql);
     if (!$stmt)
     {
@@ -348,14 +348,14 @@ function getSubgenre($connection){
 
     if (!empty ($_GET['subgenre'])) {
         $subgenre = $_GET[('subgenre')];
-        $subgen_query = "%".$subgenre."%";
+        $subgen_query = "%".strtolower($subgenre)."%";
     }
     else
     {
         sendReply(400, "No subgenre given");
     }
 
-    $sql = "SELECT position, year, album_name, artist_name, genre FROM album WHERE subgenre Like ?;";
+    $sql = "SELECT position, year, album_name, artist_name, genre, subgenre FROM album WHERE LOWER (subgenre) Like ?;";
     $stmt = $connection->prepare($sql);
     if (!$stmt)
     {
