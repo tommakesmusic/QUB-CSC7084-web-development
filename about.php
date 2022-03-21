@@ -4,27 +4,16 @@
 require_once 'html/header.html';
 ?>
 
-
-<div class="top">
-  <div class="top-left">
-  <p id="welcome">Welcome to the <strong>Favourite 500</strong></p><hr />
-  <p>A collection of the favourite 500 albums as voted by the public!</p>
-  </div>
-
-  <div class="top-right">
-    
-  </div>
-
-</div>
 <div class="middle">
   <h1> About this project </h1>
   <hr />
- <p> This project has been created to fulfill the educational aims of QUB web assignment</p>
-
+ <p>This project has been created to fulfill the educational aims of QUB web assignment</p>
+ <p>It is made using HTML, CSS, javascript and php. GitHub repository is <a href="https://github.com/tommakesmusic/QUB-CSC7084-web-development" alt="GitHub code repository for this project." target="_blank">GitHub</a>1</p>
+ <div><img src="img/web-app-logos.png" alt="HTML CSS Javascript PHP MySQL Logos"></div>
 </div>
 
 
-<div class="bottom">THIS IS THE BOTTOM AREA</div>
+<div class="bottom">All images used in this project have been released under the Creative Commons license.</div>
 
 <?php
 require_once 'html/footer.html';
