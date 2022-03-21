@@ -12,14 +12,13 @@ require_once 'html/header.html';
   </div>
 
   <div class="top-right">
-    
-    LEFT PART
+    <img src="img/records.png" alt="">
   </div>
 
 </div>
 <div class="middle">
 
-</div>
+
 <div class="content">
 
 <article class="content-genre-box content-grid-col-span-2 flow bg-primary-400 text-neutral-100">
@@ -59,7 +58,7 @@ require_once 'html/header.html';
   </div>
 </article>
 </div>
-
+</div>
 
 <div class="bottom">THIS IS THE BOTTOM AREA</div>
 

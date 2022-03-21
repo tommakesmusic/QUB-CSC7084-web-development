@@ -355,7 +355,7 @@ function getSubgenre($connection){
         sendReply(400, "No subgenre given");
     }
 
-    $sql = "SELECT position, year, album_name, artist_name, genre FROM album WHERE subgenre=?;";
+    $sql = "SELECT position, year, album_name, artist_name, genre FROM album WHERE subgenre Like ?;";
     $stmt = $connection->prepare($sql);
     if (!$stmt)
     {
