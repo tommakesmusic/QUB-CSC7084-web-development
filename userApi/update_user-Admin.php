@@ -5,34 +5,37 @@ session_start();
 require_once '../html/headerSubFolder.html';
 require_once "../php/helpers.php";
 
-if (isset($_SESSION['user'])){
+if (isset($_SESSION['user']) && $_SESSION['userRole']=="admin"){
     sendMessage(200, "Username can not be changed.");
     //$userName = $_SESSION(['user']);
-    $api_url = 'http://localhost:8888/userApi/user_model.php?user='.$_SESSION['user'];
+    $api_url = 'http://localhost:8888/userApi/user_model.php?user='.$_GET['user'];
 
     // Read JSON file
     $userData = explode(" ", file_get_contents($api_url));
 
     // echo $userData;
     echo <<<EOD
-    <div class="top"> This is the top section. Info goes here</div>
+    <div class="top"><div>Edit user $userData[2], member since $userData[5]</div></div>
     <div class="middle">
-
+    
     <div class="form-box">
+    
     <form onsubmit="return false;" autocomplete="on">
     
     <div class="input-box.label"><label for ="">First name</label></div>
-    <div class="input-box.input"><input type="text" name="firstName" id="firstName" value = "$userData[0]" autocomplete="on" pattern="[a-zA-Z0-9]+" minlength="3" maxlength="20" required></div>
+    <div class="input-box.input"><input type="text" name="firstName" id="firstName" value="$userData[0]" autocomplete="on" pattern="[a-zA-Z0-9]+" minlength="3" maxlength="20" required></div>
     <div class="input-box.label"><label for ="">Last name</label></div>
     <div class="input-box.input"><input type="text" name="lastName" id="lastName" value="$userData[1]" autocomplete="on" pattern="[a-zA-Z0-9']+" minlength="3" maxlength="20" required></div>
-    <div class="input-box.label"><label for ="email">Email</label></div>
-    <div class="input-box.input"><input type="email" name="emailAddress" id="email value="$userData[2]" autocomplete="on" required></div>
-    <div class="input-box.label"><label for ="password">Password</label></div>
+    <div class="input-box.label"><label>User role</label></div>
+    <div class="input-box.input"><select class = "mySelect" name="user_role" id="user_role"><option value="user">User</option><option value="admin">Admin</select></div>
+    <div class="input-box.label"><label>Email</label></div>
+    <div class="input-box.input"><input type="email" name="emailAddress" id="email placeholder="$userData[3]" autocomplete="on" required></div>
+    <div class="input-box.label"><label>Password</label></div>
     <div class="input-box.input"><input type="password" name="passWord" id="passWord" autocomplete="off" pattern="[a-zA-Z0-9-_*!@£$]+" minlength="8" maxlength="20" required></div>
-    <div class="input-box.label"><label for ="passWordRpt">Password</label></div>
+    <div class="input-box.label"><label>Password</label></div>
     <div class="input-box.input"><input type="password" name="passWordRpt" id="passWordRpt" autocomplete="on" pattern="[a-zA-Z0-9-_*!@£$]+" minlength="8" maxlength="20" required></div>
     <div><input type="hidden" name="userApiReq" value="updateUser"></div>
-    <div><input id="submit" type="submit" value="Update"></div>
+    <div><input class="stdButton" id="submit" type="submit" value="Update"></div>
     </form>
         <script src="../js/update_user.js" defer></script>
     </div>

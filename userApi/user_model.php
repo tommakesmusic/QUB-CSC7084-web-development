@@ -24,11 +24,15 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['userApiReq'] == "login") {
     login($connection);
 }
 
+if ($_SERVER['REQUEST_METHOD'] == "GET" && isset($_GET['userDeleteAdmin'])) {
+    removeUserAdmin($connection);
+}
+
 if ($_SERVER['REQUEST_METHOD'] == "PATCH") {
     updateUser($connection);
 }
 
-if ($_SERVER['REQUEST_METHOD'] == "GET") {
+if ($_SERVER['REQUEST_METHOD'] == "GET" && !isset($_GET['userDeleteAdmin'])) {
     getUser($connection);
 }
 
@@ -41,21 +45,35 @@ if ($_SERVER['REQUEST_METHOD'] == "DELETE") {
 function signup($connection)
 {
     // echo "SIGNUP HAS REACHED THE BACK END!";
-    $firstName = $_POST['firstName'];
-    $lastName = $_POST['lastName'];
-    $userName = $_POST['userName'];
+    $firstName = noSpecChars($_POST['firstName']);
+    $lastName = noSpecChars($_POST['lastName']);
+    $userName = noSpecChars($_POST['userName']);
     $emailAddress = $_POST['emailAddress'];
     $passWord = $_POST['passWord'];
     $passWordRpt = $_POST['passWordRpt'];
 
-
     if (empty($firstName) || empty($lastName) || empty($userName) || empty($emailAddress) || empty($passWord) || empty($passWordRpt))
     {
-        sendReply(400, "All fields must be filled in.");
+        sendReply(400, "All fields must be filled in correctly. Enter all values and remove any special characters");
     }
     if (! filter_var($emailAddress, FILTER_VALIDATE_EMAIL))
     {
         sendReply(400, "Invalid email address.");
+    }
+    if (!length($firstName, 3, 20)){
+        sendReply(400, "First name is an incorrect length");
+    }
+    if (!length($lastName, 3, 20)){
+        sendReply(400, "Last name is an incorrect length");
+    }
+    if (!length($userName, 4, 12)){
+        sendReply(400, "Username is an incorrect length");
+    }
+    if (!length($passWord, 8, 20) || !length($passWordRpt, 8, 20)){
+        sendReply(400, "Password or Password repeat is an incorrect length");
+    }
+    if (userExists($connection, $userName)){
+        sendReply(400, "user with that name already exists");
     }
     if ($passWord != $passWordRpt)
     {
@@ -161,12 +179,18 @@ function updateUser($connection)
 
     parse_str(file_get_contents("php://input"), $_PATCH);
 
-    $firstName = $_PATCH['firstName'];
-    $lastName = $_PATCH['lastName'];
-    $userName = $_SESSION['user'];
+    $firstName = noSpecChars($_PATCH['firstName']);
+    $lastName = noSpecChars($_PATCH['lastName']);
+    $userName = noSpecChars($_SESSION['user']);
     $emailAddress = $_PATCH['emailAddress'];
     $passWord = $_PATCH['passWord'];
     $passWordRpt = $_PATCH['passWordRpt'];
+    if (empty($_PATCH['user_role'])){
+        $user_role = 'user';
+    }
+    else {
+        $user_role = $_PATCH['user_role'];
+    }
 
     if (empty($firstName) || empty($lastName) || empty($emailAddress) || empty($passWord) || empty($passWordRpt))
     {
@@ -176,6 +200,18 @@ function updateUser($connection)
     {
         sendReply(400, "Invalid email address.");
     }
+    if (!length($firstName, 3, 20)){
+        sendReply(400, "First name is an incorrect length");
+    }
+    if (!length($lastName, 3, 20)){
+        sendReply(400, "Last name is an incorrect length");
+    }
+    if (!length($userName, 4, 12)){
+        sendReply(400, "Username is an incorrect length");
+    }
+    if (!length($passWord, 8, 20) || !length($passWordRpt, 8, 20)){
+        sendReply(400, "Password or Password repeat is an incorrect length");
+    }
     if ($passWord != $passWordRpt)
     {
         sendReply(400, "Passwords must match.");  
@@ -183,14 +219,14 @@ function updateUser($connection)
     
     $passWord = password_hash($passWord, PASSWORD_DEFAULT);
 
-    $sql = "UPDATE  user set first_name=?, last_name=?, email=?, password=? where username=?;";
+    $sql = "UPDATE  user set first_name=?, last_name=?, email=?, user_role=? password=? where username=?;";
     $stmt = $connection->stmt_init();
 
     if (!$stmt->prepare($sql))
     {
         sendReply(400, "Oopsie!Something went wrong with the connection.");  
     }
-    $stmt->bind_param('sssss', $firstName, $lastName, $emailAddress, $passWord, $userName);
+    $stmt->bind_param('ssssss', $firstName, $lastName, $emailAddress, $user_role, $passWord, $userName);
     $stmt->execute();
     # $stmt->close();
     if($stmt->affected_rows > 0)
@@ -205,15 +241,14 @@ function updateUser($connection)
     }
 };
 
-// all my own work - with help from duck duck go and https://phpdelusions.net/mysqli_examples/prepared_select
 function getUser($connection){
 
     $userName = $_GET[('user')];
-    $sql = "SELECT first_name, last_name, email, date_joined FROM user WHERE username=?;";
+    $sql = "SELECT first_name, last_name, email, date_joined, user_role FROM user WHERE username=?;";
     $stmt = $connection->prepare($sql);
     if (!$stmt)
     {
-        sendReply(400, "Balls! Something went wrong with the connection.");  
+        sendReply(400, "Something went wrong with the connection.");  
     }
     $stmt->bind_param("s", $userName);
     $stmt->execute();
@@ -226,8 +261,9 @@ function getUser($connection){
         $firstName =  $row["first_name"];
         $lastName = $row["last_name"];
         $emailAddress = $row["email"];
+        $userRole = $row["user_role"];
         // split this on the spaces
-        echo $firstName." ".$lastName." ".$emailAddress." ".$date;
+        echo $firstName." ".$lastName." ".$userName." ".$emailAddress." ".$userRole." ".$date;
     }
     else {
         echo "User not found";
@@ -237,24 +273,86 @@ function getUser($connection){
 function removeUser($connection)
 {
     echo "DELETE HAS REACHED THE BACK END!";
+    
+    
     if(!isset($_SESSION['user'])){
         sendReply(403, "You are not logged in");
     }
+    
+    $userToDelete = $_SESSION['user'];
+    
+    echo $userToDelete;
 
-    alertMessage(400, "Are you sure you want to DELETE user ".$_SESSION['user']."?");
+    alertMessage(400, "Are you sure you want to DELETE user ".$userToDelete."?");
 
-    $sql = "DELETE from user where username='".$_SESSION['user']."';";
+    /* $sql = "DELETE from user where username='".$_SESSION['user']."';";
 
     if ($connection->query($sql)){
         unset($_SESSION['user']);
         session_destroy();
-        header('location: ../index.php');
+        //header('location: ../index.php');
     }
     else
     {
         sendReply(400, "Something went wrong.");
-    }
+    } */
 
 };
+
+function removeUserAdmin($connection)
+{
+    echo "ADMIN DELETE HAS REACHED THE BACK END!";
+    
+    
+    if(!isset($_SESSION['user'])){
+        sendReply(403, "You are not logged in");
+    }
+    if (empty($_GET['userDeleteAdmin'])){
+        sendReply(400, "No Value for User to delete.");
+    }
+
+    $userToDelete = $_GET['userDeleteAdmin'];
+
+    echo $userToDelete;
+
+    alertMessage(400, "Are you sure you want to DELETE user ".$userToDelete."?");
+
+    /* $sql = "DELETE from user where username='".$_SESSION['user']."';";
+
+    if ($connection->query($sql)){
+        unset($_SESSION['user']);
+        session_destroy();
+        //header('location: ../index.php');
+    }
+    else
+    {
+        sendReply(400, "Something went wrong.");
+    } */
+
+};
+
+function userExists($connection, $user){
+
+    $sql = "SELECT username FROM user WHERE username=?;";
+    $stmt = $connection->prepare($sql);
+    if (!$stmt)
+    {
+        sendReply(400, "Something went wrong with the connection.");  
+    }
+    $stmt->bind_param("s", $user);
+    $stmt->execute();
+    $result = $stmt->get_result(); // get the mysqli result
+    $row = $result->fetch_assoc();
+
+    if(mysqli_num_rows($result) > 0)
+    {   
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+
 
 ?>

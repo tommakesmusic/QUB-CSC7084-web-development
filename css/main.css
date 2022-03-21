@@ -149,7 +149,7 @@ h3 {
 .top{
   grid-area: top;
   min-height: 120px;
-  align-content: center;
+  justify-content: center;
   display:grid;
   margin: 1rem 0.25rem  0.25rem 0.25rem;
   padding: 0rem 0.25rem 0.25rem 0.25rem;
@@ -175,7 +175,7 @@ h3 {
 }
 .middle{
   grid-area: "middle";
-  align-items: center;
+  justify-items: center;
   width: 95vw;
   height: auto;
 }
@@ -233,17 +233,17 @@ h3 {
 
 /* Modal form .box-wide */
 .modal {
-  position:unset;
-  position: absolute;
-  top: 10%;
-  right: 100%;
+  /* position:unset;*/
+  /* position: absolute;*/
+  /* top: 10%;
+  right: 0%;
   width: auto;
   height: auto;
   text-align: center;
-  padding: 1em;
+  padding: 1em; */
   max-width: 50ch;
-  border: 2px;
-  box-shadow: 0 0 1em rgb(0 0 0 / .3);
+  /* border: 2px;
+  box-shadow: 0 0 1em rgb(0 0 0 / .3); */
   & > * {
     margin: 0 0 0.5rem 0;
   }
@@ -258,7 +258,7 @@ h3 {
 /* with help from https://webdesign.tutsplus.com */
 /* And http://www.w3schools.com */
 .form-box{
-  width: min-content;
+  width: auto;
   padding: 1rem;
   background-color: #fff;
   border: #000;
@@ -274,6 +274,18 @@ form {
   "label"
   "input";
 }
+select{
+  appearance: none;
+}
+select.mySelect{
+  background: #0061a7;
+  color: #fff;
+  padding: 0 10px;
+}
+select.mySelect option{
+color: #000;
+  padding: 0 10px;
+}
 
 .input-box-label {
   grid-area: label;
@@ -284,8 +296,9 @@ form {
 .input-box-input{
   grid-area: input;
   background-color:#fff;
-  /* align-items: left;
-  align-content: flex-end;
+  text-align: centre;
+  
+  /*align-content: flex-end;
   align-self: flex-end;
   float: right; */
 }
@@ -297,7 +310,8 @@ input[type="password"] {
 
 input {
   display: inline-block;
-  padding-top: 20px;
+  padding-top: 8px;
+  margin: 4px;
   font-size: var(--fs-400)
 }
 /* Navigation */
@@ -605,8 +619,8 @@ select {
     font-size: 14px;
   }
   .stdButton {
-    padding: 12px 20px;
-    font-size: 14px;
+    padding: 11px 20px;
+    font-size: 10px;
   }
   form {
   grid-template-columns: [col-start] 120px [col-2] 1fr [col-end];
@@ -633,13 +647,13 @@ select {
     font-size: 14px;
   }
   .stdButton {
-    padding: 14px 28px;
-    font-size: 14px;
+    padding: 12px 22px;
+    font-size: 12px;
   }
 }
 
-/* this ridiculous extra query is because i cannot get a tutorial */
-/* that shows ow to do this the same way i learned the other media queries */
+/* this ridiculous extra query is because I cannot get a tutorial */
+/* that shows how to do this the same way I learned the other media queries */
 @media (max-width:1118px) {
   nav .nav-btn{
     display: inline-block;

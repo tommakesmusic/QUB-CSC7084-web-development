@@ -44,4 +44,23 @@ function goLogin() {
     echo '</script>';
 }
 
+function length($string, $min, $max){
+    if (strlen($string) < $min || strlen($string)>$max){
+        return false;
+    }
+    else {
+        return true;
+    }
+}
+
+function noSpecChars($inputString){
+    if (!preg_match('/^[a-zA-Z0-9]*$/', $inputString))
+    {
+        return '';
+    }
+    else {
+        return $inputString;
+    }
+}
+
 ?>

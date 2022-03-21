@@ -3,14 +3,7 @@
 // but many if we get it wrong
 require_once 'html/header.html';
 ?>
-<dialog class="modal" id="modal">
-  <p><?php require_once 'html/login.html'; ?></p>
-  <button class="button close-button">close modal</button>
-</dialog>
-<dialog class="modal" id="modal2">
-  <p><?php require_once 'html/signup.html'; ?></p>
-  <button class="button close-button">close modal2</button>
-</dialog>
+
 
 <div class="top">
   <div class="top-left">
@@ -20,9 +13,11 @@ require_once 'html/header.html';
 
   <div class="top-right">
     
-    <button class="stdButton open-button">open modal</button>
-    <button class="stdButton open-button">open modal</button>
+    LEFT PART
   </div>
+
+</div>
+<div class="middle">
 
 </div>
 <div class="content">

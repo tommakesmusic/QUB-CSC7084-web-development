@@ -6,7 +6,7 @@ require_once '../php/helpers.php';
 session_start();
 
 $userRole = $_SESSION['userRole'];
-alertMessage(400, $userRole);
+// alertMessage(400, $userRole);
 if (!isset($_SESSION['user']))
 {
 
@@ -29,9 +29,9 @@ else if ($userRole !="admin")
         ?>
     </div>
 </div>
-<div class = "content">
+<div class = "middle">
     <?php
-include_once '../php/all_records.php';
+include_once 'all_recordsAdmin.php';
 ?>
 </div>
 

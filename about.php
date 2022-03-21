@@ -6,24 +6,21 @@ require_once 'html/header.html';
 
 
 <div class="top">
-  <div class="top-right">
-  <p id="welcome">Welcome to the <strong>Favourite 500</strong></p><hr />
-  <p>BROWSE THE CHART!!</p>
-  </div>
   <div class="top-left">
-    
-
+  <p id="welcome">Welcome to the <strong>Favourite 500</strong></p><hr />
+  <p>A collection of the favourite 500 albums as voted by the public!</p>
   </div>
 
+  <div class="top-right">
+    
+  </div>
 
 </div>
 <div class="middle">
   <h1> About this project </h1>
   <hr />
  <p> This project has been created to fulfill the educational aims of QUB web assignment</p>
-<?php
-  require_once "php/all_records.php";
-?>
+
 </div>
 
 

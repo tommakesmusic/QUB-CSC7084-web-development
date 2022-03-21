@@ -40,21 +40,7 @@ async function sessionRequest(){
         return role;
 }
 
-// Show / hide dialog
-// from Kein Powell
-// https://www.youtube.com/watch?v=TAB_v6yBXIE
-const modal = document.querySelector("#modal");
-const openModal = document.querySelector(".open-button");
-const closeModal = document.querySelector(".close-button");
 
-openModal.addEventListener("click", () => {
-  modal.showModal();
-  console.log("clicked open button");
-});
-
-closeModal.addEventListener("click", () => {
-  modal.close();
-});
 
 async function getSession(){
     var userRole = await sessionRequest();
@@ -66,43 +52,43 @@ async function getSession(){
             try{var u = document.getElementById("updateUser");
                 u.style.display = "none";} catch {}
             try{var v = document.getElementById("adminUser");
-            v.style.display = "none";} catch{}
+                v.style.display = "none";} catch{}
             try{var w = document.getElementById("deleteUser");
-            w.style.display = "none";} catch {}
+                w.style.display = "none";} catch {}
             try{var x = document.getElementById("logout");
-            x.style.display = "none"; } catch {}
+                x.style.display = "none"; } catch {}
             try{var y = document.getElementById("signup");
-            y.style.display = "inline-block";} catch{}
+                y.style.display = "inline-block";} catch{}
             try{var z = document.getElementById("login");
-            z.style.display = "inline-block";} catch{}
+                z.style.display = "inline-block";} catch{}
         }
         else if (userRole == "user"){
             var u = document.getElementById("updateUser");
-            u.style.display = "inline-block";
+                u.style.display = "inline-block";
             var v = document.getElementById("adminUser");
-            v.style.display = "none";
+                v.style.display = "none";
             var w = document.getElementById("deleteUser");
-            w.style.display = "inline-block";
+                w.style.display = "inline-block";
             var x = document.getElementById("logout");
-            x.style.display = "inline-block";
+                x.style.display = "inline-block";
             var y = document.getElementById("signup");
-            y.style.display = "none";
+                y.style.display = "none";
             var z = document.getElementById("login");
-            z.style.display = "none";
+                z.style.display = "none";
         }
         else if (userRole == "admin"){
             var u = document.getElementById("updateUser");
-            u.style.display = "inline-block";
+                u.style.display = "inline-block";
             var v = document.getElementById("adminUser");
-            v.style.display = "inline-block";
+                v.style.display = "inline-block";
             var w = document.getElementById("deleteUser");
-            w.style.display = "binline-block";
+                w.style.display = "binline-block";
             var x = document.getElementById("logout");
-            x.style.display = "inline-block";
+                x.style.display = "inline-block";
             var y = document.getElementById("signup");
-            y.style.display = "none";
+                y.style.display = "none";
             var z = document.getElementById("login");
-            z.style.display = "none";
+                z.style.display = "none";
         }
     }
 }
@@ -151,4 +137,23 @@ try {deleteUser.addEventListener('click', ()=>{
 
 });
 } catch {}
+
+/* try {deleteUserAdmin.addEventListener('click', ()=>{
+    var deleteUser = sessionRequest();
+
+    alert("In the script.js file, deleteUser Admin section");
+    fetch('http://localhost:8888/userApi/user_model.php', {
+        method: 'DELETE',
+        body: 'deleteUser=',
+        credentials: 'include',
+    })
+    .then(res => res.text())
+    .then(data => {
+        alert(data);
+        location.href = "../index.php";
+    })
+    .catch(err => alert(err));
+
+});
+} catch {} */
 // AJAX call
