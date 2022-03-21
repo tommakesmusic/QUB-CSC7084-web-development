@@ -285,7 +285,7 @@ function removeUser($connection)
 
     alertMessage(400, "Are you sure you want to DELETE user ".$userToDelete."?");
 
-    /* $sql = "DELETE from user where username='".$_SESSION['user']."';";
+    $sql = "DELETE from user where username='".$_SESSION['user']."';";
 
     if ($connection->query($sql)){
         unset($_SESSION['user']);
@@ -295,7 +295,7 @@ function removeUser($connection)
     else
     {
         sendReply(400, "Something went wrong.");
-    } */
+    }
 
 };
 
@@ -317,7 +317,7 @@ function removeUserAdmin($connection)
 
     alertMessage(400, "Are you sure you want to DELETE user ".$userToDelete."?");
 
-    /* $sql = "DELETE from user where username='".$_SESSION['user']."';";
+    $sql = "DELETE from user where username='".$_SESSION['user']."';";
 
     if ($connection->query($sql)){
         unset($_SESSION['user']);
@@ -327,7 +327,7 @@ function removeUserAdmin($connection)
     else
     {
         sendReply(400, "Something went wrong.");
-    } */
+    }
 
 };
 
