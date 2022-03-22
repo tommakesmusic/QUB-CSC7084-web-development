@@ -15,7 +15,9 @@ if (isset($_SESSION['user']) && $_SESSION['userRole']=="admin"){
 
     // echo $userData;
     echo <<<EOD
-    <div class="top"><div>Edit user $userData[2], member since $userData[5]</div></div>
+    <div class="top">
+    <p id="welcome">Oh, it's you again!</p>
+    <div>Edit user $userData[2], member since $userData[5]</div></div>
     <div class="middle">
     
     <div class="form-box">

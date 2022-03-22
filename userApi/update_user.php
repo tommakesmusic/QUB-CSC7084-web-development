@@ -15,7 +15,9 @@ if (isset($_SESSION['user'])){
 
     // echo $userData;
     echo <<<EOD
-    <div class="top"> This is the top section. Info goes here</div>
+    <div class="top">
+    <p id="welcome">Ready to update?</p>
+    </div>
     <div class="middle">
 
     <div class="form-box">

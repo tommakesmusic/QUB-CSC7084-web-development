@@ -131,7 +131,7 @@ h3 {
 }
 
 .page-contents{
-  background-image: "../img/atlantic-bg.png" no-repeat   center center #505050;  ;
+  background-image: "../img/atlantic-bg.png" no-repeat   center center #505050;
   background-size: cover;
   grid-area: content;
   width:100%;
@@ -232,28 +232,6 @@ h3 {
   box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
 }
 
-/* Modal form .box-wide */
-.modal {
-  /* position:unset;*/
-  /* position: absolute;*/
-  /* top: 10%;
-  right: 0%;
-  width: auto;
-  height: auto;
-  text-align: center;
-  padding: 1em; */
-  max-width: 50ch;
-  /* border: 2px;
-  box-shadow: 0 0 1em rgb(0 0 0 / .3); */
-  & > * {
-    margin: 0 0 0.5rem 0;
-  }
-}
-
-.modal::backdrop {
-  background: rgba(28, 100, 194, 0.4);
-}
-
 .bgimg {
   background-image: url("img/atlantic-bg.png");
 }
@@ -263,14 +241,14 @@ h3 {
 .form-box{
   width: auto;
   padding: 1rem;
-  background-color: #fff;
+  /* background-color: #fff; */
   border: #000;
   background-origin: padding-box;
 }
 
 form {
   display: grid;
-  background: whitesmoke;
+  /* background: whitesmoke; */
   grid-template-columns: [col-start] 1fr [col-end];
   grid-template-rows: auto;
   grid-template-areas:
@@ -278,17 +256,36 @@ form {
   "input";
 }
 
+
+
+table {
+  width: auto;
+  padding: auto;
+}
 .th{
   text-align: center;
 }
 .td{
+  width: auto;
   text-align: left;
 }
+
+td div {
+  border: 0;
+  width: auto;
+  height: auto;
+  min-height: 20px;
+  min-width: 20px;
+}
+
 .tr {
   padding: 1rem;
   margin: 0.5rem;
   border-bottom: #0061a7;
   border-style: groove;
+}
+tr:nth-child(even) {
+  background-color: #a1d7fb;
 }
 
 select{
@@ -416,6 +413,10 @@ nav #nav-check, nav .nav-btn{
   text-align: center;
   text-decoration: none;
   display: block;
+}
+
+.stdButtonRd{
+  background-color: #cb2c17;
 }
 .userButton {
 	background-color: #17a1cb;

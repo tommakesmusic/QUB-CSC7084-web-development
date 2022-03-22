@@ -152,18 +152,15 @@ function updateComment($connection)
 
 
 function getPosition($connection){
-    /*album_id 
-	chart_position  */
 
-    if (!empty ($_GET['position'])) {
-        $position = $_GET[('position')];
+    if (!empty ($_GET['value'])) {
+        $position = $_GET[('value')];
         if (!filter_var($position, FILTER_VALIDATE_INT)){
-            sendReply(400, "Data supplied was anon-numeric.");
+            sendReply(400, "Data supplied was non-numeric.");
         }
-        echo $position;
+        // echo $position;
         if (!empty ($_GET['number'])){
             $number = $_GET['number'];
-            echo $number;
         }
         else
         {
@@ -184,28 +181,30 @@ function getPosition($connection){
     $stmt->bind_param("i", $position);
     $stmt->execute();
     $result = $stmt->get_result(); // get the mysqli result
-    $row = $result->fetch_assoc();
-
+    //$row = $result->fetch_assoc();
+    
     if(mysqli_num_rows($result) > 0)
-    {   
-        echo $position;
-        foreach ($result as $row ){
-            echo (json_encode($row));
+    {  
+        $result_array = array();
+        while($row = $result->fetch_assoc()){
+            array_push($result_array, $row);
         }
+        echo json_encode($result_array); 
     } 
     else {
         echo "Chart position not found. We only have positions 1 to 500.";
     }
+    
 }
 
 function getYear($connection){
 
-    if (!empty ($_GET['year'])) {
-        $year = $_GET[('year')];
+    if (!empty ($_GET['value'])) {
+        $year = $_GET[('value')];
         if (!filter_var($year, FILTER_VALIDATE_INT)){
             sendReply(400, "Data supplied was non-numeric.");
         }
-        echo $year;
+        // echo $year;
     }
     else
     {
@@ -221,14 +220,14 @@ function getYear($connection){
     $stmt->bind_param("i", $year);
     $stmt->execute();
     $result = $stmt->get_result(); // get the mysqli result
-    $row = $result->fetch_assoc();
 
     if(mysqli_num_rows($result) > 0)
     {   
-        echo $year;
-        foreach ($result as $row ){
-            echo (json_encode($row));
+        $result_array = array();
+        while($row = $result->fetch_assoc()){
+            array_push($result_array, $row);
         }
+        echo json_encode($result_array);
     }
     else {
         echo "Year notfound. Call Dr. Who!";
@@ -237,8 +236,8 @@ function getYear($connection){
 
 function getAlbum($connection){
 
-    if (!empty ($_GET['album'])) {
-        $album = strtolower($_GET[('album')]);
+    if (!empty ($_GET['value'])) {
+        $album = strtolower($_GET[('value')]);
         $albm_lwcase = "%".$album."%";
     }
     else
@@ -255,14 +254,14 @@ function getAlbum($connection){
     $stmt->bind_param("s", $albm_lwcase);
     $stmt->execute();
     $result = $stmt->get_result(); // get the mysqli result
-    $row = $result->fetch_assoc();
 
     if(mysqli_num_rows($result) > 0)
     {   
-        echo $album;
-        foreach ($result as $row ){
-            echo (json_encode($row));
+        $result_array = array();
+        while($row = $result->fetch_assoc()){
+            array_push($result_array, $row);
         }
+        echo json_encode($result_array);
     }
     else {
         echo "Album not found";
@@ -271,8 +270,8 @@ function getAlbum($connection){
 
 function getArtist($connection){
     // echo "In the Artist block";
-    if (!empty ($_GET['artist'])) {
-        $artist = strtolower($_GET[('artist')]);
+    if (!empty ($_GET['value'])) {
+        $artist = strtolower($_GET[('value')]);
         $art_lwcase = "%".$artist."%";
     }
     else
@@ -291,14 +290,14 @@ function getArtist($connection){
     $stmt->execute();
     //echo "statement executed";
     $result = $stmt->get_result(); // get the mysqli result
-    $row = $result->fetch_assoc();
 
     if(mysqli_num_rows($result) > 0)
     {   
-        echo $artist;
-        foreach ($result as $row ){
-            echo (json_encode($row));
+        $result_array = array();
+        while($row = $result->fetch_assoc()){
+            array_push($result_array, $row);
         }
+        echo json_encode($result_array);
     }
     else {
         echo "Artist not found";
@@ -312,8 +311,8 @@ function getArtist($connection){
 
 function getGenre($connection){
 
-    if (!empty ($_GET['genre'])) {
-        $genre = $_GET[('genre')];
+    if (!empty ($_GET['value'])) {
+        $genre = $_GET[('value')];
         $gen_query = "%".strtolower($genre)."%";
     }
     else
@@ -330,14 +329,14 @@ function getGenre($connection){
     $stmt->bind_param("s", $gen_query);
     $stmt->execute();
     $result = $stmt->get_result(); // get the mysqli result
-    $row = $result->fetch_assoc();
 
     if(mysqli_num_rows($result) > 0)
     {   
-        echo $genre;
-        foreach ($result as $row ){
-            echo (json_encode($row));
+        $result_array = array();
+        while($row = $result->fetch_assoc()){
+            array_push($result_array, $row);
         }
+        echo json_encode($result_array);
     }
     else {
         echo "Genre not found, hipster!";
@@ -346,8 +345,8 @@ function getGenre($connection){
 
 function getSubgenre($connection){
 
-    if (!empty ($_GET['subgenre'])) {
-        $subgenre = $_GET[('subgenre')];
+    if (!empty ($_GET['value'])) {
+        $subgenre = $_GET[('value')];
         $subgen_query = "%".strtolower($subgenre)."%";
     }
     else
@@ -364,14 +363,14 @@ function getSubgenre($connection){
     $stmt->bind_param("s", $subgen_query);
     $stmt->execute();
     $result = $stmt->get_result(); // get the mysqli result
-    $row = $result->fetch_assoc();
 
     if(mysqli_num_rows($result) > 0)
     {   
-        echo $subgenre;
-        foreach ($result as $row ){
-            echo (json_encode($row));
+        $result_array = array();
+        while($row = $result->fetch_assoc()){
+            array_push($result_array, $row);
         }
+        echo json_encode($result_array);
     }
     else {
         echo "Subgenre not found, even more hipster!";

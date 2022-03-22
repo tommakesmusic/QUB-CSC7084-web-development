@@ -100,10 +100,12 @@ const userLogout = document.getElementById('logout');
 const updateUser = document.getElementById('updateUser');
 const deleteUser = document.getElementById('deleteUser');
 const adminUser = document.getElementById('adminUser');
+const chartSearch = document.getElementsByClassName('chart');
 
 try {signup.addEventListener('click', ()=>{location.href="../userApi/signup.php"});} catch{}
 try {login.addEventListener('click', ()=>{location.href="../userApi/login.php"});} catch{}
 try {adminUser.addEventListener('click', ()=>{location.href="../userApi/userAdmin.php"});} catch {}
+try {chartSearch.addEventListener('click', ()=>{location.href="../api/chartSearch.php"});} catch {}
 
 try {userLogout.addEventListener('click', function () {
         // alert("In the script.js file, logout section");

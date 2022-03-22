@@ -12,7 +12,7 @@ require_once 'html/header.html';
   </div>
 
   <div class="top-right">
-    <img src="img/records.png" alt="">
+    <img src="img/records.png" alt="An image of several vinyl records">
   </div>
 
 </div>

@@ -28,7 +28,7 @@ if ($result->num_rows > 0) {
         echo '<td>'.$row["user_role"].'</td>';
         echo '<td>'.$date.'</td>';
         echo "<td><button class='stdButton'><a href='update_user-Admin.php?user=$name'>Update User</a></button></td>";
-        echo "<td><button class='stdButton'><a href='user_model.php?userDeleteAdmin=$name'>Delete User</a></button></td>";
+        echo "<td><button class='stdButtonRd'><a href='user_model.php?userDeleteAdmin=$name'>Delete User</a></button></td>";
         echo '</tr>';
       }
       echo '</table>';

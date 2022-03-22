@@ -22,7 +22,7 @@ else if ($userRole !="admin")
 ?>
 
 <div class="top">
-    <div class="">THIS IS THE TOP AREA</div>
+    <p id="welcome">Howdy, Admin!</p>
     <div class="content-top-right">
         <?php
             require_once '../php/userButtons.php';

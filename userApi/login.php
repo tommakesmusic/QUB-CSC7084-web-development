@@ -7,7 +7,9 @@ session_start();
 
 if (!isset($_SESSION['user'])){
     echo <<<EOD
-    <div class="top"> This is the top section. Info goes here</div>
+    <div class="top">
+    <p id="welcome">Wassup!</p>
+    <p>Sign in with your username and password to get access to more features!</p></div>
     <div class="middle">
 
     <div class="form-box">

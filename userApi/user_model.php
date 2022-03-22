@@ -141,11 +141,13 @@ function login($connection)
         $data = $result->fetch_assoc();
         $validPassword = password_verify($passWord, $data['password']);
         $userRole = $data['user_role'];
+        $id =$data['user_id'];
         if(!$validPassword)
         {
             sendReply(401, "Incorrect password");
         }
         $_SESSION['user'] = $userName;
+        $_SESSION['id'] = $id;
         $_SESSION['userRole'] = $userRole;
         session_commit();
         sendReply(200, "Welcome back ". $_SESSION['user']);

@@ -8,7 +8,8 @@ session_start();
 if (!isset($_SESSION['user'])){
     //sendMessage(200, "In session");
      echo <<<EOD
-    <div class="top"> We're glad you've decided to join us on the Favourite 500! Please enter your details below:</div>
+    <div class="top">
+    <p id="welcome"> Hi there!</p><p>We're glad you've decided to join us on the Favourite 500! Please enter your details below:</p></div>
     <div class="top-right -fs-300" >
     <ul>
     <li> First name - Your first name. This can only contain letters and numbers and must be between 4 and 20 characters long.</li>

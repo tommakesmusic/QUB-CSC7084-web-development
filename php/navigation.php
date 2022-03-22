@@ -23,6 +23,7 @@
     <a href="http://localhost:8888/">Home</a>
     <a href="http://localhost:8888/about.php">About</a>
     <a href="http://localhost:8888/browse.php">Browse</a>
+    <a href="http://localhost:8888/api/chartSearch.php">Search</a>
     <?php
       require_once "userButtons.php"
     ?>
