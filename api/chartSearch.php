@@ -50,13 +50,12 @@ if (isset($_SESSION['user'])){
             </div>
             
             <div class="flex flow">
-                Only Letters and umbers allowed in search
                 <form class="content-genre-box flow bg-neutral-100 text-secondary-500" action="searchResult.php" autocomplete="off" method="GET">
                     <div class="input-box.label"><label for="value">Search Album Name</label></div>
                     <div class="input-box.input"><input type="text" name="value" id="value" autocomplete="off" pattern="[ a-zA-Z0-9!]+" minlength="3" maxlength="30" required></div>
                     <input type="hidden" id="action" name="action" value="album">
                     <button class="stdButton" id="submit" type="submit" value="Search">Search Album Name</button>
-                </form>
+                    Only Letters and Numbers</form>
             </div>
 
 

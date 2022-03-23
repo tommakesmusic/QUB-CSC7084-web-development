@@ -97,8 +97,7 @@ function createComment($connection)
     if($stmt->affected_rows > 0)
     {
         sendReply(200, "Success");
-        $unused = true;
-        goLogin();
+        header('location: ../browse.php');
     }
     else
     {
