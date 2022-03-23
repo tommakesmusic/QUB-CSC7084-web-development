@@ -5,7 +5,7 @@ session_start();
 require_once '../html/headerSubFolder.html';
 require_once "../php/helpers.php";
 
-//if (isset($_SESSION['user'])){
+if (isset($_SESSION['user'])){
     //$userName = $_SESSION(['user']);
 
     
@@ -89,11 +89,11 @@ require_once "../php/helpers.php";
     <p>Remember, only members can search and comment!</p>
     </div>
 EOD;
-/* }
+ }
 else {
     alertMessage(400, "Can't do stuff If you're not logged in!");
     //header("location: ../index.php");
     echo "<script> location.href='../index.php'; </script>";
-} */
+} 
 require_once '../html/footerSubFolder.html';
 ?>

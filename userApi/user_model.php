@@ -174,7 +174,7 @@ function logout($connection)
 
 function updateUser($connection)
 {
-    echo "UPDATE HAS REACHED THE BACK END!";
+    //echo "UPDATE HAS REACHED THE BACK END!";
     if(!isset($_SESSION['user'])){
         sendReply(400, "You are not logged in");
     }
@@ -183,7 +183,7 @@ function updateUser($connection)
 
     $firstName = noSpecChars($_PATCH['firstName']);
     $lastName = noSpecChars($_PATCH['lastName']);
-    $userName = noSpecChars($_SESSION['user']);
+    $userName = $_PATCH['userName'];
     $emailAddress = $_PATCH['emailAddress'];
     $passWord = $_PATCH['passWord'];
     $passWordRpt = $_PATCH['passWordRpt'];
@@ -221,7 +221,7 @@ function updateUser($connection)
     
     $passWord = password_hash($passWord, PASSWORD_DEFAULT);
 
-    $sql = "UPDATE  user set first_name=?, last_name=?, email=?, user_role=? password=? where username=?;";
+    $sql = "UPDATE  user set first_name=?, last_name=?, email=?, user_role=?, password=? where username=?;";
     $stmt = $connection->stmt_init();
 
     if (!$stmt->prepare($sql))
@@ -235,7 +235,7 @@ function updateUser($connection)
     {
         sendReply(200, "Success. User updated");
         $unused=true;
-        goHome();
+        //goHome();
     }
     else
     {
@@ -245,10 +245,10 @@ function updateUser($connection)
 
 function getUser($connection){
     // We are dealing with only one user at a time
-    if (!isset($_GET[('name')])){
+    if (!isset($_GET[('userName')])){
         sendReply(400, "Something went wrong with the api call - name not set.");
     }
-    $userName = $_GET[('name')];
+    $userName = $_GET[('userName')];
     $sql = "SELECT first_name, last_name, email, date_joined, user_role FROM user WHERE username=?;";
     $stmt = $connection->prepare($sql);
     if (!$stmt)
@@ -301,7 +301,7 @@ function removeUser($connection)
         $stmt->execute();
 
         $result = $stmt->get_result(); // get the mysqli result
-        $row = $result->fetch_assoc();   
+        //$row = $result->fetch_assoc();   
         if (mysqli_num_rows($result) > 0){
             alertMessage(200, "User ".$userToDelete." has been deleted");
             header('location: ../index.php');

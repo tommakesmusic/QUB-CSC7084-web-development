@@ -15,6 +15,7 @@ if ($result->num_rows > 0) {
       echo  '<th>User role:</th>';
       echo  '<th>Member since;</th>';
       echo  '<th>Update:</th>';
+      echo  '<th>Comments:</th>';
       echo  '<th>Delete user:</th>';
       echo '</tr>';
       while($row = $result->fetch_assoc()) {
@@ -27,9 +28,10 @@ if ($result->num_rows > 0) {
         echo '<td>'.$row["last_name"].'</td>';
         echo '<td>'.$row["user_role"].'</td>';
         echo '<td>'.$date.'</td>';
-        echo "<td><button class='stdButton'><a href='update_user-Admin.php?name=$name'>Update User</a></button></td>";
+        echo "<td><button class='stdButton'><a href='update_user-Admin.php?userName=$name'>Update User</a></button></td>";
+        echo "<td><button class='stdButton'><a href='approveComment.php?user_id=".$row['user_id']."&userName=".$name."'>Approve comments</a></button></td>";
         if ($name!=$_SESSION['user']){
-        echo "<td><form action='user_model.php' method='GET'><input type='hidden' name='userDeleteAdmin' value='true'><input type='hidden' name='name' value='$name'><button class='stdButton' id='submit' type='submit' value='Submit'>Delete User</button></form></td>";
+        echo "<td><form action='user_model.php' method='GET'><input type='hidden' name='userDeleteAdmin' value='true'><input type='hidden' name='userName' value='$name'><button class='stdButton' id='submit' type='submit' value='Submit'>Delete User</button></form></td>";
        }
         echo '</tr>';
       }

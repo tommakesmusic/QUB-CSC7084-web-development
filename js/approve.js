@@ -15,10 +15,10 @@ signupButton.addEventListener('click', () =>{
         return respnse.text()
     })
     .then(data => {
-        alert(data)
+        alert(data);
         if(myStatus == 200)
             //location.href="../browse.php"
-            history.back()
+            history.back();
     })
     .catch(err => {alert(err) })
 })

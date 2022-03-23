@@ -25,7 +25,7 @@ if ($result->num_rows > 0) {
       
     while($row = $result->fetch_assoc()) {
         echo '<tr>';
-        if ($link='TRUE'){
+        if (isset($_SESSION['user'])) {
         echo '<td><a href="api/single_album.php?value='.$row["position"].'">'.$row["position"].'</a></td>';
         echo '<td><a href="api/single_album.php?value='.$row["position"].'">'.$row["year"].'</a></td>';
         echo '<td><a href="api/single_album.php?value='.$row["position"].'">'.$row["album_name"].'</a></td>';

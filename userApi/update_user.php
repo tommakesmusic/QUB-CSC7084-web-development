@@ -7,8 +7,8 @@ require_once "../php/helpers.php";
 
 if (isset($_SESSION['user'])){
     sendMessage(200, "Username can not be changed.");
-    //$userName = $_SESSION(['user']);
-    $api_url = 'http://localhost:8888/userApi/user_model.php?userDeleteAdmin=false&name='.$_SESSION['user'];
+    $user = $_SESSION['user'];
+    $api_url = 'http://localhost:8888/userApi/user_model.php?userDeleteAdmin=false&userName='.$user;
 
     // Read JSON file
     $userData = explode(" ", file_get_contents($api_url));
@@ -28,12 +28,14 @@ if (isset($_SESSION['user'])){
     <div class="input-box.label"><label for ="">Last name</label></div>
     <div class="input-box.input"><input type="text" name="lastName" id="lastName" value="$userData[1]" autocomplete="on" pattern="[a-zA-Z0-9']+" minlength="3" maxlength="20" required></div>
     <div class="input-box.label"><label for ="email">Email</label></div>
-    <div class="input-box.input"><input type="email" name="emailAddress" id="email value="$userData[2]" autocomplete="on" required></div>
+    <div class="input-box.input"><input type="email" name="emailAddress" id="email" value="$userData[3]" autocomplete="on" required></div>
     <div class="input-box.label"><label for ="password">Password</label></div>
     <div class="input-box.input"><input type="password" name="passWord" id="passWord" autocomplete="off" pattern="[a-zA-Z0-9-_*!@£$]+" minlength="8" maxlength="20" required></div>
     <div class="input-box.label"><label for ="passWordRpt">Password</label></div>
     <div class="input-box.input"><input type="password" name="passWordRpt" id="passWordRpt" autocomplete="on" pattern="[a-zA-Z0-9-_*!@£$]+" minlength="8" maxlength="20" required></div>
+    <div><input type="hidden" name="userName" value="$user"></div>
     <div><input type="hidden" name="userApiReq" value="updateUser"></div>
+    
     <div><input id="submit" type="submit" value="Update"></div>
     </form>
         <script src="../js/update_user.js" defer></script>

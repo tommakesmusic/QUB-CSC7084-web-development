@@ -8,9 +8,12 @@ require_once 'html/header.html';
 <div class="top">
   <div class="top-left">
   <p id="welcome">Welcome to the <strong>Favourite 500</strong></p><hr />
-  <p>A collection of the favourite 500 albums as voted by the public!</p>
+  <p>A collection of the favourite 500 albums of all time as curated by <a href="https://www.rollingstone.com/" target="_blank">Rolling Stone Magazine!</a></p>
+  <p>You might agree with their choices, or disagree, but explore and leave your comment and let us know what you think!</p>
+  <p>This dataset has been supplied via <a href ="https://www.kaggle.com" target="_blank">Kaggle.</a></p>
+  <P>Rolling Stone say <blockquote cite=" https://www.rollingstone.com/music/music-lists/best-albums-of-all-time-1062063/"><h4>..no list is definitive — tastes change, new genres emerge, the history of music keeps being rewritten.</h4></blockquote> but if you love music you will find something to talk about on this list.</p>
   </div>
-
+ 
   <div class="top-right">
     <img src="img/records.png" alt="An image of several vinyl records">
   </div>
@@ -54,13 +57,13 @@ require_once 'html/header.html';
 <article class="content-genre-box last flow bg-primary-400 text-neutral-100">
   <div class="flex">
     <h2>Login for more Genres</h2>
-    <p>Lots of text and stuff can go here, probably and this is why it flows onto two lines and stays in one column</p>
+    <p>Lots of text and stuff can go here, probably and this is why it flows onto two lines and stays in one column. It's really just demonstrating the responsive css grid properties.</p>
   </div>
 </article>
 </div>
 </div>
 
-<div class="bottom">THIS IS THE BOTTOM AREA</div>
+<div class="bottom"><p>THIS IS THE BOTTOM AREA - It isn't used for much but it is here!</p></div>
 
 <?php
 require_once 'html/footer.html';

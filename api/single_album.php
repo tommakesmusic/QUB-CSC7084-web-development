@@ -22,6 +22,7 @@ if (isset($_SESSION['user'])){
         foreach ($commentData as $row){
             $owned =  $row['owned'];
             $comment =  $row['comment'];
+            $approved = $row['approved'];
         }
     }
 
@@ -33,7 +34,11 @@ if (isset($_SESSION['user'])){
         echo "<h3>I OWN IT</h3>";
     }
     if ($comment!=""){
-        echo '<h4>'.$comment.'</h4>';
+        if ($approved!=0){
+            echo '<h4>'.$comment.'</h4>';
+        } else {
+            echo '<h4>You have commented but it has not been approved.</h4>';
+        }
     }
     if ($owned == 0 || $comment = ""){
         echo "<h4>Do you own this or want to make a comment?</h4>";

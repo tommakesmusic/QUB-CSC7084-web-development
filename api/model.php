@@ -20,8 +20,12 @@ if ($_SERVER['REQUEST_METHOD'] == "GET" && $_GET['action'] == "comment") {
     getComment($connection);
 }
 
-if ($_SERVER['REQUEST_METHOD'] == "PATCH") {
-    updateComment($connection);
+if ($_SERVER['REQUEST_METHOD'] == "GET" && $_GET['action'] == "approve") {
+    approveComment($connection);
+}
+
+if ($_SERVER['REQUEST_METHOD'] == "GET" && $_GET['action'] == "approved") {
+    approved($connection);
 }
 
 if ($_SERVER['REQUEST_METHOD'] == "GET" && ($_GET['action'] == "position")) {
@@ -48,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET" && $_GET['action'] == "subgenre") {
     getSubgenre($connection);
 }
 
-if ($_SERVER['REQUEST_METHOD'] == "DELETE") {
+if ($_SERVER['REQUEST_METHOD'] == "GET" && $_GET['action'] == "delete") {
     delete($connection);
 } 
 
@@ -72,6 +76,7 @@ function createComment($connection)
     }
     $position = $_POST['position'];
     $user_id = $_SESSION['id'];
+    $approved = 0;
       
 
    /*  if (commentExists($connection, $user_id, $position, $owned)){
@@ -79,14 +84,14 @@ function createComment($connection)
     } */
 
 
-    $sql = "INSERT into comments (user_id, position, owned, comment) values (?,?,?,?);";
+    $sql = "INSERT into comments (user_id, position, owned, comment, approved) values (?,?,?,?, ?);";
     $stmt = $connection->stmt_init();
 
     if (!$stmt->prepare($sql))
     {
         sendReply(400, "Oops!Something went wrong with the connection.");  
     }
-    $stmt->bind_param('iiis', $user_id, $position, $owned, $comment);
+    $stmt->bind_param('iiisi', $user_id, $position, $owned, $comment, $approved);
     $stmt->execute();
     # $stmt->close();
     if($stmt->affected_rows > 0)
@@ -100,57 +105,6 @@ function createComment($connection)
         sendReply(400, "Oh no. Database did not update"); 
     }
 
-};
-
-function updateComment($connection)
-{
-    // echo "UPDATE HAS REACHED THE BACK END!";
-    if(!isset($_SESSION['user'])){
-        sendReply(400, "You are not logged in");
-    }
-
-    parse_str(file_get_contents("php://input"), $_PATCH);
-
-    $firstName = $_PATCH['firstName'];
-    $lastName = $_PATCH['lastName'];
-    $userName = $_SESSION['user'];
-    $emailAddress = $_PATCH['emailAddress'];
-    $passWord = $_PATCH['passWord'];
-    $passWordRpt = $_PATCH['passWordRpt'];
-
-    if (empty($firstName) || empty($lastName) || empty($emailAddress) || empty($passWord) || empty($passWordRpt))
-    {
-        sendReply(400, "All fields must be filled in.");
-    }
-    if (! filter_var($emailAddress, FILTER_VALIDATE_EMAIL))
-    {
-        sendReply(400, "Invalid email address.");
-    }
-    if ($passWord != $passWordRpt)
-    {
-        sendReply(400, "Passwords must match.");  
-    }
-    
-    $passWord = password_hash($passWord, PASSWORD_DEFAULT);
-
-    $sql = "UPDATE  user set first_name=?, last_name=?, email=?, password=? where username=?;";
-    $stmt = $connection->stmt_init();
-
-    if (!$stmt->prepare($sql))
-    {
-        sendReply(400, "Oopsie!Something went wrong with the connection.");  
-    }
-    $stmt->bind_param('sssss', $firstName, $lastName, $emailAddress, $passWord, $userName);
-    $stmt->execute();
-    # $stmt->close();
-    if($stmt->affected_rows > 0)
-    {
-        sendReply(201, "Success. User updated");
-    }
-    else
-    {
-        sendReply(400, "Oh no. Database did not update"); 
-    }
 };
 
 function getComment($connection){
@@ -170,10 +124,10 @@ function getComment($connection){
     }
     else
     {
-        sendReply(400, "Not enought data given");
+        sendReply(400, "Not enough data given");
     }
 
-    $sql = "SELECT owned, comment FROM comments WHERE user_id=? AND position=?";
+    $sql = "SELECT owned, comment, approved FROM comments WHERE user_id=? AND position=?";
     $stmt = $connection->prepare($sql);
     if (!$stmt)
     {
@@ -194,7 +148,83 @@ function getComment($connection){
         echo json_encode($result_array); 
     }
     else {
-        //echo "Chart position not found. We only have positions 1 to 500.";
+        //echo "Comment not found. We only have positions 1 to 500.";
+    }
+    
+}
+
+function approveComment($connection){
+    // echo "IN COMMENT APPROVAL FUNCTION";
+
+    // echo $position;
+    if (!empty ($_GET['value'])){
+        $user_id = $_GET[('value')];
+        if (!filter_var($user_id, FILTER_VALIDATE_INT)){
+            sendReply(400, "Data supplied was non-numeric.");
+        }
+    }
+    else
+    {
+        sendReply(400, "No user Id given");
+    }
+
+    $sql = "SELECT comments.id, comments.owned, comments.comment, album.album_name  FROM comments INNER JOIN album ON comments.position = album.position WHERE comments.user_id=? AND comments.approved=0";
+    $stmt = $connection->prepare($sql);
+    if (!$stmt)
+    {
+        sendReply(400, "Oh dear! Something went wrong with the connection.");  
+    }
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    
+    $result = $stmt->get_result(); // get the mysqli result
+    //$row = $result->fetch_assoc();
+    
+    if(mysqli_num_rows($result) > 0)
+    {  
+        $result_array = array();
+        while($row = $result->fetch_assoc()){
+            array_push($result_array, $row);
+        }
+        echo json_encode($result_array); 
+    }
+    else {
+        echo "I didn't find anything, sorry.";
+    }
+    
+}
+
+function approved($connection){
+    echo "IN COMMENT APPROVAL FUNCTION";
+
+    // echo $position;
+    if (!empty ($_GET['value'])){
+        $comment = $_GET[('value')];
+        if (!filter_var($comment, FILTER_VALIDATE_INT)){
+            sendReply(400, "Data supplied was non-numeric.");
+        }
+    }
+    else
+    {
+        sendReply(400, "No comment Id was given");
+    }
+
+    $sql = "UPDATE comments SET approved=1 WHERE id=?";
+    $stmt = $connection->prepare($sql);
+    if (!$stmt)
+    {
+        sendReply(400, "Oh dear! Something went wrong with the connection.");  
+    }
+    $stmt->bind_param("i", $comment);
+    ;
+
+    
+    if($stmt->execute())
+    {  
+        header('location: ../userApi/userAdmin.php');
+    }
+    else {
+        echo "Comment not updated.";
     }
     
 }
@@ -428,27 +458,45 @@ function getSubgenre($connection){
 function delete($connection)
 {
     // echo "DELETE HAS REACHED THE BACK END!";
-    if(!isset($_SESSION['user'])){
-        sendReply(403, "You are not logged in");
+    if (!empty ($_GET['value'])){
+        $id = $_GET[('value')];
+        if (!filter_var($id, FILTER_VALIDATE_INT)){
+            sendReply(400, "Data supplied was non-numeric.");
+        }
+    }
+    else
+    {
+        sendReply(400, "No comment id supplied");
+    }
+    if (commentDeleted($connection, $id)){
+        sendReply(400, "Comment doesn't exist");
     }
 
-    alertMessage(400, "Are you sure you want to DELETE user ".$_SESSION['user']."?");
+    //alertMessage(400, "Are you sure you want to remove this comment?");
 
-    $sql = "DELETE from user where username='".$_SESSION['user']."';";
-
-    if ($connection->query($sql)){
-        unset($_SESSION['user']);
-        session_destroy();
-        header('location: ../index.php');
+    $sql = "DELETE from comments where comments.id=?;";
+    $stmt = $connection->prepare($sql);
+    if (!$stmt)
+    {
+        sendReply(400, "Oh dear! Something went wrong with the connection.");  
+    }
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    
+    // echo var_dump($result);
+    if(commentDeleted($connection, $id))
+    {  
+        alertMessage(200, "Comment has been deleted");
+        //header('location: ../userApi/approveComment.php');
     }
     else
     {
         sendReply(400, "Something went wrong.");
     }
 
-};
+}
 
-function commentExists($connection, $user_id, $position, $owned, )
+function commentExists($connection, $user_id, $position, $owned)
 {
 
     $sql = "SELECT id FROM comments WHERE user_id=? AND position=? AND $owned=?;";
@@ -460,7 +508,6 @@ function commentExists($connection, $user_id, $position, $owned, )
     $stmt->bind_param("iii", $user_id, $position, $owned);
     $stmt->execute();
     $result = $stmt->get_result(); // get the mysqli result
-    $row = $result->fetch_assoc();
 
     if(mysqli_num_rows($result) > 0)
     {   
@@ -468,6 +515,29 @@ function commentExists($connection, $user_id, $position, $owned, )
     }
     else {
         return false;
+    }
+}
+
+function commentDeleted($connection, $id)
+{
+
+    $sql = "SELECT id, user_id, position FROM comments WHERE id=?;";
+    $stmt = $connection->prepare($sql);
+    if (!$stmt)
+    {
+        sendReply(400, "Something went wrong with the connection.");  
+    }
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $result = $stmt->get_result(); // get the mysqli result
+    
+
+    if(mysqli_num_rows($result) > 0)
+    {   
+        return false; // exists == NOT deleted
+    }
+    else {
+        return true; // !exists == deleted
     }
 }
 

@@ -19,6 +19,7 @@ if (isset($_SESSION['user'])){
     echo '<div class=top-left">';
     echo '<p id="welcome">This is one of the top 500 albums</p></div>';
     echo '<div class=top-right">';
+    echo '<p>All comments will need the approval of an Admin before they are shown.</p>';
     echo '</div></div>';
 
 
@@ -31,6 +32,7 @@ if (isset($_SESSION['user'])){
     <div class="input-box.label"><label for ="">Comment</label></div>
     <div class="input-box.input"><input type="text" name="comment" size="40"></div>
     <div><input type="hidden" name="action" value="create"></div>
+    
     EOD;
     echo '<div><input type="hidden" name="position" value="'.$position.'"></div>';
     echo <<<EOD
