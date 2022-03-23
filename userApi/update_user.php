@@ -8,11 +8,11 @@ require_once "../php/helpers.php";
 if (isset($_SESSION['user'])){
     sendMessage(200, "Username can not be changed.");
     //$userName = $_SESSION(['user']);
-    $api_url = 'http://localhost:8888/userApi/user_model.php?user='.$_SESSION['user'];
+    $api_url = 'http://localhost:8888/userApi/user_model.php?userDeleteAdmin=false&name='.$_SESSION['user'];
 
     // Read JSON file
     $userData = explode(" ", file_get_contents($api_url));
-
+    //var_dump($userData);
     // echo $userData;
     echo <<<EOD
     <div class="top">

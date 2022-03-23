@@ -25,6 +25,9 @@ if (!isset($_SESSION['user'])){
     </form>
     <script src="../js/login.js" defer></script>
     </div>
+    <div class="bottom">
+    <p>Have fun!</p>
+    </div>
 EOD;
 }
 else

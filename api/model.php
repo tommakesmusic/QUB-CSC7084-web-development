@@ -12,8 +12,12 @@ require_once "../php/helpers.php";
 
 session_start();
 
-if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['Api'] == "create") {
+if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['action'] == "create") {
     createComment($connection);
+}
+
+if ($_SERVER['REQUEST_METHOD'] == "GET" && $_GET['action'] == "comment") {
+    getComment($connection);
 }
 
 if ($_SERVER['REQUEST_METHOD'] == "PATCH") {
@@ -52,43 +56,42 @@ if ($_SERVER['REQUEST_METHOD'] == "DELETE") {
 
 function createComment($connection)
 {
-    // echo "SIGNUP HAS REACHED THE BACK END!";
-    $firstName = $_POST['firstName'];
-    $lastName = $_POST['lastName'];
-    $userName = $_POST['userName'];
-    $emailAddress = $_POST['emailAddress'];
-    $passWord = $_POST['passWord'];
-    $passWordRpt = $_POST['passWordRpt'];
-
-
-    if (empty($firstName) || empty($lastName) || empty($userName) || empty($emailAddress) || empty($passWord) || empty($passWordRpt))
-    {
-        sendReply(400, "All fields must be filled in.");
-    }
-    if (! filter_var($emailAddress, FILTER_VALIDATE_EMAIL))
-    {
-        sendReply(400, "Invalid email address.");
-    }
-    if ($passWord != $passWordRpt)
-    {
-        sendReply(400, "Passwords must match.");  
-    }
+    //echo "CREATE COMMENT HAS REACHED THE BACK END!";
     
-    $passWord = password_hash($passWord, PASSWORD_DEFAULT);
+    if ($_POST['owned'] =='yes'){
+        $owned = 1;
+    }
+    else {
+        $owned = 0;
+    }
+    if ($_POST['comment']!=""){
+        $comment = $_POST['comment'];
+    }
+    else {
+        $comment = "";
+    }
+    $position = $_POST['position'];
+    $user_id = $_SESSION['id'];
+      
 
-    $sql = "INSERT into user (username, first_name, last_name, email, password) values (?,?,?,?,?);";
+   /*  if (commentExists($connection, $user_id, $position, $owned)){
+        sendReply(400, "You've commented here before!");
+    } */
+
+
+    $sql = "INSERT into comments (user_id, position, owned, comment) values (?,?,?,?);";
     $stmt = $connection->stmt_init();
 
     if (!$stmt->prepare($sql))
     {
         sendReply(400, "Oops!Something went wrong with the connection.");  
     }
-    $stmt->bind_param('sssss', $userName, $firstName, $lastName, $emailAddress, $passWord);
+    $stmt->bind_param('iiis', $user_id, $position, $owned, $comment);
     $stmt->execute();
     # $stmt->close();
     if($stmt->affected_rows > 0)
     {
-        alertMessage(201, "Success");
+        sendReply(200, "Success");
         $unused = true;
         goLogin();
     }
@@ -150,6 +153,51 @@ function updateComment($connection)
     }
 };
 
+function getComment($connection){
+    //echo "IN COMMENT FUNCTION";
+    if (!empty ($_GET['album']) && !empty($_GET['user'])) {
+        $position = $_GET[('album')];
+        if (!filter_var($position, FILTER_VALIDATE_INT)){
+            sendReply(400, "Data supplied was non-numeric.");
+        }
+        // echo $position;
+        if (!empty ($_GET['user'])){
+            $user_id = $_GET[('user')];
+            if (!filter_var($user_id, FILTER_VALIDATE_INT)){
+                sendReply(400, "Data supplied was non-numeric.");
+            }
+        }
+    }
+    else
+    {
+        sendReply(400, "Not enought data given");
+    }
+
+    $sql = "SELECT owned, comment FROM comments WHERE user_id=? AND position=?";
+    $stmt = $connection->prepare($sql);
+    if (!$stmt)
+    {
+        sendReply(400, "Oh dear! Something went wrong with the connection.");  
+    }
+    $stmt->bind_param("ii", $user_id, $position);
+    $stmt->execute();
+    
+    $result = $stmt->get_result(); // get the mysqli result
+    //$row = $result->fetch_assoc();
+    
+    if(mysqli_num_rows($result) > 0)
+    {  
+        $result_array = array();
+        while($row = $result->fetch_assoc()){
+            array_push($result_array, $row);
+        }
+        echo json_encode($result_array); 
+    }
+    else {
+        //echo "Chart position not found. We only have positions 1 to 500.";
+    }
+    
+}
 
 function getPosition($connection){
 
@@ -399,5 +447,28 @@ function delete($connection)
     }
 
 };
+
+function commentExists($connection, $user_id, $position, $owned, )
+{
+
+    $sql = "SELECT id FROM comments WHERE user_id=? AND position=? AND $owned=?;";
+    $stmt = $connection->prepare($sql);
+    if (!$stmt)
+    {
+        sendReply(400, "Something went wrong with the connection.");  
+    }
+    $stmt->bind_param("iii", $user_id, $position, $owned);
+    $stmt->execute();
+    $result = $stmt->get_result(); // get the mysqli result
+    $row = $result->fetch_assoc();
+
+    if(mysqli_num_rows($result) > 0)
+    {   
+        return true;
+    }
+    else {
+        return false;
+    }
+}
 
 ?>

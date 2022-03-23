@@ -27,8 +27,10 @@ if ($result->num_rows > 0) {
         echo '<td>'.$row["last_name"].'</td>';
         echo '<td>'.$row["user_role"].'</td>';
         echo '<td>'.$date.'</td>';
-        echo "<td><button class='stdButton'><a href='update_user-Admin.php?user=$name'>Update User</a></button></td>";
-        echo "<td><button class='stdButtonRd'><a href='user_model.php?userDeleteAdmin=$name'>Delete User</a></button></td>";
+        echo "<td><button class='stdButton'><a href='update_user-Admin.php?name=$name'>Update User</a></button></td>";
+        if ($name!=$_SESSION['user']){
+        echo "<td><form action='user_model.php' method='GET'><input type='hidden' name='userDeleteAdmin' value='true'><input type='hidden' name='name' value='$name'><button class='stdButton' id='submit' type='submit' value='Submit'>Delete User</button></form></td>";
+       }
         echo '</tr>';
       }
       echo '</table>';

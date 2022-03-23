@@ -82,7 +82,7 @@ async function getSession(){
             var v = document.getElementById("adminUser");
                 v.style.display = "inline-block";
             var w = document.getElementById("deleteUser");
-                w.style.display = "binline-block";
+                w.style.display = "inline-block";
             var x = document.getElementById("logout");
                 x.style.display = "inline-block";
             var y = document.getElementById("signup");

@@ -29,7 +29,7 @@ require_once 'html/header.html';
 </div>
 
 
-<div class="bottom">THIS IS THE BOTTOM AREA</div>
+<div class="bottom">Thank you for scrolling this far!</div>
 
 <?php
 require_once 'html/footer.html';

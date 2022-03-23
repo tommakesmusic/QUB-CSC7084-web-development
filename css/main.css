@@ -194,9 +194,27 @@ h3 {
   grid-template-rows: auto;
 }
 
+.contentSearch {
+  grid-area: "middle";
+  display: grid;
+  width: 95vw;
+  height: auto;
+  grid-gap: 1.5rem;
+
+  margin: 0.5rem;
+  padding-block: 0.5rem;
+  margin-inline: auto;
+  grid-template-columns: [col-start] 1fr [col-end];
+  grid-template-rows: auto;
+  grid-template-areas:
+    "left"
+    "middle"
+    "right";
+}
+
 .bottom{
   grid-area: bottom;
-  background: #000;
+  background: rgb(69, 106, 230);
   color: whitesmoke;
 }
 
@@ -248,7 +266,7 @@ h3 {
 
 form {
   display: grid;
-  /* background: whitesmoke; */
+  background: whitesmoke;
   grid-template-columns: [col-start] 1fr [col-end];
   grid-template-rows: auto;
   grid-template-areas:
@@ -415,9 +433,6 @@ nav #nav-check, nav .nav-btn{
   display: block;
 }
 
-.stdButtonRd{
-  background-color: #cb2c17;
-}
 .userButton {
 	background-color: #17a1cb;
   border: none;
@@ -618,7 +633,13 @@ select {
 
 @media screen and (min-width: 32em){
   .content {
-    grid-template-columns: [col-start] 1fr [col-2] 1fr [col-end]
+    grid-template-columns: [col-start] 1fr [col-2] 1fr [col-end];
+  }
+  .contentSearch {
+    grid-template-columns: [col-start] 1fr [col-2] 1fr [col-end];
+    grid-template-areas:
+    "left" "right"
+    "middle"
   }
 
 }
@@ -627,6 +648,13 @@ select {
   .content {
     grid-template-columns: [col-start] 1fr [col-2] 1fr [col-3] 1fr [col-end];
   }
+
+  .contentSearch {
+    grid-template-columns: [col-start] 1fr [col-2] 1fr [col-3] 1fr [col-end];
+    grid-template-areas:
+    "left" "middle" "right"
+  }
+
   .top {
     grid-template-columns: [col-start] 1fr [col-2] 1fr [col-end];
     grid-template-areas:

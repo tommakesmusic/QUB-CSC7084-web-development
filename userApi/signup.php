@@ -42,7 +42,7 @@ if (!isset($_SESSION['user'])){
         <script src="../js/signup.js" defer></script>
     </div>
     <div class="bottom">
-    <p>This is the bottom part of the page</p>
+    <p>This is the bottom part of the page. Not much to look at, I'm afraid!</p>
     </div>
     EOD;
 }

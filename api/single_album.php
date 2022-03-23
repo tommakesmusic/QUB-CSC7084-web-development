@@ -7,17 +7,42 @@ require_once "../php/helpers.php";
 
 if (isset($_SESSION['user'])){
     sendMessage(200, "Search results here.");
-    //$userName = $_SESSION(['user']);
-    $api_url = 'http://localhost:8888/api/model.php?action='.$_GET['action'].'&value='.$_GET['value'];
-
+    $position = $_GET['value'];
+    $user = $_SESSION['id'];
+    $api_url = 'http://localhost:8888/api/model.php?action=position&value='.$position;
+    $owned = 0;
+    $comment = "";
     // Read JSON file
-    $userData = json_decode(file_get_contents($api_url), TRUE);
+    $albumData = json_decode(file_get_contents($api_url), TRUE);
 
     // echo $userData;
-    
-    echo '<div class="top"></div>';
+    $comment_url = 'http://localhost:8888/api/model.php?action=comment&album='.$position.'&user='.$user;
+    $commentData = json_decode(file_get_contents($comment_url), TRUE);
+    if ($commentData){
+        foreach ($commentData as $row){
+            $owned =  $row['owned'];
+            $comment =  $row['comment'];
+        }
+    }
+
+    echo '<div class="top">';
+    echo '<div class=top-left">';
+    echo '<p id="welcome">This is one of the top 500 albums</p></div>';
+    echo '<div class=top-right">';
+    if ($owned == 1){
+        echo "<h3>I OWN IT</h3>";
+    }
+    if ($comment!=""){
+        echo '<h4>'.$comment.'</h4>';
+    }
+    if ($owned == 0 || $comment = ""){
+        echo "<h4>Do you own this or want to make a comment?</h4>";
+        echo "<td><button class='stdButton'><a href='addComment.php?position=$position'>Add my comment</a></button></td>"; 
+    }
+
+    echo '</div></div>';
     echo '<div class="middle">';
-    if ($userData) {
+    if ($albumData) {
         echo '<div style="overflow-x:auto;">';
         echo '<table>';
           echo '<tr>';
@@ -29,7 +54,7 @@ if (isset($_SESSION['user'])){
           echo  '<th>Subgenre</th>';
           echo '</tr>';
     // echo var_dump($userData);
-    foreach ($userData as $row){
+    foreach ($albumData as $row){
         echo '<tr>';
         echo '<td><div>'.$row["position"].'</div></td>';
         echo '<td><div>'.$row["year"].'</div></td>';
@@ -40,7 +65,9 @@ if (isset($_SESSION['user'])){
         echo '</tr>';
     }
     echo '</table>';
+    
     echo '</div>';
+
     echo '<div class="bottom">';
     echo '<p>This is the bottom part of the page</p>';
     echo '</div>';

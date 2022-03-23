@@ -6,7 +6,9 @@ session_start();
 $slt = "SELECT * from album ORDER by position";
 $result = $connection->query($slt);
 
-// if (isset($_SESSION['user']))
+if (isset($_SESSION['user'])){
+  $link="TRUE";
+}
 
 if ($result->num_rows > 0) {
   echo '<div style="overflow-x:auto;">';
@@ -23,12 +25,22 @@ if ($result->num_rows > 0) {
       
     while($row = $result->fetch_assoc()) {
         echo '<tr>';
+        if ($link='TRUE'){
+        echo '<td><a href="api/single_album.php?value='.$row["position"].'">'.$row["position"].'</a></td>';
+        echo '<td><a href="api/single_album.php?value='.$row["position"].'">'.$row["year"].'</a></td>';
+        echo '<td><a href="api/single_album.php?value='.$row["position"].'">'.$row["album_name"].'</a></td>';
+        echo '<td><a href="api/single_album.php?value='.$row["position"].'">'.$row["artist_name"].'</a></td>';
+        echo '<td><a href="api/single_album.php?value='.$row["position"].'">'.$row["genre"].'</a></td>';
+        echo '<td><a href="api/single_album.php?value='.$row["position"].'">'.$row["subgenre"].'</a></td>';
+      }
+      else {
         echo '<td>'.$row["position"].'</td>';
         echo '<td>'.$row["year"].'</td>';
         echo '<td>'.$row["album_name"].'</td>';
         echo '<td>'.$row["artist_name"].'</td>';
         echo '<td>'.$row["genre"].'</td>';
         echo '<td>'.$row["subgenre"].'</td>';
+      }
         echo '</tr>';
     }
     echo '</table>';

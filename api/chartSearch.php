@@ -20,7 +20,7 @@ require_once "../php/helpers.php";
         </div>
     </div>
     <div class="middle">
-        <div class=content">
+        <div class=contentSearch">
 
             <div class="content-genre-box content-grid-col-span-2 flow bg-primary-400 text-neutral-100">
                 <div class="flex">
@@ -29,8 +29,7 @@ require_once "../php/helpers.php";
             </div>
             <div class="flex flow">
                 <form class="content-genre-box first flow bg-secondary-400 text-neutral-100" action="searchResult.php" autocomplete="off" method="GET">
-                
-                        <div class="input-box.label"><label for ="value"> Search Chart Position</label></div>
+                        <div class="input-box.label"><label for="value"> Search Chart Position</label></div>
                         <div class="input-box.input"><input type="number" name="value" id="value" autocomplete="off" pattern="[0-9]+" minlength="1" maxlength="3" required></div>
                         <input type="hidden" id="action" name="action" value="position">
                         <button class="stdButton" id="submit" type="submit" value="Search">Search Position</button>
@@ -39,7 +38,7 @@ require_once "../php/helpers.php";
 
             <div class="flex flow">
                 <form class="content-genre-box flow bg-secondary-500 text-neutral-100" action="searchResult.php" autocomplete="off" method="GET">
-                    <div class="input-box.label"><label for ="value"> Search Year</label></div>
+                    <div class="input-box.label"><label for="value"> Search Year</label></div>
                     <div class="input-box.input"><input type="number" name="value" id="value" autocomplete="off" pattern="[0-9]+" minlength="1" maxlength="3" required></div>
                     <input type="hidden" id="action" name="action" value="year">
                     <button class="stdButton" id="submit" type="submit" value="Search">Search Year</button>
@@ -48,7 +47,7 @@ require_once "../php/helpers.php";
             
             <div class="flex flow">
                 <form class="content-genre-box flow bg-neutral-100 text-secondary-500" action="searchResult.php" autocomplete="off" method="GET">
-                    <div class="input-box.label"><label for ="value">Search Album Name</label></div>
+                    <div class="input-box.label"><label for="value">Search Album Name</label></div>
                     <div class="input-box.input"><input type="text" name="value" id="value" autocomplete="off" pattern="[ a-zA-Z0-9!]+" minlength="3" maxlength="30" required></div>
                     <input type="hidden" id="action" name="action" value="album">
                     <button class="stdButton" id="submit" type="submit" value="Search">Search Album Name</button>
@@ -58,7 +57,7 @@ require_once "../php/helpers.php";
 
             <div class="flex flow">
                 <form class="content-genre-box flow bg-secondary-500 text-neutral-100" action="searchResult.php" autocomplete="off" method="GET">
-                    <div class="input-box.label"><label for ="value">Search Artist Name</label></div>
+                    <div class="input-box.label"><label for="value">Search Artist Name</label></div>
                     <div class="input-box.input"><input type="text" name="value" id="value" autocomplete="off" pattern="[ a-zA-Z0-9!/]+" minlength="3" maxlength="30" required></div>
                     <input type="hidden" id="action" name="action" value="artist">
                     <button class="stdButton" id="submit" type="submit" value="Search">Search Artist Name</button>
@@ -68,7 +67,7 @@ require_once "../php/helpers.php";
 
             <div class="flex flow">
                 <form class="content-genre-box flow bg-neutral-100 text-secondary-500" action="searchResult.php" autocomplete="off" method="GET">
-                <div class="input-box.label"><label for ="value">Search Genre</label></div>
+                <div class="input-box.label"><label for="value">Search Genre</label></div>
                 <div class="input-box.input"><input type="text" name="value" id="value" autocomplete="off" pattern="[ a-zA-Z0-9/]+" minlength="3" maxlength="30" required></div>
                 <input type="hidden" id="action" name="action" value="genre">
                 <button class="stdButton" id="submit" type="submit" value="Search">Search Genre</button>
@@ -77,7 +76,7 @@ require_once "../php/helpers.php";
 
             <div class="flex flow">
                 <form class="content-genre-box last flow bg-primary-400 text-neutral-100" action="searchResult.php" autocomplete="off" method="GET">
-                <div class="input-box.label"><label for ="value">Search Subgenre</label></div>
+                <div class="input-box.label"><label for="value">Search Subgenre</label></div>
                 <div class="input-box.input"><input type="text" name="value" id="value" autocomplete="off" pattern="[ a-zA-Z0-9/]+" minlength="3" maxlength="30" required></div>
                 <input type="hidden" id="action" name="action" value="subgenre">
                 <button class="stdButton" id="submit" type="submit" value="Search">Search Subgenre</button>
@@ -87,7 +86,7 @@ require_once "../php/helpers.php";
     </div>
 
     <div class="bottom">
-    <p>This is the bottom part of the page</p>
+    <p>Remember, only members can search and comment!</p>
     </div>
 EOD;
 /* }
