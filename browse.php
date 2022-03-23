@@ -9,7 +9,7 @@ require_once 'html/header.html';
   <div class="top-left">
   <p id="welcome">Welcome to the <strong>Favourite 500</strong></p><hr />
   <p>BROWSE THE CHART!!</p>
-  <p>By itself this list of the albums in the chart is not so useful, so why not try a search aimed at refining what you see, such as "All the beatles albums", or albums that can be considered "Psychedelic Rock"?<br />
+  <p>By itself this list of the albums in the chart is not so useful, so why not try a search aimed at refining what you see, such as "the beatles", or albums that can be considered "Psychedelic Rock"?<br />
   Hopefully you will find more to the site than a static list of albums!</p>
   <p>The full list of albums is here so you can browse and see if anything catches your fancy. You can also sign up and add your own comments or review to each of the albums!</p>
   <p>If you are logged in you can click on each album to see it by itself</p>
