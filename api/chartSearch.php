@@ -14,6 +14,8 @@ if (isset($_SESSION['user'])){
         <div class="top-left">
             <p id="welcome">Hello!</p><p>Registered users can search the Favourite 500! Please enter a search below:</p>
             <p>Note: You cannot search for more than one category at a time!</p>
+            <p>Year and chart position can only take numbers</p>
+            <p>All other searched can take letters and numbers (and spaces)!</p>
         </div>
         <div class="top-right">
             <img src="../img/records.png" alt="An image of several vinyl records">
@@ -28,24 +30,27 @@ if (isset($_SESSION['user'])){
                 </div>
             </div>
             <div class="flex flow">
+            
                 <form class="content-genre-box first flow bg-secondary-400 text-neutral-100" action="searchResult.php" autocomplete="off" method="GET">
-                        <div class="input-box.label"><label for="value"> Search Chart Position</label></div>
-                        <div class="input-box.input"><input type="number" name="value" id="value" autocomplete="off" pattern="[0-9]+" minlength="1" maxlength="3" required></div>
-                        <input type="hidden" id="action" name="action" value="position">
-                        <button class="stdButton" id="submit" type="submit" value="Search">Search Position</button>
-                </form>
+                    <div class="input-box.label"><label for="value"> Search Chart Position</label></div>
+                    <div class="input-box.input"><input type="number" name="value" id="value" autocomplete="off" pattern="[0-9]+" minlength="1" maxlength="3" required></div>
+                    <input type="hidden" id="action" name="action" value="position">
+                    <button class="stdButton" id="submit" type="submit" value="Search">Search Position</button>
+                     Only Numbers Allowed!</form>
             </div>
 
             <div class="flex flow">
+                
                 <form class="content-genre-box flow bg-secondary-500 text-neutral-100" action="searchResult.php" autocomplete="off" method="GET">
                     <div class="input-box.label"><label for="value"> Search Year</label></div>
                     <div class="input-box.input"><input type="number" name="value" id="value" autocomplete="off" pattern="[0-9]+" minlength="1" maxlength="3" required></div>
                     <input type="hidden" id="action" name="action" value="year">
                     <button class="stdButton" id="submit" type="submit" value="Search">Search Year</button>
-                </form>  
+                    Only Numbers Allowed!</form>  
             </div>
             
             <div class="flex flow">
+                Only Letters and umbers allowed in search
                 <form class="content-genre-box flow bg-neutral-100 text-secondary-500" action="searchResult.php" autocomplete="off" method="GET">
                     <div class="input-box.label"><label for="value">Search Album Name</label></div>
                     <div class="input-box.input"><input type="text" name="value" id="value" autocomplete="off" pattern="[ a-zA-Z0-9!]+" minlength="3" maxlength="30" required></div>
@@ -61,7 +66,7 @@ if (isset($_SESSION['user'])){
                     <div class="input-box.input"><input type="text" name="value" id="value" autocomplete="off" pattern="[ a-zA-Z0-9!/]+" minlength="3" maxlength="30" required></div>
                     <input type="hidden" id="action" name="action" value="artist">
                     <button class="stdButton" id="submit" type="submit" value="Search">Search Artist Name</button>
-                </form>
+                    Only Letters and Numbers</form>
             </div>
 
 
@@ -71,7 +76,7 @@ if (isset($_SESSION['user'])){
                 <div class="input-box.input"><input type="text" name="value" id="value" autocomplete="off" pattern="[ a-zA-Z0-9/]+" minlength="3" maxlength="30" required></div>
                 <input type="hidden" id="action" name="action" value="genre">
                 <button class="stdButton" id="submit" type="submit" value="Search">Search Genre</button>
-                </form>
+                Only Letters and Numbers</form>
             </div>
 
             <div class="flex flow">
@@ -80,7 +85,7 @@ if (isset($_SESSION['user'])){
                 <div class="input-box.input"><input type="text" name="value" id="value" autocomplete="off" pattern="[ a-zA-Z0-9/]+" minlength="3" maxlength="30" required></div>
                 <input type="hidden" id="action" name="action" value="subgenre">
                 <button class="stdButton" id="submit" type="submit" value="Search">Search Subgenre</button>
-                </form>
+                Only Letters and Numbers</form>
             </div>
         </div>
     </div>
