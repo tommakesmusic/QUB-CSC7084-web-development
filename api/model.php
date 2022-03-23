@@ -486,7 +486,7 @@ function delete($connection)
     if(commentDeleted($connection, $id))
     {  
         alertMessage(200, "Comment has been deleted");
-        //header('location: ../userApi/approveComment.php');
+        header('location: ../browse.php');
     }
     else
     {

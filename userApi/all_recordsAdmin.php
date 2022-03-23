@@ -31,7 +31,7 @@ if ($result->num_rows > 0) {
         echo "<td><button class='stdButton'><a href='update_user-Admin.php?userName=$name'>Update User</a></button></td>";
         echo "<td><button class='stdButton'><a href='approveComment.php?user_id=".$row['user_id']."&userName=".$name."'>Approve comments</a></button></td>";
         if ($name!=$_SESSION['user']){
-        echo "<td><form action='user_model.php' method='GET'><input type='hidden' name='userDeleteAdmin' value='true'><input type='hidden' name='userName' value='$name'><button class='stdButton' id='submit' type='submit' value='Submit'>Delete User</button></form></td>";
+        echo "<td><form action='user_model.php' method='GET'><input type='hidden' name='userDeleteAdmin' value='true'><input type='hidden' name='user_id' value='".$row['userName']."'><button class='stdButton' id='submit' type='submit' value='Submit'>Delete User</button></form></td>";
        }
         echo '</tr>';
       }

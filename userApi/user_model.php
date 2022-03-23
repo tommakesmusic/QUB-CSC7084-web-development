@@ -285,74 +285,63 @@ function removeUser($connection)
         sendReply(403, "You are not logged in");
     }
     
-    $userToDelete = $_SESSION['user'];
+    $user = $_SESSION['user'];
     
-    // echo $userToDelete;
+    //echo $user;
 
-    alertMessage(400, "Are you sure you want to DELETE user ".$userToDelete."?");
+    //sendMessage(400, "Are you sure you want to DELETE user ".$user."?");
 
-    $sql = "DELETE FROM user WHERE username=?;";
-        $stmt = $connection->prepare($sql);
-        if (!$stmt)
-        {
-            sendReply(400, "Something went wrong with the connection.");  
-        }
-        $stmt->bind_param("s", $userToDelete);
-        $stmt->execute();
+    $sql = "DELETE FROM user WHERE username='".$user."';";
+    
 
-        $result = $stmt->get_result(); // get the mysqli result
-        //$row = $result->fetch_assoc();   
-        if (mysqli_num_rows($result) > 0){
-            alertMessage(200, "User ".$userToDelete." has been deleted");
-            header('location: ../index.php');
-        }
+    if ($connection->query($sql)){
+        unset($_SESSION['user']);
+        session_destroy();
+        sendReply(400, "User ".$user." has been deleted");
+        header('location: ../index.php');
+    }
     else
     {
         sendReply(400, "Something went wrong.");
     }
-
 };
 
 function removeUserAdmin($connection)
 {
-    echo "ADMIN DELETE HAS REACHED THE BACK END!";
-    echo $_GET['userDeleteAdmin'];
+    //echo "ADMIN DELETE HAS REACHED THE BACK END!";
+    //echo $_GET['userDeleteAdmin'];
     
     if(!isset($_SESSION['user'])){
         sendReply(403, "You are not logged in");
     }
-    if (empty($_GET['name'])){
+    if (empty($_GET['userName'])){
         sendReply(400, "No Value for User to delete.");
     }
+    else {
+        $user = $_GET['userName'];
+    }
 
-    $userToDelete = $_GET['name'];
-    if (userExists($connection, $userToDelete)){
-        echo $userToDelete;
+    
+    if (userExists($connection, $user)){
+        //echo $userToDelete;
 
-        alertMessage(400, "Are you sure you want to DELETE user ".$userToDelete."?");
+        sendReply(400, "Are you sure you want to DELETE user ".$user."?");
 
-        $sql = "DELETE FROM user WHERE username=?;";
+        $sql = "DELETE FROM user WHERE user_id=?;";
+        
         $stmt = $connection->prepare($sql);
         if (!$stmt)
         {
-            sendReply(400, "Something went wrong with the connection.");  
+            sendReply(400, "Oh dear! Something went wrong with the connection.");  
         }
-        $stmt->bind_param("s", $userToDelete);
+        $stmt->bind_param("s", $user);
         $stmt->execute();
-        $result = $stmt->get_result(); // get the mysqli result
-         
-        if ($result->num_rows > 0){
-            alertMessage(200, "User ".$userToDelete." has been deleted");
-            header('location: ../index.php');
-        }
-        else
-        {
-            sendReply(400, "Something went wrong.");
-        }
+        header('location: ../userApi/userAdmin.php');
+        
     }
     else {
-        sendReply(400,  "User ".$userToDelete." doesn't exist");
-    }
+        sendReply(400,  "User ".$user." doesn't exist");
+    } 
 };
 
 function userExists($connection, $user){
